@@ -1,0 +1,41 @@
+@import "default";
+
+/* Custom styling for this infographic page */
+
+/* General animations */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: all .5s ease-out;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: all .5s ease-out;
+}
+
+.fade-zoom {
+  opacity: 0;
+  transform: scale(.8);
+  transition: all .5s cubic-bezier(0,1.5,1,1);
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translateY(0) !important;
+}
+
+/* Steps */
+
+.steps {
+
+  .step.next {
+    color: blue;
+    cursor: pointer;
+  }
+}
+
+
+
+

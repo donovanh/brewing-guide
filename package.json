@@ -1,0 +1,26 @@
+{
+  "name": "Infographic",
+  "version": "0.0.1",
+  "description": "Example landing page",
+  "main": "gulpfile.js",
+  "author": "Donovan Hutchinson",
+  "devDependencies": {
+    "autoprefixer": "^7.1.1",
+    "browser-sync": "^2.17.0",
+    "del": "^3.0.0",
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.2",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-size": "^2.1.0",
+    "postcss-css-variables": "^0.7.0",
+    "postcss-partial-import": "^4.1.0",
+    "postcss-sorting": "^3.0.0",
+    "precss": "^1.4.0"
+  },
+  "dependencies": {
+    "gulp-changed": "^3.1.0"
+  }
+}

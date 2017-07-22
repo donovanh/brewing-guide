@@ -1,0 +1,97 @@
+<html>
+  <head>
+    <title>Brewing Guide</title>
+    <link href="./stylesheets/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <article class="brew-guide">
+      <ul class="steps">
+        <li class="step current" id="step-0">
+          <h1 class="step-title"></h1>
+          <section class="step-content">
+            Step content - in this case the intro slide
+          </section>
+        </li>
+        <li class="step next" id="step-1">
+          <h1 class="step-title">Step 1</h1>
+          <section class="step-content">
+            Slide content
+          </section>
+        </li>
+        <li class="step next" id="step-2">
+          <h1 class="step-title">Step 2</h1>
+          <section class="step-content">
+            Slide content
+          </section>
+        </li>
+        <li class="step next" id="step-3">
+          <h1 class="step-title">Step 3</h1>
+          <section class="step-content">
+            Slide content
+          </section>
+        </li>
+        <li class="step" id="step-4">
+          <h1 class="step-title">Step 4</h1>
+          <section class="step-content">
+            Slide content
+          </section>
+        </li>
+        <li class="step" id="step-5">
+          <h1 class="step-title">Step 5</h1>
+          <section class="step-content">
+            Slide content
+          </section>
+        </li>
+        <li class="step" id="step-6">
+          <h1 class="step-title">Step 6</h1>
+          <section class="step-content">
+            Slide content
+          </section>
+        </li>
+        <li class="step" id="step-7">
+          <h1 class="step-title">Step 7</h1>
+          <section class="step-content">
+            Slide content
+          </section>
+        </li>
+      </ul>
+      <section class="brew-guide-button">
+        <span id="brew-guide-button-start">Start</span>
+        <span id="brew-guide-button-play">&#9658;</span>
+        <span id="brew-guide-button-pause">&#9612;&nbsp;&#9612;</span>
+      </section>
+    </article>
+<!--
+Notes
+
+Build accordion of steps and a title screen (step 0)
+
+Number of steps visible: 
+
+There can be from 0 to 3 steps visible on either side. At first there are zero on left, and 3 on right, and that continues with the first step having one visible (step 0) on left and 3 on right, then 2 on left, 3 on right, etc until 3 on left and zero on right.
+
+Only steps on the right have titles visible when not shown.
+
+Each steps has a title, and a time line made up of actions
+
+Each action has steps, some of which are timed, some not. Timed steps are connected on a timeline that a green bar goes along.
+
+There's a start button that turns into a "next" arrow button when the first step has started.
+
+There's an autoplay button that makes the timed steps continue automatically.
+
+A green radial bar appears round the "next" arrow button during the last 5 seconds.
+
+During autoplay the "next arrow" button has a play or pause icon instead depending on the autoplay status.
+
+Step 1: Build the accordion
+
+* Desktop
+* Mobile (as a scrolling version with scroll-triggered step changes)
+
+-->
+    <script src="./javascripts/vendor/jquery-3.1.1.min.js"></script>
+    <script src="./javascripts/visibility.js"></script>
+    <script src="./javascripts/brew-guide-logic.js"></script>
+  </body>
+</html
