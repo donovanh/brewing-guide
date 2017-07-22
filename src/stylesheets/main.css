@@ -34,6 +34,11 @@
     color: blue;
     cursor: pointer;
   }
+
+  .step.previous {
+    color: red;
+    cursor: pointer;
+  }
 }
 
 

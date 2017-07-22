@@ -1,0 +1,14 @@
+/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+body { margin: 0 0 12em; }
+article, aside, footer, header, nav, section, figcaption, figure, main { display: block; }
+figure { margin: 1em 40px; }
+[hidden] { display: none; }
+
+/* Columns and layout */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+#__bs_notify__ {
+  display: none !important;
+}
