@@ -30,17 +30,117 @@
 
 .steps {
 
-  .step.next {
+  .next {
     color: blue;
     cursor: pointer;
   }
 
-  .step.previous {
+  .previous {
     color: red;
     cursor: pointer;
   }
+
+  .step-content {
+    display: none;
+  }
+
+  .current .step-content {
+    display: block;
+  }
+
 }
 
+/* Actions */
+
+.actions {
+  height: 0;
+  position: relative;
+
+  .action {
+    display: inline-block;
+    border-top: 2px solid transparent;
+    height: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 50px;
+  }
+
+  .action:after {
+    content: "";
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 50%;
+    position: absolute;
+      top: -5px;
+      left: -3px;
+    width: 6px;
+    height: 6px;
+  }
+
+  .action.current:after {
+    background: #fff;
+  }
+
+  .action.timed {
+    border-top: 2px solid #aaa;
+  }
+
+  .action.last {
+    width: 0;
+  }
+
+  .timed-area {
+    position: relative;
+  }
+
+  .timer-bar {
+    opacity: .3;
+    height: 10px;
+    background: green;
+    position: absolute;
+      top: 4px;
+      right: -2px;
+      left: 0;
+  }
+}
+
+
+/* Play button */
+
+.brew-guide-button {
+  cursor: pointer;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  height: 5em;
+  line-height: 5em;
+  text-align: center;
+  width: 5em;
+}
+
+.brew-guide-button-start,
+.brew-guide-button-play,
+.brew-guide-button-pause,
+.brew-guide-button-next {
+  display: none;
+}
+
+.brew-guide-button.start .brew-guide-button-start {
+  display: block;
+}
+
+.brew-guide-button.standalone .brew-guide-button-next {
+  display: block;
+}
+
+.brew-guide-button.playing .brew-guide-button-pause {
+  display: block;
+}
+
+.brew-guide-button.paused .brew-guide-button-play {
+  display: block;
+}
 
 
 

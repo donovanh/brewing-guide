@@ -58,16 +58,112 @@ figure {
 
 /* Steps */
 
-.steps .step.next {
+.steps .next {
   color: blue;
   cursor: pointer;
 }
 
-.steps .step.previous {
+.steps .previous {
   color: red;
   cursor: pointer;
 }
 
+.steps .step-content {
+  display: none;
+}
+
+.steps .current .step-content {
+  display: block;
+}
+
+/* Actions */
+
+.actions {
+  height: 0;
+  position: relative;
+}
+
+.actions .action {
+  border-top: 2px solid transparent;
+  display: inline-block;
+  height: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 50px;
+}
+
+.actions .action:after {
+  background: #000;
+  border: 1px solid #000;
+  border-radius: 50%;
+  content: "";
+  height: 6px;
+  left: -3px;
+  position: absolute;
+  top: -5px;
+  width: 6px;
+}
+
+.actions .action.current:after {
+  background: #fff;
+}
+
+.actions .action.timed {
+  border-top: 2px solid #aaa;
+}
+
+.actions .action.last {
+  width: 0;
+}
+
+.actions .timed-area {
+  position: relative;
+}
+
+.actions .timer-bar {
+  background: green;
+  height: 10px;
+  left: 0;
+  opacity: .3;
+  position: absolute;
+  right: -2px;
+  top: 4px;
+}
+
+
+/* Play button */
+
+.brew-guide-button {
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 5em;
+  line-height: 5em;
+  text-align: center;
+  width: 5em;
+}
+
+.brew-guide-button-start, .brew-guide-button-play, .brew-guide-button-pause, .brew-guide-button-next {
+  display: none;
+}
+
+.brew-guide-button.start .brew-guide-button-start {
+  display: block;
+}
+
+.brew-guide-button.standalone .brew-guide-button-next {
+  display: block;
+}
+
+.brew-guide-button.playing .brew-guide-button-pause {
+  display: block;
+}
+
+.brew-guide-button.paused .brew-guide-button-play {
+  display: block;
+}
 
 
 
