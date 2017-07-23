@@ -1,8 +1,14 @@
 $(function() {
+
+
   // Set up the guide's "state"
-  var currentStep = 0;
-  var lastIndex = $('#brew-guide').find('.step').length - 1;
+  var currentStep = getUrlVars()['step'] || 0;
+  var currentAction = getUrlVars()['action'] || 0;
+  var lastStep = $('#brew-guide').find('.step').length - 1;
   var allSteps = $('#brew-guide').find('.step');
+
+  showStepbyIndex(currentStep);
+  showActionByIndex(currentAction);
 
   // For when a timed step is running
   autoPlay = false;
@@ -24,15 +30,22 @@ $(function() {
       var target = $(event.target).parents('.step');
     }
     var index = $('#brew-guide').find('.step').index(target);
-    showbyIndex(index);
+    showStepbyIndex(index);
   }
 
   function showFirstStep() {
-    showbyIndex(1);
-    updateButtonStatus();
+    showStepbyIndex(1);
   }
 
-  function showbyIndex(index) {
+  function showNextStep() {
+    if (currentStep < lastStep) {
+      showStepbyIndex(currentStep + 1);
+    } else {
+      showStepbyIndex(0);
+    }
+  }
+
+  function showStepbyIndex(index) {
     // Calculates the previous and next indices, and updates the carousel
     currentStep = index;
     // Remove any previous, current, next classes
@@ -43,6 +56,8 @@ $(function() {
     $(allSteps[currentStep]).addClass('current');
     addPreviousClasses(index);
     addNextClasses(index);
+    // Save to URL
+    updateURL();
   }
 
   function addPreviousClasses(index) {
@@ -58,7 +73,7 @@ $(function() {
   function addNextClasses(index) {
     nextSteps = 0;
     index++;
-    while (index <= lastIndex && nextSteps < 3) {
+    while (index <= lastStep && nextSteps < 3) {
       $(allSteps[index]).addClass('next');
       index++;
       nextSteps++;
@@ -68,14 +83,19 @@ $(function() {
   /* Actions */
 
   function showNextAction() {
-    // Get the current action index
-    var target = $(allSteps[currentStep]).find('.action.current');
-    var index = $(allSteps[currentStep]).find('.action').index(target);
-    showAction(index + 1);
-    updateButtonStatus();
+    var numberOfActions = $(allSteps[currentStep]).find('.action').length;
+    if (currentAction < numberOfActions) {
+      currentAction++;
+      showActionByIndex(currentAction);
+    } else {
+      // It's the last action, go to the next step and reset the action
+      currentAction = 0;
+      showNextStep();
+    }
+    updateURL();
   }
 
-  function showAction(index) {
+  function showActionByIndex(index) {
     $(allSteps[currentStep])
       .find('.action')
       .removeClass('current');
@@ -84,7 +104,11 @@ $(function() {
   }
 
   function startTimedAction() {
-
+    console.log('Starting timed action');
+    isPlaying = true;
+    // Get the time from the current action
+    // Start progressing the timer
+    // Have the progress bar match the timer
   }
 
   /* Button */
@@ -97,6 +121,7 @@ $(function() {
     } else {
       startTimedAction();
     }
+    updateButtonStatus();
   }
 
   function updateButtonStatus() {
@@ -110,9 +135,10 @@ $(function() {
       .removeClass('paused');
 
     if (currentStep > 0) {
-      // Check what the current action's class is! TODO
-      var currentAction = $(allSteps[currentStep]).find('.action.current');
-      if ($(currentAction).hasClass('standalone')) {
+      var currentActionLI = $(allSteps[currentStep]).find('.action.current');
+      console.log('currentActionLI: ', currentActionLI)
+      console.log('currentAction: ', currentAction)
+      if ($(currentActionLI).hasClass('standalone')) {
         $('#brew-guide-button').addClass('standalone');
       } else {
         if (isPlaying) {
@@ -120,8 +146,7 @@ $(function() {
         } else {
           $('#brew-guide-button').addClass('paused');
         }
-      }
-      
+      }     
     }
   }
 
@@ -137,6 +162,21 @@ $(function() {
       isPlaying = true;
     }
   });
+
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+
+  function updateURL() {
+    var url = new URL(window.location.href);
+    url.searchParams.set('step', currentStep);
+    url.searchParams.set('action', currentAction);
+    window.history.pushState('', 'Brew Guide - Step ' + currentStep, url);
+  }
 
 });
 
