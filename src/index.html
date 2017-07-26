@@ -1,103 +1,92 @@
 <html>
   <head>
     <title>Brewing Guide</title>
+    <!-- Included CSS Files -->
+  <link rel="stylesheet" href="/stylesheets/site/font.css">
+  <link rel="stylesheet" href="/stylesheets/site/animations.css">
+  <link rel="stylesheet" href="/stylesheets/site/vh.css">
+  <link rel="stylesheet" href="/stylesheets/site/mobile.css">
+  <link rel="stylesheet" href="/stylesheets/site/type.css">
+  <link rel="stylesheet" href="/stylesheets/site/app.css">
+
+  <!--[if lt IE 9]>
+    <link rel="stylesheet" href="https://3feretail.workgroupstaging.com/assets/css/ie.css">
+  <![endif]-->
+
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+      <script src="https://3feretail.workgroupstaging.com/assets/js/html5shiv.min.js"></script>
+    <![endif]-->
+    
+  <style></style>
+
     <link href="./stylesheets/main.css" rel="stylesheet">
   </head>
   <body>
     <article class="brew-guide" id="brew-guide">
+      <section class="step-content">
+        Slide content - update the background dynamically
+      </section>
       <ul class="steps">
-        <li class="step current" id="step-0">
-          <h1 class="step-title"></h1>
-          <section class="step-content">
-            Step content - in this case the intro slide
-          </section>
+        <li class="step current welcome" id="step-0">
+          <h1 class="step-title">Step 0</h1>
         </li>
         <li class="step next" id="step-1">
           <h1 class="step-title">Step 1</h1>
-          <section class="step-content">
-            Slide content
-
-            <div class="actions-container">
-              <ul class="actions">
-                <li class="action current standalone"></li>
-                <li class="action standalone"></li>
-                <span class="timed-area">
-                  <span class="timer-bar"></span>
-                  <li class="action timed medium first" data-time="10"></li>
-                  <li class="action timed small" data-time="5"></li>
-                  <li class="action timed small" data-time="2"></li>
-                  <li class="action timed small" data-time="3"></li>
-                  <li class="action timed small" data-time="5"></li>
-                  <li class="action timed large last" data-time="30"></li>
-                </span>
-              </ul>
-
-            </div>
-            <div class="actions-text-container">
-              <span class="actions-text"></span>
-            </div>
-          </section>
         </li>
         <li class="step next" id="step-2">
           <h1 class="step-title">Step 2</h1>
-          <section class="step-content">
-            Slide content
-          </section>
         </li>
         <li class="step next" id="step-3">
           <h1 class="step-title">Step 3</h1>
-          <section class="step-content">
-            Slide content
-          </section>
         </li>
         <li class="step" id="step-4">
           <h1 class="step-title">Step 4</h1>
-          <section class="step-content">
-            Slide content
-          </section>
         </li>
         <li class="step" id="step-5">
           <h1 class="step-title">Step 5</h1>
-          <section class="step-content">
-            Slide content
-          </section>
         </li>
         <li class="step" id="step-6">
-          <h1 class="step-title">Step 6</h1>
-          <section class="step-content">
-            Slide content
-          </section>
+          <h1 class="step-title">Done</h1>
         </li>
-        <li class="step" id="step-7">
-          <h1 class="step-title">Step 7</h1>
-          <section class="step-content">
-            Slide content
-          </section>
         </li>
       </ul>
+      <section class="actions-container" id="actions-container">
+        <ul class="actions">
+          <li class="action zero"></li>
+          <li class="action standalone"></li>
+          <li class="action standalone"></li>
+          <span class="timed-area">
+            <span class="start-time timer"></span>
+            <span class="end-time timer"></span>
+            <span class="timer-bar"></span>
+            <li class="action timed small first" data-time="5"></li>
+            <li class="action timed medium" data-time="10"></li>
+            <li class="action timed large" data-time="30"></li>
+          </span>
+          <li class="action standalone last"></li>
+        </ul>
+        <div class="actions-text-container">
+          <span class="actions-text step-1">Step 1 text</span>
+          <span class="actions-text step-2">Step 2 text</span>
+          <span class="actions-text step-3">Step 3 text</span>
+          <span class="actions-text step-4">Step 4 text</span>
+          <span class="actions-text step-5">Step 5 text</span>
+          <span class="actions-text step-6">End (6) text</span>
+        </div>
+      </section>
       <section class="brew-guide-button start" id="brew-guide-button">
         <span class="brew-guide-button-start">Start</span>
         <span class="brew-guide-button-next">Next</span>
         <span class="brew-guide-button-play">Play</span>
         <span class="brew-guide-button-pause">Pause</span>
+        <span class="brew-guide-button-end">End</span>
       </section>
     </article>
 <!--
 Notes
 
 Build accordion of steps and a title screen (step 0)
-
-Number of steps visible: 
-
-There can be from 0 to 3 steps visible on either side. At first there are zero on left, and 3 on right, and that continues with the first step having one visible (step 0) on left and 3 on right, then 2 on left, 3 on right, etc until 3 on left and zero on right.
-
-Only steps on the right have titles visible when not shown.
-
-Each steps has a title, and a time line made up of actions
-
-Each action has steps, some of which are timed, some not. Timed steps are connected on a timeline that a green bar goes along.
-
-There's a start button that turns into a "next" arrow button when the first step has started.
 
 There's an autoplay button that makes the timed steps continue automatically.
 

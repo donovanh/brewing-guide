@@ -2,23 +2,38 @@ $(function() {
 
 
   // Set up the guide's "state"
-  var currentStep = getUrlVars()['step'] || 0;
-  var currentAction = getUrlVars()['action'] || 0;
-  var lastStep = $('#brew-guide').find('.step').length - 1;
+  var currentStep = parseInt(getUrlVars()['step']) || 0;
   var allSteps = $('#brew-guide').find('.step');
+  var lastStep = allSteps.length - 1;
+  var allActions = $('#actions-container').find('.action');
+  var timer = 0;
 
-  showStepbyIndex(currentStep);
-  showActionByIndex(currentAction);
+  if (currentStep > lastStep) {
+    currentStep = 0;
+  }
 
   // For when a timed step is running
-  autoPlay = false;
-  isPlaying = false;
+  var autoPlay = false;
+  var isPlaying = false;
+
+  setUpInitialView(currentStep);
 
   // Actions to listen for
-  $('#brew-guide .step.previous').click(showStep);
-  $('#brew-guide .step.next').click(showStep);
+  // $('#brew-guide .step.previous').click(showStep);
+  // $('#brew-guide .step.next').on('click', showStep);
 
   $('#brew-guide-button').click(buttonClick);
+
+  function setUpInitialView(currentStep) {
+    showStepbyIndex(currentStep);
+    showCurrentAction(currentStep);
+    updateButtonStatus();
+    updateTimeOnPage();
+    calculateTotalTimes();
+    if (currentStep > 0) {
+      showActions();
+    }
+  }
 
   /* Steps */
 
@@ -33,16 +48,29 @@ $(function() {
     showStepbyIndex(index);
   }
 
+  function showStart() {
+    // Remove any current actions 
+    $(allActions[currentStep]).removeClass('current');
+    // Reset the visible timer
+    $('.start-time').text(formatTime(0));
+    showStepbyIndex(0);
+    hideActions();
+  }
+
   function showFirstStep() {
     showStepbyIndex(1);
+    showActions();
   }
 
   function showNextStep() {
     if (currentStep < lastStep) {
-      showStepbyIndex(currentStep + 1);
+      currentStep++;
     } else {
-      showStepbyIndex(0);
+      // TODO: Show a "done / restart" option here
+      // ALso, a way to go back through steps would be good 
+      currentStep = 0;
     }
+    showStepbyIndex(currentStep);
   }
 
   function showStepbyIndex(index) {
@@ -56,8 +84,14 @@ $(function() {
     $(allSteps[currentStep]).addClass('current');
     addPreviousClasses(index);
     addNextClasses(index);
+    showCurrentAction(index);
+    showCurrentActionText();
+    updateButtonStatus();
     // Save to URL
     updateURL();
+    if (currentStep > 0) {
+      showActions();
+    }
   }
 
   function addPreviousClasses(index) {
@@ -80,35 +114,89 @@ $(function() {
     }
   }
 
-  /* Actions */
-
-  function showNextAction() {
-    var numberOfActions = $(allSteps[currentStep]).find('.action').length;
-    if (currentAction < numberOfActions) {
-      currentAction++;
-      showActionByIndex(currentAction);
-    } else {
-      // It's the last action, go to the next step and reset the action
-      currentAction = 0;
-      showNextStep();
-    }
-    updateURL();
+  function showCurrentActionText() {
+    var allTexts = $('.actions-text-container').find('.actions-text');
+    $(allTexts).removeClass('current')
+    var currentText = $('.actions-text-container').find('.actions-text')[currentStep - 1];
+    $(currentText).addClass('current');
   }
 
-  function showActionByIndex(index) {
-    $(allSteps[currentStep])
-      .find('.action')
-      .removeClass('current');
-    var nextAction = $(allSteps[currentStep]).find('.action')[index];
-    $(nextAction).addClass('current');
+  /* Actions */
+
+  function showActions() {
+    $('#actions-container').css('display', 'block');
+  }
+
+  function hideActions() {
+    $('#actions-container').css('display', 'none');
+  }
+
+  function showCurrentAction() {
+    $(allActions).removeClass('current');
+    $(allActions[currentStep]).addClass('current');
   }
 
   function startTimedAction() {
-    console.log('Starting timed action');
     isPlaying = true;
-    // Get the time from the current action
-    // Start progressing the timer
+    timer = parseInt($(allActions[currentStep]).data('time')); // Seconds
+    // Set a timeout for 1 second to progress the timer until empty or paused
+    countdownTimer();
     // Have the progress bar match the timer
+  }
+
+  function countdownTimer() {
+    if (timer > 0 && isPlaying) {
+      setTimeout(function() {
+        timer--;
+        countdownTimer();
+        updateTimeOnPage();
+      }, 100);
+    } else if (isPlaying) {
+      // Go to the next step
+      isPlaying = false;
+      showNextStep();
+    }
+  }
+
+  function calculateTotalTimes() {
+    var timedAreas = $('.timed-area').each(function(index, timedArea) {
+      var timedActions = $(timedArea).find('.action');
+      var totalTime = 0;
+      $(timedActions).each(function(index, action) {
+        totalTime += parseInt($(action).attr('data-time'));
+      });
+      $(timedArea).find('.end-time').text(formatTime(totalTime));
+    });
+  }
+
+  function updateTimeOnPage() {
+    // Work out how much time has elapsed, make sure the timeElapsed variable is right
+    var currentTimedActions = $(allActions[currentStep]).parents('.timed-area').find('.action');
+    var timeElapsed = 0;
+    $(currentTimedActions).each(function(index, action) {
+      if (!$(action).hasClass('current')) {
+        timeElapsed += parseInt($(action).attr('data-time'));
+      } else {
+        if (timer > 0) {
+          timeElapsed += parseInt($(action).attr('data-time')) - timer;
+        }
+        return false;
+      }
+    });
+    $(allActions[currentStep]).parents('.timed-area').find('.start-time').text(formatTime(timeElapsed));
+  }
+
+  function formatTime(input) {
+      var sec_num = parseInt(input, 10);
+      var minutes = Math.floor(sec_num / 60);
+      var seconds = sec_num - (minutes * 60);
+      return minutes+':'+pad(seconds, 2);
+  }
+
+  function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
   }
 
   /* Button */
@@ -117,7 +205,9 @@ $(function() {
     if ($('#brew-guide-button').hasClass('start')) {
       showFirstStep();
     } else if($('#brew-guide-button').hasClass('standalone')) {
-      showNextAction();
+      showNextStep();
+    } else if($('#brew-guide-button').hasClass('end')) {
+      showStart();
     } else {
       startTimedAction();
     }
@@ -132,12 +222,11 @@ $(function() {
       .removeClass('start')
       .removeClass('standalone')
       .removeClass('playing')
-      .removeClass('paused');
+      .removeClass('paused')
+      .removeClass('end');
 
-    if (currentStep > 0) {
-      var currentActionLI = $(allSteps[currentStep]).find('.action.current');
-      console.log('currentActionLI: ', currentActionLI)
-      console.log('currentAction: ', currentAction)
+    if (currentStep > 0 && currentStep < lastStep) {
+      var currentActionLI = $('#actions-container').find('.action')[currentStep];
       if ($(currentActionLI).hasClass('standalone')) {
         $('#brew-guide-button').addClass('standalone');
       } else {
@@ -147,6 +236,10 @@ $(function() {
           $('#brew-guide-button').addClass('paused');
         }
       }     
+    } else if (currentStep === lastStep) {
+      $('#brew-guide-button').addClass('end');
+    } else {
+      $('#brew-guide-button').addClass('start');
     }
   }
 
@@ -174,7 +267,6 @@ $(function() {
   function updateURL() {
     var url = new URL(window.location.href);
     url.searchParams.set('step', currentStep);
-    url.searchParams.set('action', currentAction);
     window.history.pushState('', 'Brew Guide - Step ' + currentStep, url);
   }
 

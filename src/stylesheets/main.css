@@ -1,5 +1,7 @@
 @import "default";
 
+
+
 /* Custom styling for this infographic page */
 
 /* General animations */
@@ -52,6 +54,10 @@
 
 /* Actions */
 
+.actions-container {
+  display: none;
+}
+
 .actions {
   height: 0;
   position: relative;
@@ -83,6 +89,10 @@
     background: #fff;
   }
 
+  .action.zero {
+    display: none;
+  }
+
   .action.timed {
     border-top: 2px solid #aaa;
   }
@@ -95,13 +105,28 @@
     position: relative;
   }
 
+  .timer {
+    font-size: 12px;
+    font-weight: 600;
+    position: absolute;
+    top: -18px;
+  }
+
+  .start-time {
+    left: -2px;
+  }
+
+  .end-time {
+    right: -3px;
+  }
+
   .timer-bar {
     opacity: .3;
     height: 10px;
     background: green;
     position: absolute;
       top: 4px;
-      right: -2px;
+      /*right: -2px;*/
       left: 0;
   }
 }
@@ -122,6 +147,7 @@
 .brew-guide-button-start,
 .brew-guide-button-play,
 .brew-guide-button-pause,
+.brew-guide-button-end,
 .brew-guide-button-next {
   display: none;
 }
@@ -142,5 +168,19 @@
   display: block;
 }
 
+.brew-guide-button.end .brew-guide-button-end {
+  display: block;
+}
+
+/* Action text */
+
+.actions-text-container {
+  .actions-text {
+    display: none;
+  }
+  .actions-text.current {
+    display: block;
+  }
 
 
+}
