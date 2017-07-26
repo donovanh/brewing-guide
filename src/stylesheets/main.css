@@ -42,15 +42,16 @@
     cursor: pointer;
   }
 
-  .step-content {
-    display: none;
-  }
-
-  .current .step-content {
-    display: block;
-  }
-
 }
+
+.step-bg {
+  display: none;
+}
+
+.step-bg.current {
+  display: block;
+}
+
 
 /* Actions */
 

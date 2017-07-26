@@ -88,13 +88,14 @@ html, ul, li, span {
   cursor: pointer;
 }
 
-.steps .step-content {
+.step-bg {
   display: none;
 }
 
-.steps .current .step-content {
+.step-bg.current {
   display: block;
 }
+
 
 /* Actions */
 

@@ -85,7 +85,7 @@ $(function() {
     addPreviousClasses(index);
     addNextClasses(index);
     showCurrentAction(index);
-    showCurrentActionText();
+    showCurrentContent();
     updateButtonStatus();
     // Save to URL
     updateURL();
@@ -114,11 +114,15 @@ $(function() {
     }
   }
 
-  function showCurrentActionText() {
-    var allTexts = $('.actions-text-container').find('.actions-text');
-    $(allTexts).removeClass('current')
-    var currentText = $('.actions-text-container').find('.actions-text')[currentStep - 1];
-    $(currentText).addClass('current');
+  function showCurrentContent() {
+    $('.step-bg').removeClass('current');
+    $('.actions-text').removeClass('current');
+    var currentBg = $('.step-' + [currentStep]);
+    $(currentBg).addClass('current');
+  }
+
+  function showCurrentBackground() {
+    
   }
 
   /* Actions */
