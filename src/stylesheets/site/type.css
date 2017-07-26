@@ -1,0 +1,188 @@
+/* @override 
+  http://localhost:8888/109042-3fe-retail/assets/css/type.css */
+
+
+body {
+  font-family: '3fe-grot', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  line-height: 26px;
+  font-size: 15px;
+  
+}
+
+p {
+  width: 95%;
+hanging-punctuation: first;
+}
+.page p{
+  margin-bottom: 1em;
+  
+}
+h4 {
+  font-weight: 200;
+}
+i,
+em {
+  font-style: italic
+}
+b,
+strong {
+  font-weight: 600;
+}
+.text-centered {
+  text-align: center;
+    width: 100%;
+  
+}
+.text-right {
+  text-align: right;
+}
+
+
+.product-info ul li strong,
+.sc {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+.sc-light {
+  font-weight: 400;
+}
+.text-caption {
+  padding-top: 1em;
+}
+.text-caption,
+.text-caption p {
+  font-weight: 200;
+}
+form input[type="text"],
+form input[type="email"],
+form textarea,
+.text-reg,
+.text-reg ul,
+ul.text-reg li,
+.text-reg a,
+.text-reg p,
+.text-reg span,
+.text-reg button {
+  line-height: 1.6;
+  font-size: 16px;
+  font-family: '3fe-grot', 'Helvetica Neue', Arial, sans-serif;
+}
+.text-small,
+.text-small ul,
+ul.text-small li,
+.text-small a,
+.text-small p,
+.text-small span {
+line-height: 21px;
+font-size: 13px;
+
+}
+.text-medium,
+.text-medium ul,
+ul.text-medium li,
+.text-medium a,
+.text-medium p,
+.text-medium span {
+  line-height: 32px;
+  font-size: 24px;
+  
+}
+.text-large,
+.text-large ul,
+ul.text-large li,
+.text-large a,
+.text-large p,
+.text-large span {
+  font-size: 36px !important;
+  line-height: 42px;
+  display: block;
+  font-weight: 200;
+}
+.text-xlarge,
+.text-xlarge ul,
+ul.text-xlarge li,
+.text-xlarge a,
+.text-xlarge p,
+.text-xlarge span {
+  font-size: 54px !important;
+  font-weight: 200;
+  line-height: 1;
+  display: block;
+  margin-left: -.5%;
+}
+
+
+
+ul.dash{
+  list-style-type:square
+}
+
+
+
+
+@media (max-width: 768px) {
+  body {
+    font-size: 13px;
+    line-height: 22px;
+  }
+  .text-centered-m {
+    text-align: center;
+  }
+  .price {
+    font-size: 19px;
+    line-height: 26px;
+  }
+  .product-info ul li strong,
+  .sc {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .text-small,
+  .text-small ul,
+  ul.text-small li,
+  .text-small a,
+  .text-small p,
+  .text-small span,
+  
+  form input[type="text"],
+  form input[type="email"],
+  form textarea,
+  .text-reg,
+  .text-reg ul,
+  ul.text-reg li,
+  .text-reg a,
+  .text-reg p,
+  .text-reg span,
+  .text-reg button {
+    font-size: 13px;
+    line-height: 22px;
+  }
+  .text-large,
+  .text-large ul,
+  ul.text-large li,
+  .text-large a,
+  .text-large p,
+  .text-large span {
+    font-size: 26px!important;
+    line-height: 34px;
+  }
+  .text-xlarge,
+  .text-xlarge ul,
+  ul.text-xlarge li,
+  .text-xlarge a,
+  .text-xlarge p,
+  .text-xlarge span {
+    font-size: 36px !important;
+    font-weight: 200;
+    line-height: 1;
+  }
+}

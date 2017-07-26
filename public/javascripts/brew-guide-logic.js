@@ -23,6 +23,7 @@ $(function() {
   // $('#brew-guide .step.next').on('click', showStep);
 
   $('#brew-guide-button').click(buttonClick);
+  $('#autoplay').change(toggleAutoplay);
 
   function setUpInitialView(currentStep) {
     showStepbyIndex(currentStep);
@@ -33,6 +34,11 @@ $(function() {
     if (currentStep > 0) {
       showActions();
     }
+  }
+
+  function isCurrentActionTimed() {
+    var currentActionLI = $('#actions-container').find('.action')[currentStep];
+    return $(currentActionLI).hasClass('timed');
   }
 
   /* Steps */
@@ -92,6 +98,9 @@ $(function() {
     if (currentStep > 0) {
       showActions();
     }
+    if (isCurrentActionTimed() && autoPlay) {
+      buttonClick();
+    }
   }
 
   function addPreviousClasses(index) {
@@ -119,10 +128,6 @@ $(function() {
     $('.actions-text').removeClass('current');
     var currentBg = $('.step-' + [currentStep]);
     $(currentBg).addClass('current');
-  }
-
-  function showCurrentBackground() {
-    
   }
 
   /* Actions */
@@ -247,8 +252,15 @@ $(function() {
     }
   }
 
-  function toggleAutoplay() {
+  /* Autoplay */
 
+  function toggleAutoplay() {
+    autoPlay = autoPlay ? false : true;
+    console.log(autoPlay);
+    if (isCurrentActionTimed() && !isPlaying) {
+      // Keep it playing
+      buttonClick();
+    }
   }
 
   // Lastly, add a listener for situations where the browser is in another tab / not visible

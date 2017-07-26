@@ -225,3 +225,85 @@ html, ul, li, span {
 .actions-text-container .actions-text.current {
   display: block;
 }
+
+/* Toggle autoplay */
+
+.tgl {
+  display: none;
+}
+
+// add default box-sizing for this scope
+  .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+  box-sizing: border-box;
+}
+
+// add default box-sizing for this scope
+  .tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+  background: none;
+}
+
+// add default box-sizing for this scope
+  .tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+  background: none;
+}
+
+.tgl + .tgl-btn {
+  cursor: pointer;
+  display: block;
+  height: 2em;
+  outline: 0;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 4em;
+}
+
+.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+  content: "";
+  display: block;
+  height: 100%;
+  position: relative;
+  width: 50%;
+}
+
+.tgl + .tgl-btn:after {
+  left: 0;
+}
+
+.tgl + .tgl-btn:before {
+  display: none;
+}
+
+.tgl:checked + .tgl-btn:after {
+  left: 50%;
+}
+
+
+.tgl-flat + .tgl-btn {
+  background: #fff;
+  border: 4px solid #f2f2f2;
+  border-radius: 2em;
+  padding: 2px;
+  transition: all .2s ease;
+}
+
+
+.tgl-flat + .tgl-btn:after {
+  background: #f2f2f2;
+  border-radius: 1em;
+  content: "";
+  transition: all .2s ease;
+}
+
+
+.tgl-flat:checked + .tgl-btn {
+  border: 4px solid #7FC6A6;
+}
+
+
+.tgl-flat:checked + .tgl-btn:after {
+  background: #7FC6A6;
+  left: 50%;
+}
