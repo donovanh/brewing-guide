@@ -60,7 +60,7 @@
 }
 
 .actions {
-  height: 0;
+  height: 30px;
   position: relative;
 
   .action {
@@ -81,7 +81,7 @@
     border-radius: 50%;
     position: absolute;
       top: -5px;
-      left: -3px;
+      left: 0px;
     width: 6px;
     height: 6px;
   }
@@ -96,10 +96,12 @@
 
   .action.timed {
     border-top: 2px solid #aaa;
+    margin-left: -4px;
   }
 
   .action.last {
     width: 0;
+    margin-left: -4px;
   }
 
   .timed-area {
@@ -121,14 +123,19 @@
     right: -3px;
   }
 
+  .new-end-time {
+    left: auto !important;
+    right: -3px;
+  }
+
   .timer-bar {
     opacity: .3;
-    height: 10px;
+    height: 12px;
     background: green;
     position: absolute;
       top: 4px;
-      /*right: -2px;*/
-      left: 0;
+      left: -1px;
+    width: 0;
   }
 }
 
@@ -143,6 +150,11 @@
   line-height: 5em;
   text-align: center;
   width: 5em;
+}
+
+.brew-guide-button:hover {
+  animation: border 5s linear forwards;
+  /* Note: Add in an animated SVG stroke border on the element */;
 }
 
 .brew-guide-button-start,
@@ -188,8 +200,6 @@
 
 .tgl {
   display: none;
-
-  // add default box-sizing for this scope
   &,
   &:after,
   &:before,

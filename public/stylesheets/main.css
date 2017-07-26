@@ -104,7 +104,7 @@ html, ul, li, span {
 }
 
 .actions {
-  height: 0;
+  height: 30px;
   position: relative;
 }
 
@@ -125,7 +125,7 @@ html, ul, li, span {
   border-radius: 50%;
   content: "";
   height: 6px;
-  left: -3px;
+  left: 0px;
   position: absolute;
   top: -5px;
   width: 6px;
@@ -141,9 +141,11 @@ html, ul, li, span {
 
 .actions .action.timed {
   border-top: 2px solid #aaa;
+  margin-left: -4px;
 }
 
 .actions .action.last {
+  margin-left: -4px;
   width: 0;
 }
 
@@ -166,17 +168,19 @@ html, ul, li, span {
   right: -3px;
 }
 
+.actions .new-end-time {
+  left: auto !important;
+  right: -3px;
+}
+
 .actions .timer-bar {
   background: green;
-  height: 10px;
-
-
-
-  /*right: -2px;*/
-  left: 0;
+  height: 12px;
+  left: -1px;
   opacity: .3;
   position: absolute;
   top: 4px;
+  width: 0;
 }
 
 
@@ -190,6 +194,13 @@ html, ul, li, span {
   line-height: 5em;
   text-align: center;
   width: 5em;
+}
+
+.brew-guide-button:hover {
+  -webkit-animation: border 5s linear forwards;
+          animation: border 5s linear forwards;
+
+  /* Note: Add in an animated SVG stroke border on the element */;
 }
 
 .brew-guide-button-start, .brew-guide-button-play, .brew-guide-button-pause, .brew-guide-button-end, .brew-guide-button-next {
@@ -232,18 +243,15 @@ html, ul, li, span {
   display: none;
 }
 
-// add default box-sizing for this scope
-  .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
   box-sizing: border-box;
 }
 
-// add default box-sizing for this scope
-  .tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
   background: none;
 }
 
-// add default box-sizing for this scope
-  .tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
   background: none;
 }
 

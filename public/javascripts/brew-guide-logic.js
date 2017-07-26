@@ -7,6 +7,8 @@ $(function() {
   var lastStep = allSteps.length - 1;
   var allActions = $('#actions-container').find('.action');
   var timer = 0;
+  var timerTimeout;
+  var timePerTick = 100;
 
   if (currentStep > lastStep) {
     currentStep = 0;
@@ -29,8 +31,9 @@ $(function() {
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
     updateButtonStatus();
-    updateTimeOnPage();
+    updateTimeOnPage(timeElapsed());
     calculateTotalTimes();
+    setTimerBar();
     if (currentStep > 0) {
       showActions();
     }
@@ -61,6 +64,7 @@ $(function() {
     $('.start-time').text(formatTime(0));
     showStepbyIndex(0);
     hideActions();
+    resetTimerBar();
   }
 
   function showFirstStep() {
@@ -72,8 +76,6 @@ $(function() {
     if (currentStep < lastStep) {
       currentStep++;
     } else {
-      // TODO: Show a "done / restart" option here
-      // ALso, a way to go back through steps would be good 
       currentStep = 0;
     }
     showStepbyIndex(currentStep);
@@ -147,19 +149,27 @@ $(function() {
 
   function startTimedAction() {
     isPlaying = true;
-    timer = parseInt($(allActions[currentStep]).data('time')); // Seconds
-    // Set a timeout for 1 second to progress the timer until empty or paused
+    if (!timer) {
+      timer = parseInt($(allActions[currentStep]).data('time')); // Seconds
+    }
     countdownTimer();
-    // Have the progress bar match the timer
+  }
+
+  function pauseTimedAction() {
+    isPlaying = false;
+    clearTimeout(timerTimeout);
+    updateButtonStatus();
   }
 
   function countdownTimer() {
     if (timer > 0 && isPlaying) {
-      setTimeout(function() {
+      timerTimeout = setTimeout(function() {
         timer--;
         countdownTimer();
-        updateTimeOnPage();
-      }, 100);
+        var timeSoFar = timeElapsed();
+        updateTimeOnPage(timeSoFar);
+        updateTimerBarWidth();
+      }, timePerTick);
     } else if (isPlaying) {
       // Go to the next step
       isPlaying = false;
@@ -174,12 +184,12 @@ $(function() {
       $(timedActions).each(function(index, action) {
         totalTime += parseInt($(action).attr('data-time'));
       });
+      $(timedArea).data('totalTime', formatTime(totalTime));
       $(timedArea).find('.end-time').text(formatTime(totalTime));
     });
   }
 
-  function updateTimeOnPage() {
-    // Work out how much time has elapsed, make sure the timeElapsed variable is right
+  function timeElapsed() {
     var currentTimedActions = $(allActions[currentStep]).parents('.timed-area').find('.action');
     var timeElapsed = 0;
     $(currentTimedActions).each(function(index, action) {
@@ -192,7 +202,96 @@ $(function() {
         return false;
       }
     });
-    $(allActions[currentStep]).parents('.timed-area').find('.start-time').text(formatTime(timeElapsed));
+    return timeElapsed;
+  }
+
+  function updateTimeOnPage(timeSoFar) {
+    $('.start-time').text(formatTime(timeSoFar));
+  }
+
+  function setTimerBar() {
+    // Get the elapsed time so far
+    if ($(allActions[currentStep]).hasClass('timed')) {
+      var timerArea = $(allActions[currentStep]).parents('.timed-area');
+      var timerBar = $(timerArea).find('.timer-bar');
+      // Get position of first timed action in this timer area
+      var firstTimedAction = $(timerArea).find('.action')[0];
+      var currentAction = $(allActions[currentStep])[0];
+      // Get difference between them
+      var distance = getDistanceBetweenActions(firstTimedAction, currentAction);
+      // Set width to that difference
+      $(timerBar).css('width', distance + 'px');
+      updateStartTimePosition(distance);
+    } else{
+      updateStartTimePosition(0);
+    }
+  }
+
+  function getDistanceBetweenActions(start, current) {
+    return absolutePosition(current).left - absolutePosition(start).left;
+  }
+
+  function resetTimerBar() {
+    $('.start-time').text(formatTime(0));
+    $('.start-time').removeClass('new-end-time');
+    showEndTime();
+    $('.timer-bar').css('width', 0);
+    setTimerBar();
+  }
+
+  function updateTimerBarWidth(timeSoFar) {
+    var timerArea = $(allActions[currentStep]).parents('.timed-area');
+    var timerBar = $(timerArea).find('.timer-bar');
+    var timerBarWidth = parseFloat($(timerBar).css('width').replace('.px', ''));
+    var currentAction = $(allActions[currentStep])[0];
+    var timeDifference = parseInt($(currentAction).attr('data-time'));
+    if (!timeDifference) {
+      return;
+    }
+    var nextAction = $(allActions[currentStep + 1])[0];
+    var distanceBetweenActions = getDistanceBetweenActions(currentAction, nextAction) + 4;
+    var perStep = distanceBetweenActions / timeDifference;
+    var distance = timerBarWidth + perStep;
+    $(timerBar).css('width', distance + 'px');
+    updateStartTimePosition(distance);
+    var totalTime = $(timerArea).attr('data-totalTime');
+    var targetWidth = timerArea.find('.timer-bar');
+  }
+
+  function updateStartTimePosition(distance) {
+    $('.start-time').css('left', distance - 2 + 'px');
+    var timerArea = $(allActions[currentStep]).parents('.timed-area');
+    var rightBound = absolutePosition(
+        $(allActions[currentStep]).parents('.timed-area')[0]
+      ).right;
+    var startTimeRightEdge = absolutePosition(
+      $('.start-time')[0]
+      ).right;
+    var startTimeLeftEdge = absolutePosition(
+      $('.start-time')[0]
+      ).left;
+    var endTimeLeftEdge = absolutePosition(
+      $('.end-time')[0]
+      ).left;
+    if (startTimeRightEdge > endTimeLeftEdge) {
+      hideEndTime();
+    }
+    if (startTimeLeftEdge >= endTimeLeftEdge && startTimeLeftEdge > 0) {
+      placeStartTimeOnEndTime();
+    }
+  }
+
+  function showEndTime() {
+    $('.end-time').css('opacity', 1);
+  }
+
+  function hideEndTime() {
+    $('.end-time').css('opacity', 0);
+  }
+
+  function placeStartTimeOnEndTime() {
+    hideEndTime();
+    $('.start-time').addClass('new-end-time');
   }
 
   function formatTime(input) {
@@ -208,6 +307,39 @@ $(function() {
     return s;
   }
 
+  function absolutePosition(el) {
+    var
+          found,
+          left = 0,
+          top = 0,
+          width = 0,
+          height = 0,
+          offsetBase = absolutePosition.offsetBase;
+      if (!offsetBase && document.body) {
+          offsetBase = absolutePosition.offsetBase = document.createElement('div');
+          offsetBase.style.cssText = 'position:absolute;left:0;top:0';
+          document.body.appendChild(offsetBase);
+      }
+      if (el && el.ownerDocument === document && 'getBoundingClientRect' in el && offsetBase) {
+          var boundingRect = el.getBoundingClientRect();
+          var baseRect = offsetBase.getBoundingClientRect();
+          found = true;
+          left = boundingRect.left - baseRect.left;
+          top = boundingRect.top - baseRect.top;
+          width = boundingRect.right - boundingRect.left;
+          height = boundingRect.bottom - boundingRect.top;
+      }
+      return {
+          found: found,
+          left: left,
+          top: top,
+          width: width,
+          height: height,
+          right: left + width,
+          bottom: top + height
+      };
+  }
+
   /* Button */
 
   function buttonClick() {
@@ -218,15 +350,17 @@ $(function() {
     } else if($('#brew-guide-button').hasClass('end')) {
       showStart();
     } else {
-      startTimedAction();
+      if (isPlaying) {
+        pauseTimedAction();
+      } else {
+        startTimedAction();
+      }
+      
     }
     updateButtonStatus();
   }
 
   function updateButtonStatus() {
-    // For the current step, is the current action a timed action
-    // If not a timed action, show the skip arrow
-    // If a timed section, show the play button if not currently playing
     $('#brew-guide-button')
       .removeClass('start')
       .removeClass('standalone')
@@ -252,11 +386,16 @@ $(function() {
     }
   }
 
+  /* Play / pause */
+
+  function togglePlayPause() {
+    isPlaying = isPlaying ? false : true;
+  }
+
   /* Autoplay */
 
   function toggleAutoplay() {
     autoPlay = autoPlay ? false : true;
-    console.log(autoPlay);
     if (isCurrentActionTimed() && !isPlaying) {
       // Keep it playing
       buttonClick();
