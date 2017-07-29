@@ -1,11 +1,10 @@
 $(function() {
 
-
   // Set up the guide's "state"
   var currentStep = parseInt(getUrlVars()['step']) || 0;
-  var allSteps = $('#brew-guide').find('.step');
-  var lastStep = allSteps.length - 1;
-  var allActions = $('#actions-container').find('.action');
+  var allSteps;
+  var lastStep;
+  var allActions;
   var timer = 0;
   var timerTimeout;
   var timePerTick = 100;
@@ -18,24 +17,80 @@ $(function() {
   var autoPlay = false;
   var isPlaying = false;
 
-  setUpInitialView(currentStep);
-
-  // Actions to listen for
-  // $('#brew-guide .step.previous').click(showStep);
-  // $('#brew-guide .step.next').on('click', showStep);
-
   $('#brew-guide-button').click(buttonClick);
   $('#autoplay').change(toggleAutoplay);
 
+  if (brewGuide) {
+    drawBrewGuideHTML(brewGuide);
+    setUpInitialView(currentStep);
+  } else {
+    alert('Missing Brew Guide definition');
+  }
+
+  function drawBrewGuideHTML() {
+ 
+    var stepsContainer = $('.steps');
+    var actionsContainer = $('.actions');
+    var actionsTextContainer = $('.actions-text-container');
+    var bgContainer = $('.step-bg-container');
+
+    $(brewGuide.steps).each(function(index, step) {
+      // Build the steps
+      var newStep = $('<li class="step"></li>');
+      var stepTitle = $('<h1 class="step-title">'+ step.title +'</h1>');
+      $(newStep).html(stepTitle);
+      $(stepsContainer).append(newStep);
+
+      // Build the actions
+      var newAction = $('<li class="action"></li>');
+      if (step.time > 0) {
+        $(newAction)
+          .addClass('timed')
+          .attr('data-time', step.time);
+      } else {
+        $(newAction).addClass('standalone');
+      }
+      $(actionsContainer).append(newAction);
+
+      // Build the actions text
+      var actionsText = $('<span class="actions-text step-'+ (parseInt(index) + 1) +'"></span>');
+      $(actionsText).text(step.instruction);
+      $(actionsTextContainer).append(actionsText);
+
+      // Build the backgrounds
+      var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"><img src="/images/'+ step.illustration +'"></span>');
+      $(bgContainer).append(backgroundImage);
+
+    });
+    // Structure the actions
+    $(actionsContainer).find('.action.timed').wrapAll('<span class="timed-area"></span>');
+    // Add in the timed area decorations
+    var timedAreaHTML = $('<span class="start-time timer"></span><span class="end-time timer"></span><span class="timer-bar"></span>');
+    $(actionsContainer).find('.timed-area').prepend(timedAreaHTML);
+
+    // Build the intro screen
+    //TODO
+
+  }
+
   function setUpInitialView(currentStep) {
+    // Get the latest state since building the parts
+    allSteps = $('#brew-guide').find('.step');
+    lastStep = allSteps.length - 1;
+    allActions = $('#actions-container').find('.action'); 
+
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
     updateButtonStatus();
     updateTimeOnPage(timeElapsed());
     calculateTotalTimes();
+    setDotWidths();
     setTimerBar();
     if (currentStep > 0) {
       showActions();
+      $('#brew-guide').removeClass('welcome');
+    } else {
+      $('#brew-guide').addClass('welcome');
     }
   }
 
@@ -62,13 +117,17 @@ $(function() {
     $(allActions[currentStep]).removeClass('current');
     // Reset the visible timer
     $('.start-time').text(formatTime(0));
+    $('#brew-guide').addClass('welcome');
     showStepbyIndex(0);
     hideActions();
     resetTimerBar();
+    currentStep = 0;
+    updateURL();
   }
 
   function showFirstStep() {
     showStepbyIndex(1);
+    $('#brew-guide').removeClass('welcome');
     showActions();
   }
 
@@ -85,9 +144,7 @@ $(function() {
     // Calculates the previous and next indices, and updates the carousel
     currentStep = index;
     // Remove any previous, current, next classes
-    $('#brew-guide').find('.step.previous').removeClass('previous');
-    $('#brew-guide').find('.step.current').removeClass('current');
-    $('#brew-guide').find('.step.next').removeClass('next');
+    removePreviousNextClasses();
   
     $(allSteps[currentStep]).addClass('current');
     addPreviousClasses(index);
@@ -100,26 +157,51 @@ $(function() {
     if (currentStep > 0) {
       showActions();
     }
-    if (isCurrentActionTimed() && autoPlay) {
+    if (isCurrentActionTimed() && autoPlay && currentStep < lastStep) {
       buttonClick();
+    } else {
+      isPlaying = false;
     }
+  }
+
+  function removePreviousNextClasses() {
+    $('#brew-guide').find('.step').attr('class', 'step')
   }
 
   function addPreviousClasses(index) {
     prevSteps = 0;
     index--;
+    positionIndex = 0;
+    if (index > 2) {
+      positionTarget = 2;
+    } else {
+      positionTarget = index;
+    }
     while (index >= 0 && prevSteps < 3) {
-      $(allSteps[index]).addClass('previous');
+      $(allSteps[index])
+        .addClass('previous')
+        .addClass('bg-' + (3 - prevSteps))
+        .addClass('position-' + (positionTarget - positionIndex));
       index--;
       prevSteps++;
+      positionIndex++;
     }
   }
 
   function addNextClasses(index) {
     nextSteps = 0;
     index++;
+    positionIndex = 0;
+    if (lastStep - index < 2) {
+      positionTarget = lastStep - index;
+    } else {
+      positionTarget = 2;
+    }
     while (index <= lastStep && nextSteps < 3) {
-      $(allSteps[index]).addClass('next');
+      $(allSteps[index])
+        .addClass('next')
+        .addClass('bg-' + nextSteps)
+        .addClass('position-' + (positionTarget - nextSteps));
       index++;
       nextSteps++;
     }
@@ -135,11 +217,11 @@ $(function() {
   /* Actions */
 
   function showActions() {
-    $('#actions-container').css('display', 'block');
+    $('#actions-container').css('opacity', '1');
   }
 
   function hideActions() {
-    $('#actions-container').css('display', 'none');
+    $('#actions-container').css('opacity', '0');
   }
 
   function showCurrentAction() {
@@ -184,7 +266,7 @@ $(function() {
       $(timedActions).each(function(index, action) {
         totalTime += parseInt($(action).attr('data-time'));
       });
-      $(timedArea).data('totalTime', formatTime(totalTime));
+      $(timedArea).attr('data-totalTime', totalTime);
       $(timedArea).find('.end-time').text(formatTime(totalTime));
     });
   }
@@ -367,7 +449,6 @@ $(function() {
       .removeClass('playing')
       .removeClass('paused')
       .removeClass('end');
-
     if (currentStep > 0 && currentStep < lastStep) {
       var currentActionLI = $('#actions-container').find('.action')[currentStep];
       if ($(currentActionLI).hasClass('standalone')) {
@@ -420,9 +501,31 @@ $(function() {
   }
 
   function updateURL() {
-    var url = new URL(window.location.href);
-    url.searchParams.set('step', currentStep);
-    window.history.pushState('', 'Brew Guide - Step ' + currentStep, url);
+    if (currentStep > 0) {
+      var url = new URL(window.location.href);
+      url.searchParams.set('step', currentStep);
+      window.history.pushState('', 'Brew Guide - Step ' + currentStep, url);
+    } else {
+      var url = new URL(window.location.href.split("?")[0]);
+      window.history.pushState('', 'Brew Guide' + currentStep, url);
+    }
+  }
+
+  /* Draw the dot widths on load */
+
+  function setDotWidths() {
+    // Get the width of each timed area
+    $('.timed-area').each(function(index, timedArea) {
+      var timedAreaWidth = $(timedArea).width();
+      var totalTime = $(timedArea).attr('data-totalTime');
+      $(timedArea).find('.action.timed').each(function(index, action) {
+        var actionTime = $(action).attr('data-time');
+        if (actionTime > 0) {
+          var actionWidth = (actionTime / totalTime) * timedAreaWidth;
+          $(action).css('width', actionWidth);
+        }
+      });
+    });
   }
 
 });

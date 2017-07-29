@@ -1,8 +1,51 @@
 @import "default";
 
+/* Settings */
 
+/* Dimensions */
 
-/* Custom styling for this infographic page */
+$width: 742px;
+$height: 500px;
+$previous-width: 16px;
+$previous-widthx2: 32px;
+$next-width: 34px;
+$next-widthx2: 68px;
+$currentLeft: 68px;
+$stepInvisibleLeft: 104px;
+
+/* Colours */
+$red: #EA5230;
+$red2: #EE755A;
+$red3: #F0866E;
+$red4: #F29783;
+
+/* General layout */
+
+.welcome .red-bg {
+  transform: translateX($width);
+}
+
+.red-bg {
+  background: $red;
+  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  z-index: 1;
+}
+
+.brew-guide {
+  background: #fff;
+  height: $height;
+  width: $width;
+  box-shadow: 0 2px 12px $red4;
+  overflow: hidden;
+  position: absolute;
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /* General animations */
 
@@ -31,17 +74,105 @@
 /* Steps */
 
 .steps {
+  z-index: 2;
+  position: absolute;
+  pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-  .next {
-    color: blue;
-    cursor: pointer;
+  .step {
+    height: $height;
+    opacity: 0;
+    position: absolute;
+      top: 0;
+      left: $stepInvisibleLeft;
+  }
+
+  .step-title {
+    font-weight: 800;
+    position: absolute;
+      left: -62px;
+      top: 112px;
+    width: 160px;
+    transform: rotateZ(-90deg);
   }
 
   .previous {
-    color: red;
-    cursor: pointer;
+    opacity: 1;
+    width: $previous-width;
+    right: auto;
+
+    .step-title {
+      opacity: 0;
+    }
   }
 
+  .current {
+    left: 8%;
+    opacity: 1;
+  }
+
+  .previous.bg-3 {
+    background: $red2;
+  }
+
+  .previous.bg-2 {
+    background: $red3;
+  }
+
+  .previous.bg-1 {
+    background: $red4;
+  }
+
+  .previous.position-2 {
+    left: $previous-widthx2;
+  }
+
+  .previous.position-1 {
+    left: $previous-width;
+  }
+
+  .previous.position-0 {
+    left: 0;
+  }
+
+  .next {
+    opacity: 1;
+    right: 0;
+    left: auto;
+    width: $next-width;
+  }
+
+  .next.bg-0 {
+    background: $red2;
+  }
+
+  .next.bg-1 {
+    background: $red3;
+  }
+
+  .next.bg-2 {
+    background: $red4;
+  }
+
+  .next.position-1 {
+    right: $next-width;
+  }
+
+  .next.position-2 {
+    right: $next-widthx2;
+  }
+
+}
+
+.brew-guide.welcome .next.bg-0 {
+  background: $red;
+}
+
+.welcome .step.current {
+  left: 1%;
 }
 
 .step-bg {
@@ -52,16 +183,48 @@
   display: block;
 }
 
+/* Background images */
+
+
+.step-bg-container {
+  position: relative;
+  z-index: 1;
+
+  .step-bg {
+    opacity: 0;
+  }
+
+  .step-bg.current {
+    opacity: 1;
+  
+    img {
+      display: block;
+      height: 100%;
+      max-height: 430px;
+      margin: 0 auto;
+    }
+  } 
+}
+
 
 /* Actions */
 
 .actions-container {
-  display: none;
+  background: #fff;
+  bottom: 0;
+  height: 22%;
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
 }
 
 .actions {
-  height: 30px;
+  display: flex;
+  height: 16px;
+  margin-left: 20%;
   position: relative;
+  width: 483px;
 
   .action {
     display: inline-block;
@@ -71,19 +234,19 @@
     margin: 0;
     padding: 0;
     position: relative;
-    width: 50px;
+    min-width: 40px;
   }
 
   .action:after {
     content: "";
     background: #000;
-    border: 1px solid #000;
+    border: 2px solid #000;
     border-radius: 50%;
     position: absolute;
-      top: -5px;
+      top: -7px;
       left: 0px;
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
   }
 
   .action.current:after {
@@ -95,17 +258,26 @@
   }
 
   .action.timed {
-    border-top: 2px solid #aaa;
+    border-top: 2px solid #000;
     margin-left: -4px;
   }
 
-  .action.last {
+  .timed-area {
+    min-width: 83%;
+  }
+
+  .action.standalone {
+    min-width: 20px;
+  }
+
+  .action:last-child {
     width: 0;
     margin-left: -4px;
   }
 
   .timed-area {
     position: relative;
+    margin-left: 20px;
   }
 
   .timer {
@@ -129,32 +301,72 @@
   }
 
   .timer-bar {
-    opacity: .3;
-    height: 12px;
-    background: green;
+    height: 100%;
+    background: #C1DCD4;
     position: absolute;
-      top: 4px;
+      top: 0px;
       left: -1px;
     width: 0;
   }
 }
 
+.actions-text-container {
+  position: absolute;
+    left: 10%;
+    top: 32%;
+    right: 35%;
+
+  .actions-text {
+    font-size: .9em;
+    line-height: 1.5;
+    position: absolute;
+  }
+}
 
 /* Play button */
 
 .brew-guide-button {
-  cursor: pointer;
-  border: 1px solid #aaa;
+  background: $red;
   border-radius: 50%;
-  height: 5em;
-  line-height: 5em;
+  box-shadow: 4px 4px 16px 0 #CC4535;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 58px;
+  line-height: 58px;
+  position: absolute;
+    left: 18px;
+    bottom: 82px;
   text-align: center;
-  width: 5em;
+  transform: translateZ(0);
+  width: 58px;
+  z-index: 10;
+}
+
+.brew-guide.welcome {
+  .brew-guide-button {
+    background: $red;
+    left: auto;
+    right: 56px;
+    bottom: 78px;
+    height: 100px;
+    width: 100px;
+    line-height: 105px;
+  }
 }
 
 .brew-guide-button:hover {
   animation: border 5s linear forwards;
   /* Note: Add in an animated SVG stroke border on the element */;
+}
+
+.brew-guide-button.paused,
+.brew-guide-button.playing {
+  background: #fff;
+  img {
+    margin-left: 3px;
+  }
 }
 
 .brew-guide-button-start,
@@ -185,18 +397,41 @@
   display: block;
 }
 
+
 /* Action text */
 
 .actions-text-container {
   .actions-text {
-    display: none;
+    opacity: 0;
+
   }
   .actions-text.current {
-    display: block;
+    opacity: 1;
   }
 }
 
 /* Toggle autoplay */
+
+.autoplay-container {
+  position: absolute;
+    right: 20%;
+    top: 22px;
+  width: 102px;
+  display: flex;
+
+  .autoplay-text {
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: .8em;
+    line-height: 1.33;
+    letter-spacing: 1.1;
+    display: inline-block;
+  }
+
+  .autoplay-toggle {
+    margin: -4px 0 0 10px;
+  }
+}
 
 .tgl {
   display: none;
@@ -214,9 +449,10 @@
   }
   
   + .tgl-btn {
+    font-size: 10px;
     outline: 0;
     display: block;
-    width: 4em;
+    width: 3.4em;
     height: 2em;
     position: relative;
     cursor: pointer;
@@ -226,8 +462,9 @@
       position: relative;
       display: block;
       content: "";
-      width: 50%;
-      height: 100%;
+      width: .6em;
+      height: .6em;
+      top: 7%;
     }
     
     &:after {
@@ -240,7 +477,8 @@
   }
   
   &:checked + .tgl-btn:after {
-    left: 50%;
+    top: 7%;
+    left: 55%;
   }
 }
 
@@ -250,21 +488,24 @@
     padding: 2px;
     transition: all .2s ease;
     background: #fff;
-    border: 4px solid #f2f2f2;
+    border: 2px solid  #aaa;
     border-radius: 2em;
     &:after {
       transition: all .2s ease;
-      background: #f2f2f2;
+      border: 2px solid #aaa;
       content: "";
-      border-radius: 1em;
+      left: 60%;
+      border-radius: 50%;
     }
   }
   
   &:checked + .tgl-btn {
-    border: 4px solid #7FC6A6;
+    border: 2px solid #000;
+    background: #BADDD4;
     &:after {
-      left: 50%;
-      background: #7FC6A6;
+      background: #000;
+      left: 7.5%;
+      border-color: #000;
     }
   }
 }

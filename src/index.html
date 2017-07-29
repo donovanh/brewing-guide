@@ -24,86 +24,38 @@
   </head>
   <body>
     <article class="brew-guide" id="brew-guide">
-      <section class="step-bg-container">
-        <span class="step-bg step-1">BG 1</span>
-        <span class="step-bg step-2">BG 2</span>
-        <span class="step-bg step-3">BG 3</span>
-        <span class="step-bg step-4">BG 4</span>
-        <span class="step-bg step-5">BG 5</span>
-        <span class="step-bg step-6">BG 6</span>
+      <section class="welcome-container">
+        
       </section>
-      <ul class="steps">
-        <li class="step current welcome" id="step-0">
-          <h1 class="step-title">Step 0</h1>
-        </li>
-        <li class="step next" id="step-1">
-          <h1 class="step-title">Step 1</h1>
-        </li>
-        <li class="step next" id="step-2">
-          <h1 class="step-title">Step 2</h1>
-        </li>
-        <li class="step next" id="step-3">
-          <h1 class="step-title">Step 3</h1>
-        </li>
-        <li class="step" id="step-4">
-          <h1 class="step-title">Step 4</h1>
-        </li>
-        <li class="step" id="step-5">
-          <h1 class="step-title">Step 5</h1>
-        </li>
-        <li class="step" id="step-6">
-          <h1 class="step-title">Done</h1>
-        </li>
-        </li>
-      </ul>
+      <section class="red-bg"></section>
+      <section class="step-bg-container"></section>
       <section class="actions-container" id="actions-container">
         <ul class="actions">
           <li class="action zero"></li>
-          <li class="action standalone"></li>
-          <li class="action standalone"></li>
-          <span class="timed-area">
-            <span class="start-time timer"></span>
-            <span class="end-time timer"></span>
-            <span class="timer-bar"></span>
-            <li class="action timed small first" data-time="5"></li>
-            <li class="action timed medium" data-time="10"></li>
-            <li class="action timed large" data-time="30"></li>
-            <li class="action standalone last timed" data-time="0"></li>
-          </span>
         </ul>
         <div class="autoplay-container">
-          <input class="tgl tgl-flat" id="autoplay" type="checkbox"/>
-          <label class="tgl-btn" for="autoplay">
+          <span class="autoplay-text">Autoplay</span>
+          <span class="autoplay-toggle">
+            <input class="tgl tgl-flat" id="autoplay" type="checkbox"/>
+            <label class="tgl-btn" for="autoplay"></label>
+          </span>
         </div>
-        <div class="actions-text-container">
-          <span class="actions-text step-1">Step 1 text</span>
-          <span class="actions-text step-2">Step 2 text</span>
-          <span class="actions-text step-3">Step 3 text</span>
-          <span class="actions-text step-4">Step 4 text</span>
-          <span class="actions-text step-5">Step 5 text</span>
-          <span class="actions-text step-6">End (6) text</span>
-        </div>
+        <div class="actions-text-container"></div>
       </section>
+      <ul class="steps">
+        <li class="step current welcome">
+          <h1 class="step-title">00. Set Up</h1>
+        </li>
+      </ul>
       <section class="brew-guide-button start" id="brew-guide-button">
         <span class="brew-guide-button-start">Start</span>
-        <span class="brew-guide-button-next">Next</span>
-        <span class="brew-guide-button-play">Play</span>
-        <span class="brew-guide-button-pause">Pause</span>
-        <span class="brew-guide-button-end">End</span>
+        <span class="brew-guide-button-next"><img src="/images/btn/next.svg"></span>
+        <span class="brew-guide-button-play"><img src="/images/btn/play.svg"></span>
+        <span class="brew-guide-button-pause"><img src="/images/btn/pause.svg"></span>
+        <span class="brew-guide-button-end"><img src="/images/btn/back.svg"></span>
       </section>
     </article>
 <!--
-Notes
-
-Build accordion of steps and a title screen (step 0)
-
-There's an autoplay button that makes the timed steps continue automatically.
-
-A green radial bar appears round the "next" arrow button during the last 5 seconds.
-
-During autoplay the "next arrow" button has a play or pause icon instead depending on the autoplay status.
-
-Step 1: Build the accordion
 
 * Desktop
 * Mobile (as a scrolling version with scroll-triggered step changes)
@@ -111,6 +63,89 @@ Step 1: Build the accordion
 -->
     <script src="./javascripts/vendor/jquery-3.1.1.min.js"></script>
     <script src="./javascripts/visibility.js"></script>
+    <script>
+      // Define the structure for the brew guide, steps and actions
+      var brewGuide = {
+        title: "Aeropress",
+        description: "The aeropress is an easy to use, lightweight and portable device that helps you get the most from your home brewing. It’s also the perfect travel companion!",
+        products: [ "Aeropress", "2 Aeropress filters", "Kettle", "Digital",  "Scales", "Grinder" ],
+        overview: {
+          coffee: 15,
+          grindText: "Grind: Medium / fine",
+          grindValue: 2,
+          temp: "93’C",
+          water: 230,
+          brewTime: "2m",
+          totalTime: "4m",
+          servings: 1
+        },
+        steps: [
+          {
+            stepNumber: 1,
+            title: "1. Invert & Heat",
+            instruction: "Invert Aeropress. Pre-heat chambers with hot water, and discard.",
+            illustration: "aeropress/svg/aeropress-1.svg",
+            time: 0
+          },
+          {
+            stepNumber: 2,
+            title: "2. Prepare Filter",
+            instruction: "Insert 2 filter papers into cap and rinse with hot water. By using two filters, less sediment and oils will enter the final cup, giving a higher clarity of flavour and a more balanced cup.",
+            illustration: "aeropress/svg/aeropress-2a.svg",
+            time: 0
+          },
+          {
+            stepNumber: 3,
+            title: "3. Coffee & Water",
+            instruction: "Add coffee to aeropress and place on scales. Start timer and pour in all of the water, ensuring all grounds are wet.",
+            illustration: "aeropress/svg/aeropress-3.svg",
+            time: 10
+          },
+          {
+            stepNumber: 4,
+            title: "4. Stir",
+            instruction: "Stir gently until all grounds are wet and not sticking to rubber bottom.",
+            illustration: "aeropress/svg/aeropress-4.svg",
+            time: 10
+          },
+          {
+            stepNumber: 5,
+            title: "5. Attach Cap",
+            instruction: "Attach cap tightly by screwing it in a clockwise direction.",
+            illustration: "aeropress/svg/aeropress-5.svg",
+            time: 20
+          },
+          {
+            stepNumber: 6,
+            title: "6. Push Air Out",
+            instruction: "At 40 seconds remove Aeropress from scales and push out air by holding onto sides. Keep pushing until there are no more bubbles on the cap surface.",
+            illustration: "aeropress/svg/aeropress-6.svg",
+            time: 20
+          },
+          {
+            stepNumber: 7,
+            title: "7. Flip",
+            instruction: "Flip aeropress onto mug.",
+            illustration: "aeropress/svg/aeropress-7.svg",
+            time: 30
+          },
+          {
+            stepNumber: 8,
+            title: "8. Plunge!",
+            instruction: "Plunge until all water has passed through filter. This should take about 30 seconds.",
+            illustration: "aeropress/svg/aeropress-8.svg",
+            time: 30
+          },
+          {
+            stepNumber: 9,
+            title: "9. Remove Grounds",
+            instruction: "Remove cap over bin and push used grounds into bin.",
+            illustration: "aeropress/svg/aeropress-9.svg",
+            time: 0
+          }
+        ]
+      }
+    </script>
     <script src="./javascripts/brew-guide-logic.js"></script>
   </body>
 </html

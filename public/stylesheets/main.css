@@ -11,8 +11,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   vertical-align: baseline;
 }
 
-
-
 /* HTML5 display-role reset for older browsers */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -45,9 +43,41 @@ html, ul, li, span {
   font-family: '3fe-grot' !important;
 }
 
+/* Settings */
 
+/* Dimensions */
 
-/* Custom styling for this infographic page */
+/* Colours */
+
+/* General layout */
+
+.welcome .red-bg {
+  -webkit-transform: translateX(742px);
+          transform: translateX(742px);
+}
+
+.red-bg {
+  background: #EA5230;
+    bottom: 0;
+    left: 0;
+  position: absolute;
+    right: 0;
+    top: 0;
+  z-index: 1;
+}
+
+.brew-guide {
+  background: #fff;
+  box-shadow: 0 2px 12px #F29783;
+  height: 500px;
+    left: 50%;
+  overflow: hidden;
+  position: absolute;
+    top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 742px;
+}
 
 /* General animations */
 
@@ -78,14 +108,107 @@ html, ul, li, span {
 
 /* Steps */
 
-.steps .next {
-  color: blue;
-  cursor: pointer;
+.steps {
+    bottom: 0;
+    left: 0;
+  pointer-events: none;
+  position: absolute;
+    right: 0;
+    top: 0;
+  z-index: 2;
+
+}
+
+.steps .step {
+  height: 500px;
+  left: 104px;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+}
+
+.steps .step-title {
+  font-weight: 800;
+  left: -62px;
+  position: absolute;
+  top: 112px;
+  -webkit-transform: rotateZ(-90deg);
+  transform: rotateZ(-90deg);
+  width: 160px;
 }
 
 .steps .previous {
-  color: red;
-  cursor: pointer;
+  opacity: 1;
+  right: auto;
+  width: 16px;
+}
+
+.steps .previous .step-title {
+  opacity: 0;
+}
+
+.steps .current {
+  left: 8%;
+  opacity: 1;
+}
+
+.steps .previous.bg-3 {
+  background: #EE755A;
+}
+
+.steps .previous.bg-2 {
+  background: #F0866E;
+}
+
+.steps .previous.bg-1 {
+  background: #F29783;
+}
+
+.steps .previous.position-2 {
+  left: 32px;
+}
+
+.steps .previous.position-1 {
+  left: 16px;
+}
+
+.steps .previous.position-0 {
+  left: 0;
+}
+
+.steps .next {
+  left: auto;
+  opacity: 1;
+  right: 0;
+  width: 34px;
+}
+
+.steps .next.bg-0 {
+  background: #EE755A;
+}
+
+.steps .next.bg-1 {
+  background: #F0866E;
+}
+
+.steps .next.bg-2 {
+  background: #F29783;
+}
+
+.steps .next.position-1 {
+  right: 34px;
+}
+
+.steps .next.position-2 {
+  right: 68px;
+}
+
+.brew-guide.welcome .next.bg-0 {
+  background: #EA5230;
+}
+
+.welcome .step.current {
+  left: 1%;
 }
 
 .step-bg {
@@ -96,16 +219,53 @@ html, ul, li, span {
   display: block;
 }
 
+/* Background images */
+
+
+.step-bg-container {
+  position: relative;
+  z-index: 1; 
+}
+
+
+.step-bg-container .step-bg {
+  opacity: 0;
+}
+
+
+.step-bg-container .step-bg.current {
+  opacity: 1;
+}
+
+
+.step-bg-container .step-bg.current img {
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+  max-height: 430px;
+}
+
 
 /* Actions */
 
 .actions-container {
-  display: none;
+  background: #fff;
+  bottom: 0;
+  height: 22%;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
 .actions {
-  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 16px;
+  margin-left: 20%;
   position: relative;
+  width: 483px;
 }
 
 .actions .action {
@@ -114,21 +274,21 @@ html, ul, li, span {
   height: 10px;
   list-style: none;
   margin: 0;
+  min-width: 40px;
   padding: 0;
   position: relative;
-  width: 50px;
 }
 
 .actions .action:after {
   background: #000;
-  border: 1px solid #000;
+  border: 2px solid #000;
   border-radius: 50%;
   content: "";
-  height: 6px;
+  height: 8px;
   left: 0px;
   position: absolute;
-  top: -5px;
-  width: 6px;
+  top: -7px;
+  width: 8px;
 }
 
 .actions .action.current:after {
@@ -140,16 +300,25 @@ html, ul, li, span {
 }
 
 .actions .action.timed {
-  border-top: 2px solid #aaa;
+  border-top: 2px solid #000;
   margin-left: -4px;
 }
 
-.actions .action.last {
+.actions .timed-area {
+  min-width: 83%;
+}
+
+.actions .action.standalone {
+  min-width: 20px;
+}
+
+.actions .action:last-child {
   margin-left: -4px;
   width: 0;
 }
 
 .actions .timed-area {
+  margin-left: 20px;
   position: relative;
 }
 
@@ -174,26 +343,63 @@ html, ul, li, span {
 }
 
 .actions .timer-bar {
-  background: green;
-  height: 12px;
+  background: #C1DCD4;
+  height: 100%;
   left: -1px;
-  opacity: .3;
   position: absolute;
-  top: 4px;
+  top: 0px;
   width: 0;
 }
 
+.actions-text-container {
+    left: 10%;
+  position: absolute;
+    right: 35%;
+    top: 32%;
+}
+
+.actions-text-container .actions-text {
+  font-size: .9em;
+  line-height: 1.5;
+  position: absolute;
+}
 
 /* Play button */
 
 .brew-guide-button {
-  border: 1px solid #aaa;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #EA5230;
   border-radius: 50%;
+    bottom: 82px;
+  box-shadow: 4px 4px 16px 0 #CC4535;
   cursor: pointer;
-  height: 5em;
-  line-height: 5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 58px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+    left: 18px;
+  line-height: 58px;
+  position: absolute;
   text-align: center;
-  width: 5em;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  width: 58px;
+  z-index: 10;
+}
+
+.brew-guide.welcome .brew-guide-button {
+  background: #EA5230;
+  bottom: 78px;
+  height: 100px;
+  left: auto;
+  line-height: 105px;
+  right: 56px;
+  width: 100px;
 }
 
 .brew-guide-button:hover {
@@ -201,6 +407,14 @@ html, ul, li, span {
           animation: border 5s linear forwards;
 
   /* Note: Add in an animated SVG stroke border on the element */;
+}
+
+.brew-guide-button.paused, .brew-guide-button.playing {
+  background: #fff;
+}
+
+.brew-guide-button.paused img, .brew-guide-button.playing img {
+  margin-left: 3px;
 }
 
 .brew-guide-button-start, .brew-guide-button-play, .brew-guide-button-pause, .brew-guide-button-end, .brew-guide-button-next {
@@ -227,17 +441,41 @@ html, ul, li, span {
   display: block;
 }
 
+
 /* Action text */
 
 .actions-text-container .actions-text {
-  display: none;
+  opacity: 0;
 }
 
 .actions-text-container .actions-text.current {
-  display: block;
+  opacity: 1;
 }
 
 /* Toggle autoplay */
+
+.autoplay-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+    right: 20%;
+    top: 22px;
+  width: 102px;
+}
+
+.autoplay-container .autoplay-text {
+  display: inline-block;
+  font-size: .8em;
+  font-weight: 800;
+  letter-spacing: 1.1;
+  line-height: 1.33;
+  text-transform: uppercase;
+}
+
+.autoplay-container .autoplay-toggle {
+  margin: -4px 0 0 10px;
+}
 
 .tgl {
   display: none;
@@ -258,6 +496,7 @@ html, ul, li, span {
 .tgl + .tgl-btn {
   cursor: pointer;
   display: block;
+  font-size: 10px;
   height: 2em;
   outline: 0;
   position: relative;
@@ -265,15 +504,16 @@ html, ul, li, span {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 4em;
+  width: 3.4em;
 }
 
 .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
   content: "";
   display: block;
-  height: 100%;
+  height: .6em;
   position: relative;
-  width: 50%;
+  top: 7%;
+  width: .6em;
 }
 
 .tgl + .tgl-btn:after {
@@ -285,13 +525,14 @@ html, ul, li, span {
 }
 
 .tgl:checked + .tgl-btn:after {
-  left: 50%;
+  left: 55%;
+  top: 7%;
 }
 
 
 .tgl-flat + .tgl-btn {
   background: #fff;
-  border: 4px solid #f2f2f2;
+  border: 2px solid  #aaa;
   border-radius: 2em;
   padding: 2px;
   transition: all .2s ease;
@@ -299,19 +540,22 @@ html, ul, li, span {
 
 
 .tgl-flat + .tgl-btn:after {
-  background: #f2f2f2;
-  border-radius: 1em;
+  border: 2px solid #aaa;
+  border-radius: 50%;
   content: "";
+  left: 60%;
   transition: all .2s ease;
 }
 
 
 .tgl-flat:checked + .tgl-btn {
-  border: 4px solid #7FC6A6;
+  background: #BADDD4;
+  border: 2px solid #000;
 }
 
 
 .tgl-flat:checked + .tgl-btn:after {
-  background: #7FC6A6;
-  left: 50%;
+  background: #000;
+  border-color: #000;
+  left: 7.5%;
 }
