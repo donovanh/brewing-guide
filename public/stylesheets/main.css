@@ -301,7 +301,7 @@ html, ul, li, span {
 
 .actions .action.timed {
   border-top: 2px solid #000;
-  margin-left: -4px;
+  margin-left: -2px;
 }
 
 .actions .timed-area {
@@ -313,8 +313,8 @@ html, ul, li, span {
 }
 
 .actions .action:last-child {
-  margin-left: -4px;
-  width: 0;
+  margin-left: -14px;
+  width: 210px;
 }
 
 .actions .timed-area {
@@ -345,7 +345,7 @@ html, ul, li, span {
 .actions .timer-bar {
   background: #C1DCD4;
   height: 100%;
-  left: -1px;
+  left: 3px;
   position: absolute;
   top: 0px;
   width: 0;
@@ -415,6 +415,20 @@ html, ul, li, span {
 
 .brew-guide-button.paused img, .brew-guide-button.playing img {
   margin-left: 3px;
+}
+
+.brew-guide-button-start .start-text {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+
+.brew-guide-button-start .start-arrow {
+  position: absolute;
+  right: 8px;
+  top: calc(50% - 9px);
 }
 
 .brew-guide-button-start, .brew-guide-button-play, .brew-guide-button-pause, .brew-guide-button-end, .brew-guide-button-next {

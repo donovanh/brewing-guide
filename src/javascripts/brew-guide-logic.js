@@ -247,10 +247,10 @@ $(function() {
     if (timer > 0 && isPlaying) {
       timerTimeout = setTimeout(function() {
         timer--;
-        countdownTimer();
         var timeSoFar = timeElapsed();
         updateTimeOnPage(timeSoFar);
-        updateTimerBarWidth();
+        updateTimerBarWidth(timer);
+        countdownTimer();
       }, timePerTick);
     } else if (isPlaying) {
       // Go to the next step
@@ -278,7 +278,7 @@ $(function() {
       if (!$(action).hasClass('current')) {
         timeElapsed += parseInt($(action).attr('data-time'));
       } else {
-        if (timer > 0) {
+        if (timer >= 0) {
           timeElapsed += parseInt($(action).attr('data-time')) - timer;
         }
         return false;
@@ -321,23 +321,25 @@ $(function() {
     setTimerBar();
   }
 
-  function updateTimerBarWidth(timeSoFar) {
+  function updateTimerBarWidth(time) {
     var timerArea = $(allActions[currentStep]).parents('.timed-area');
     var timerBar = $(timerArea).find('.timer-bar');
-    var timerBarWidth = parseFloat($(timerBar).css('width').replace('.px', ''));
+
+    var firstTimedAction = $(timerArea).find('.action')[0];
     var currentAction = $(allActions[currentStep])[0];
-    var timeDifference = parseInt($(currentAction).attr('data-time'));
-    if (!timeDifference) {
+    var distanceToStartOfCurrentAction = getDistanceBetweenActions(firstTimedAction, currentAction);
+
+    var nextAction = $(allActions[currentStep + 1])[0];
+    var distanceToStartOfNextAction = getDistanceBetweenActions(currentAction, nextAction);
+
+    var currentActionTime = parseInt($(currentAction).attr('data-time'));
+    if (!currentActionTime) {
       return;
     }
-    var nextAction = $(allActions[currentStep + 1])[0];
-    var distanceBetweenActions = getDistanceBetweenActions(currentAction, nextAction) + 4;
-    var perStep = distanceBetweenActions / timeDifference;
-    var distance = timerBarWidth + perStep;
+    var increments = distanceToStartOfNextAction / currentActionTime;
+    var distance = distanceToStartOfCurrentAction + (increments * (currentActionTime - time))
     $(timerBar).css('width', distance + 'px');
     updateStartTimePosition(distance);
-    var totalTime = $(timerArea).attr('data-totalTime');
-    var targetWidth = timerArea.find('.timer-bar');
   }
 
   function updateStartTimePosition(distance) {

@@ -259,7 +259,7 @@ $red4: #F29783;
 
   .action.timed {
     border-top: 2px solid #000;
-    margin-left: -4px;
+    margin-left: -2px;
   }
 
   .timed-area {
@@ -271,8 +271,8 @@ $red4: #F29783;
   }
 
   .action:last-child {
-    width: 0;
-    margin-left: -4px;
+    width: 210px;
+    margin-left: -14px;
   }
 
   .timed-area {
@@ -305,7 +305,7 @@ $red4: #F29783;
     background: #C1DCD4;
     position: absolute;
       top: 0px;
-      left: -1px;
+      left: 3px;
     width: 0;
   }
 }
@@ -366,6 +366,21 @@ $red4: #F29783;
   background: #fff;
   img {
     margin-left: 3px;
+  }
+}
+
+.brew-guide-button-start {
+  .start-text {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-right: 10px;
+  }
+  .start-arrow {
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 9px);
   }
 }
 
