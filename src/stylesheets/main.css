@@ -161,7 +161,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 
     .amount {
       animation-delay: 1.2s;
-      background-image: url(/images/icons/icon-coffee-grounds.svg);
+      background-image: url(../images/icons/icon-coffee-grounds.svg);
     }
     .coarseness {
       animation-delay: 1.3s;
@@ -202,19 +202,19 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     .coarseness.level-14 .arrow { left: 120px; }
     .temp {
       animation-delay: 1.4s;
-      background-image: url(/images/icons/icon-temperature.svg);
+      background-image: url(../images/icons/icon-temperature.svg);
     }
     .water {
       animation-delay: 1.5s;
-      background-image: url(/images/icons/icon-water.svg);
+      background-image: url(../images/icons/icon-water.svg);
     }
     .time {
       animation-delay: 1.6s;
-      background-image: url(/images/icons/icon-time.svg);
+      background-image: url(../images/icons/icon-time.svg);
     }
     .cups {
       animation-delay: 1.7s;
-      background-image: url(/images/icons/icon-cup.svg);
+      background-image: url(../images/icons/icon-cup.svg);
       background-size: 26px;
       background-position: 4px 18px;
     }

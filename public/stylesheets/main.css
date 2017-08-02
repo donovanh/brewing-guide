@@ -213,7 +213,7 @@ html, ul, li, span {
 .brew-guide .youll-need .amount {
     -webkit-animation-delay: 1.2s;
     animation-delay: 1.2s;
-    background-image: url(/images/icons/icon-coffee-grounds.svg);
+    background-image: url(../images/icons/icon-coffee-grounds.svg);
 }
 
 
@@ -320,28 +320,28 @@ html, ul, li, span {
 .brew-guide .youll-need .temp {
     -webkit-animation-delay: 1.4s;
     animation-delay: 1.4s;
-    background-image: url(/images/icons/icon-temperature.svg);
+    background-image: url(../images/icons/icon-temperature.svg);
 }
 
 
 .brew-guide .youll-need .water {
     -webkit-animation-delay: 1.5s;
     animation-delay: 1.5s;
-    background-image: url(/images/icons/icon-water.svg);
+    background-image: url(../images/icons/icon-water.svg);
 }
 
 
 .brew-guide .youll-need .time {
     -webkit-animation-delay: 1.6s;
     animation-delay: 1.6s;
-    background-image: url(/images/icons/icon-time.svg);
+    background-image: url(../images/icons/icon-time.svg);
 }
 
 
 .brew-guide .youll-need .cups {
     -webkit-animation-delay: 1.7s;
     animation-delay: 1.7s;
-    background-image: url(/images/icons/icon-cup.svg);
+    background-image: url(../images/icons/icon-cup.svg);
     background-position: 4px 18px;
     background-size: 26px;
 }
