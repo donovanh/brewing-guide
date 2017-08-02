@@ -504,8 +504,17 @@ html, ul, li, span {
 }
 
 .welcome .step.current {
-  left: 1%;
+  /*left: 1%;*/
+  display: none;
 }
+
+html[data-prev="1"] .step.current {
+  left: 28px;
+}
+html[data-prev="2"] .step.current {
+  left: 46px;
+}
+
 
 /* Background images */
 
@@ -578,6 +587,7 @@ html, ul, li, span {
     min-width: 40px;
     padding: 0;
     position: relative;
+    top: -1px;
 }
 
 .actions .action:after {
@@ -766,6 +776,14 @@ html, ul, li, span {
   z-index: 10;
 }
 
+/* Override position based on number of previous items */
+html[data-prev="1"] .brew-guide-button {
+  left: -12px;
+}
+html[data-prev="2"] .brew-guide-button {
+  left: 4px;
+}
+
 .brew-guide.welcome .brew-guide-button {
     background: #e9532f;
     height: 100px;
@@ -805,6 +823,7 @@ html, ul, li, span {
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 1.25;
+    line-height: 100px;
     margin-bottom: -2px;
     margin-right: 10px;
     text-transform: uppercase;
@@ -812,7 +831,7 @@ html, ul, li, span {
 
 .brew-guide-button-start .start-arrow {
     position: absolute;
-    right: -10px;
+    right: -14px;
     top: calc(50% - 9px);
 }
 

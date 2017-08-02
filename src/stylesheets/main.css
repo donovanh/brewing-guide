@@ -372,8 +372,17 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 }
 
 .welcome .step.current {
-  left: 1%;
+  /*left: 1%;*/
+  display: none;
 }
+
+html[data-prev="1"] .step.current {
+  left: 28px;
+}
+html[data-prev="2"] .step.current {
+  left: 46px;
+}
+
 
 /* Background images */
 
@@ -442,6 +451,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     padding: 0;
     position: relative;
     min-width: 40px;
+    top: -1px;
   }
 
   .action:after {
@@ -615,6 +625,14 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   transition: all 1s $exponential-ease;
 }
 
+/* Override position based on number of previous items */
+html[data-prev="1"] .brew-guide-button {
+  left: -12px;
+}
+html[data-prev="2"] .brew-guide-button {
+  left: 4px;
+}
+
 .brew-guide.welcome {
   .brew-guide-button {
     background: $red;
@@ -654,6 +672,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     color: #fff;
     font-size: 10px;
     font-weight: 800;
+    line-height: 100px;
     text-transform: uppercase;
     letter-spacing: 1.25;
     margin-bottom: -2px;
@@ -661,7 +680,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   }
   .start-arrow {
     position: absolute;
-    right: -10px;
+    right: -14px;
     top: calc(50% - 9px);
   }
 }

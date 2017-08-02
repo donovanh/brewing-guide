@@ -230,6 +230,8 @@ $(function() {
       prevSteps++;
       positionIndex++;
     }
+    // Add a class to body so that I can position the button etc based on how many prev items
+    $('html').attr('data-prev', prevSteps);
   }
 
   function addNextClasses(index) {
