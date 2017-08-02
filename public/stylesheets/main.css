@@ -719,8 +719,10 @@ html[data-prev="2"] .step.current {
 /* Play button */
 
 .button-border-bg {
+  left: -10px;
   pointer-events: none;
   position: absolute;
+  top: -10px;
   z-index: 0;
 }
 

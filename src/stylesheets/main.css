@@ -581,6 +581,8 @@ html[data-prev="2"] .step.current {
   position: absolute;
   pointer-events: none;
   z-index: 0;
+  top: -10px;
+  left: -10px;
 
   .button-border {
     /* 174.7667694091797 */
