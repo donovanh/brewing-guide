@@ -798,8 +798,8 @@ html[data-prev="2"] .brew-guide-button {
 }
 
 .cssanimations .brew-guide.welcome .brew-guide-button {
-    -webkit-animation: show-start-button 1s 1.5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
-    animation: show-start-button 1s 1.5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    -webkit-animation: show-start-button 1s .5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    animation: show-start-button 1s .5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
     opacity: 0;
 }
 
