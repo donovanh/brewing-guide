@@ -2,62 +2,62 @@
   font-family: '3fe-grot';
   font-style: normal;
   font-weight: 200;
-  src: url('/fonts/33910B_0_0.eot');
-  src: url('/fonts/33910B_0_0.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/33910B_0_0.woff2') format('woff2'),
-    url('/fonts/33910B_0_0.woff') format('woff'),
-    url('/fonts/33910B_0_0.ttf') format('truetype')
+  src: url('../../fonts/33910B_0_0.eot');
+  src: url('../../fonts/33910B_0_0.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/33910B_0_0.woff2') format('woff2'),
+    url('../../fonts/33910B_0_0.woff') format('woff'),
+    url('../../fonts/33910B_0_0.ttf') format('truetype')
     ;
 }
 @font-face {
   font-family: '3fe-grot';
   font-style: italic;
   font-weight: 200;
-  src: url('/fonts/33910B_1_0.eot');
-  src: url('/fonts/33910B_1_0.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/33910B_1_0.woff2') format('woff2'),
-    url('/fonts/33910B_1_0.woff') format('woff'),
-    url('/fonts/33910B_1_0.ttf') format('truetype')
+  src: url('../../fonts/33910B_1_0.eot');
+  src: url('../../fonts/33910B_1_0.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/33910B_1_0.woff2') format('woff2'),
+    url('../../fonts/33910B_1_0.woff') format('woff'),
+    url('../../fonts/33910B_1_0.ttf') format('truetype')
     ;
 }
 @font-face {
   font-family: '3fe-grot';
   font-style: normal;
   font-weight: 400;
-  src: url('/fonts/33910B_2_0.eot');
-  src: url('/fonts/33910B_2_0.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/33910B_2_0.woff2') format('woff2'),
-    url('/fonts/33910B_2_0.woff') format('woff'),
-    url('/fonts/33910B_2_0.ttf') format('truetype')
+  src: url('../../fonts/33910B_2_0.eot');
+  src: url('../../fonts/33910B_2_0.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/33910B_2_0.woff2') format('woff2'),
+    url('../../fonts/33910B_2_0.woff') format('woff'),
+    url('../../fonts/33910B_2_0.ttf') format('truetype')
     ;
 }
 @font-face {
   font-family: '3fe-grot';
   font-style: italic;
   font-weight: 400;
-  src: url('/fonts/33910B_3_0.eot');
-  src: url('/fonts/33910B_3_0.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/33910B_3_0.woff2') format('woff2'),
-    url('/fonts/33910B_3_0.woff') format('woff'),
-    url('/fonts/33910B_3_0.ttf') format('truetype');
+  src: url('../../fonts/33910B_3_0.eot');
+  src: url('../../fonts/33910B_3_0.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/33910B_3_0.woff2') format('woff2'),
+    url('../../fonts/33910B_3_0.woff') format('woff'),
+    url('../../fonts/33910B_3_0.ttf') format('truetype');
 }
 @font-face {
   font-family: '3fe-grot';
   font-style: normal;
   font-weight: 600;
-  src: url('/fonts/33910B_4_0.eot');
-  src: url('/fonts/33910B_4_0.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/33910B_4_0.woff2') format('woff2'),
-    url('/fonts/33910B_4_0.woff') format('woff'),
-    url('/fonts/33910B_4_0.ttf') format('truetype');
+  src: url('../../fonts/33910B_4_0.eot');
+  src: url('../../fonts/33910B_4_0.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/33910B_4_0.woff2') format('woff2'),
+    url('../../fonts/33910B_4_0.woff') format('woff'),
+    url('../../fonts/33910B_4_0.ttf') format('truetype');
 }
 @font-face {
   font-family: '3fe-grot';
   font-style: italic;
   font-weight: 600;
-  src: url('/fonts/33910B_5_0.eot');
-  src: url('/fonts/33910B_5_0.eot?#iefix') format('embedded-opentype'),
-    url('/fonts/33910B_5_0.woff2') format('woff2'),
-    url('/fonts/33910B_5_0.woff') format('woff'),
-    url('/fonts/33910B_5_0.ttf') format('truetype');
+  src: url('../../fonts/33910B_5_0.eot');
+  src: url('../../fonts/33910B_5_0.eot?#iefix') format('embedded-opentype'),
+    url('../../fonts/33910B_5_0.woff2') format('woff2'),
+    url('../../fonts/33910B_5_0.woff') format('woff'),
+    url('../../fonts/33910B_5_0.ttf') format('truetype');
 }
