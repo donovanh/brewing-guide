@@ -69,7 +69,43 @@ $(function() {
     $(actionsContainer).find('.timed-area').prepend(timedAreaHTML);
 
     // Build the intro screen
-    //TODO
+    // Set the title
+    $('.welcome-container').find('.title').find('h1').html(brewGuide.title);
+
+    // Set the description
+    $('.welcome-container').find('.description').find('p').html(brewGuide.description);
+
+    // Set the "You'll need" content
+    // coffee
+    $('#amount-label').text(brewGuide.overview.amount + 'g');
+
+    // grindText / grindValue
+    $('#grind-label').text(brewGuide.overview.grindText);
+    console.log();
+    $('.coarseness').addClass('level-' + brewGuide.overview.grindValue);
+
+    // temp
+    $('#temp-label').html(brewGuide.overview.temp + '&deg;C');
+
+    // water
+    $('#water-label').text(brewGuide.overview.water + 'g');
+
+    // brewTime
+    $('#brewTime-label').text(brewGuide.overview.time);
+
+    // totalTime
+    $('#totalTime-label').text(brewGuide.overview.totalTime);
+
+    // cups
+    $('#cups-label').text(brewGuide.overview.cups);
+
+    // items
+    var itemsList = $('#items-list');;
+    $(brewGuide.items).each(function(index, item) {
+      // items
+      var newItem = $('<li>'+ item +'</li>')
+      itemsList.append(newItem);
+    });
 
   }
 

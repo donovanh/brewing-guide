@@ -48,59 +48,200 @@ $red4: #F29783;
 }
 
 .brew-guide {
-  /* Welcome step styles */
-  .title {
+  * {
+    box-sizing: border-box;
+  }
 
+  /* Welcome step styles */
+  .welcome-container {
+    padding: 40px 80px;
+    width: 100%;
+    max-width: 600px;
+  }
+  .title {
+    color: $red;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.25;
   }
   .description {
-
+    color: $red;
+    font-size: 15px;
+    padding: 32px 20px 38px 110px;
+    line-height: 1.6;
   }
   .youll-need {
+    border: 2px solid #000;
+    display: flex;
+    max-width: 420px;
+    padding: 16px 22px 8px;
     position: relative;
+    width: 100%;
 
-    &:after {
-      border: 2px solid #000;
-      content: "";
+    &:before {
+      background: #fff;
+      content: "You'll need:";
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
       position: absolute;
+        top: -4px;
+        left: -4px;
+      width: 114px;
+      height: 26px;
+    }
+
+    .row {
+      display: flex;
     }
 
     .col:first-child {
-
+      width: 60%;
     }
 
     .col:last-child {
-
+      width: 40%;
     }
 
     .icon {
+      background-size: 22px 22px;
       background: no-repeat bottom center;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      position: relative;
+      width: 32px;
+      height: 40px;
+      margin: 16px 10px;
 
       .label {
-        
+        position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+        text-align: center;
       }
     }
 
     .amount {
       background-image: url(/images/icons/icon-coffee-grounds.svg);
     }
-    .weight {
+    .coarseness {
+      display: inline-block;
+      height: 40px;
+      margin: 16px 10px;
+      position: relative;
+
+      .arrow {
+        position: absolute;
+        top: 33px;
+      }
+
       .label {
         text-transform: uppercase;
         display: block;
-        font-size: 10px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        padding-bottom: 10px;
+      }
+    }
+    .coarseness.level-1 {
+      .arrow {
+        left: -4px;
+      }
+    }
+    .coarseness.level-2 {
+      .arrow {
+        left: 8px;
+      }
+    }
+    .coarseness.level-3 {
+      .arrow {
+        left: 18px;
+      }
+    }
+    .coarseness.level-4 {
+      .arrow {
+        left: 29px;
+      }
+    }
+    .coarseness.level-5 {
+      .arrow {
+        left: 39px;
+      }
+    }
+    .coarseness.level-6 {
+      .arrow {
+        left: 48px;
+      }
+    }
+    .coarseness.level-7 {
+      .arrow {
+        left: 57px;
+      }
+    }
+    .coarseness.level-8 {
+      .arrow {
+        left: 67px;
+      }
+    }
+    .coarseness.level-9 {
+      .arrow {
+        left: 76px;
+      }
+    }
+    .coarseness.level-10 {
+      .arrow {
+        left: 85px;
+      }
+    }
+    .coarseness.level-11 {
+      .arrow {
+        left: 94px;
+      }
+    }
+    .coarseness.level-12 {
+      .arrow {
+        left: 103px;
+      }
+    }
+    .coarseness.level-13 {
+      .arrow {
+        left: 111px;
+      }
+    }
+    .coarseness.level-14 {
+      .arrow {
+        left: 120px;
       }
     }
     .temp {
       background-image: url(/images/icons/icon-temperature.svg);
     }
     .water {
-
+      background-image: url(/images/icons/icon-water.svg);
     }
     .time {
-
+      background-image: url(/images/icons/icon-time.svg);
     }
     .cups {
+      background-image: url(/images/icons/icon-cup.svg);
+      background-size: 26px;
+      background-position: 4px 18px;
+    }
 
+    .items {
+      margin: 16px 0;
+    }
+    .items li {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .items li:before {
+      content: "\2013\ ";
     }
   }
 
