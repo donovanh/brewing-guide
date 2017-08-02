@@ -667,21 +667,19 @@ html[data-prev="2"] .brew-guide-button {
 }
 
 .brew-guide-button-start {
-
   .start-text {
+    display: block;
     color: #fff;
     font-size: 10px;
     font-weight: 800;
     line-height: 100px;
     text-transform: uppercase;
     letter-spacing: 1.25;
-    margin-bottom: -2px;
-    margin-right: 10px;
+    width: 100px;
+    transform: translateX(10px);
   }
   .start-arrow {
-    position: absolute;
-    right: -14px;
-    top: calc(50% - 9px);
+    margin: 0 0 -4px 5px;
   }
 }
 

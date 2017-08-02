@@ -820,19 +820,19 @@ html[data-prev="2"] .brew-guide-button {
 
 .brew-guide-button-start .start-text {
     color: #fff;
+    display: block;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 1.25;
     line-height: 100px;
-    margin-bottom: -2px;
-    margin-right: 10px;
     text-transform: uppercase;
+    -webkit-transform: translateX(10px);
+    transform: translateX(10px);
+    width: 100px;
 }
 
 .brew-guide-button-start .start-arrow {
-    position: absolute;
-    right: -14px;
-    top: calc(50% - 9px);
+    margin: 0 0 -4px 5px;
 }
 
 .brew-guide-button-start, .brew-guide-button-play, .brew-guide-button-pause, .brew-guide-button-end, .brew-guide-button-next {

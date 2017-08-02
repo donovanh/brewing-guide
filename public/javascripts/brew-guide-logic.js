@@ -64,7 +64,7 @@ $(function() {
       $(actionsTextContainer).append(actionsText);
 
       // Build the backgrounds
-      var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"><img src="/images/'+ step.illustration +'"></span>');
+      var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"><img src="./images/'+ step.illustration +'"></span>');
       $(bgContainer).append(backgroundImage);
 
     });
