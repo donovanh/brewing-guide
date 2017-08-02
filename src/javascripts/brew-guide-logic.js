@@ -87,7 +87,6 @@ $(function() {
 
     // grindText / grindValue
     $('#grind-label').text(brewGuide.overview.grindText);
-    console.log();
     $('.coarseness').addClass('level-' + brewGuide.overview.grindValue);
 
     // temp
@@ -360,7 +359,6 @@ $(function() {
       updateStartTimePosition(distance);
     } else if ($(allActions).index($(allActions[currentStep])) === ($(allActions).length - 1)) {
       currentTimedActions = $('.timed-area').find('.action');
-      console.log('ok: ', currentTimedActions);
       var timerArea = $('.timed-area');
       var timerBar = $(timerArea).find('.timer-bar');
       // Get position of first timed action in this timer area
