@@ -111,7 +111,7 @@ html, ul, li, span {
   display: -ms-flexbox;
   display: flex;
   max-width: 420px;
-  padding: 16px 22px 8px;
+  padding: 16px 10px 8px;
   position: relative;
   width: 100%;
 }

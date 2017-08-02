@@ -91,7 +91,7 @@ $(function() {
     $('#water-label').text(brewGuide.overview.water + 'g');
 
     // brewTime
-    $('#brewTime-label').text(brewGuide.overview.time);
+    $('#brewTime-label').text(brewGuide.overview.brewTime);
 
     // totalTime
     $('#totalTime-label').text(brewGuide.overview.totalTime);
