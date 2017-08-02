@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="24px" viewBox="0 0 14 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-temperature</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-temperature" fill-rule="nonzero" fill="#020202">
+            <g id="Artboard-115-copy-4">
+                <g id="desktop">
+                    <path d="M3.17,11.71 C-1.52,15.45 1.41,24 7.5,24 C14.32,24 14.78,14.91 10.05,11.7 C9.65,11.43 10.35,13.18 10.75,13.45 C14.45,15.96 10.93,21.29 7.69,22 C5.33,22.51 2.35,21.45 1.9,18.71 C1.71544265,16.7093724 2.61100239,14.7620064 4.25,13.6 C4.62,13.31 3.41,11.54 3.17,11.73 L3.17,11.71 Z" id="Shape"></path>
+                    <path d="M11,13.31 L11,1.68 C11,1.22 9.83,-0.32 9.83,0.2 L9.83,11.83 C9.83,12.29 11,13.83 11,13.31 Z" id="Shape"></path>
+                    <path d="M9.94,-1.97215226e-31 L3.26,-1.97215226e-31 C2.94,-1.97215226e-31 3.68,1.88 4.18,1.88 L10.86,1.88 C11.18,1.88 10.44,-8.8817842e-16 9.94,-8.8817842e-16 L9.94,-1.97215226e-31 Z" id="Shape"></path>
+                    <path d="M3.13,0.2 L3.13,11.83 C3.13,12.29 4.3,13.83 4.3,13.31 L4.3,1.68 C4.3,1.22 3.13,-0.32 3.13,0.2 L3.13,0.2 Z" id="Shape"></path>
+                    <path d="M10.14,3.41 L6.51,3.41 C6.33,3.41 6.74,4.41 7.02,4.41 L10.65,4.41 C10.83,4.41 10.42,3.41 10.14,3.41 Z" id="Shape"></path>
+                    <path d="M10.14,6.23 L6.51,6.23 C6.33,6.23 6.74,7.23 7.02,7.23 L10.65,7.23 C10.83,7.23 10.42,6.23 10.14,6.23 Z" id="Shape"></path>
+                    <path d="M10.14,9.2 L6.51,9.2 C6.33,9.2 6.74,10.2 7.02,10.2 L10.65,10.2 C10.83,10.2 10.42,9.2 10.14,9.2 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

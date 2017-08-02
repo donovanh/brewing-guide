@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="20px" viewBox="0 0 28 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-cup</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-cup" fill-rule="nonzero" fill="#000000">
+            <g id="Artboard-115-copy-7">
+                <g id="desktop">
+                    <path d="M0.74,1 L5.17,17.9 C5.25,18.22 5.74,19.4 6.17,19.4 L18.89,19.4 C19.21,19.4 18.47,17.52 17.97,17.52 L5.27,17.52 L6.27,19.02 L1.84,2.12 C1.74,1.74 0.5,0.06 0.75,0.99 L0.74,1 Z" id="Shape"></path>
+                    <path d="M19,19.32 L23.45,2.42 C23.55,2.04 22.84,0.62 22.45,0.62 L0.83,0.62 C0.51,0.62 1.25,2.5 1.75,2.5 L23.34,2.5 L22.34,0.7 L17.89,17.6 C17.75,18.15 19.01,19.51 19.06,19.33 L19,19.32 Z" id="Shape"></path>
+                    <path d="M22.75,5.67 C24.37,5.76 25.96,6.51 26.11,8.34 C26.2361714,9.53387997 25.8301319,10.7227344 25,11.59 C23.4822134,12.9843866 21.4909737,13.749423 19.43,13.73 C19.1,13.73 19.86,15.62 20.35,15.61 C23.71,15.53 27.63,13.72 27.35,9.83 C27.1,6.89 24.98,3.97 21.91,3.83 C21.62,3.83 22.31,5.68 22.83,5.71 L22.75,5.67 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

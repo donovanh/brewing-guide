@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="132px" height="26px" viewBox="0 0 132 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icon-ground-measure" fill-rule="nonzero" fill="#000000">
+            <path d="M1.9,25.29 L8.2,14.36 L7.38,13.63 L13.68,24.56 L13.46,23.49 L0.86,23.49 C0.54,23.49 1.28,25.37 1.78,25.37 L14.38,25.37 C14.75,25.37 14.21,24.37 14.16,24.3 L7.86,13.37 C7.8,13.27 7.23,12.32 7.04,12.64 L0.74,23.57 C0.49,24 1.74,25.57 1.9,25.29 Z" id="Shape"></path>
+            <ellipse id="Oval" cx="7.08" cy="4.3" rx="4.03" ry="4.08"></ellipse>
+            <ellipse id="Oval" cx="18.32" cy="4.18" rx="3.6" ry="3.64"></ellipse>
+            <ellipse id="Oval" cx="28.99" cy="4.13" rx="3.38" ry="3.42"></ellipse>
+            <ellipse id="Oval" cx="39.19" cy="4.07" rx="3.17" ry="3.2"></ellipse>
+            <ellipse id="Oval" cx="48.85" cy="4.01" rx="2.95" ry="2.99"></ellipse>
+            <ellipse id="Oval" cx="58.47" cy="3.95" rx="2.74" ry="2.77"></ellipse>
+            <ellipse id="Oval" cx="67.78" cy="3.9" rx="2.52" ry="2.55"></ellipse>
+            <ellipse id="Oval" cx="77.62" cy="3.84" rx="2.31" ry="2.33"></ellipse>
+            <ellipse id="Oval" cx="86.44" cy="3.78" rx="2.09" ry="2.11"></ellipse>
+            <ellipse id="Oval" cx="95.26" cy="3.73" rx="1.88" ry="1.9"></ellipse>
+            <ellipse id="Oval" cx="104.08" cy="3.67" rx="1.66" ry="1.68"></ellipse>
+            <ellipse id="Oval" cx="112.89" cy="3.61" rx="1.44" ry="1.46"></ellipse>
+            <ellipse id="Oval" cx="121.71" cy="3.55" rx="1.23" ry="1.24"></ellipse>
+            <ellipse id="Oval" cx="130.53" cy="3.5" rx="1.01" ry="1.02"></ellipse>
+        </g>
+    </g>
+</svg>

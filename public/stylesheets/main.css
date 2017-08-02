@@ -79,6 +79,52 @@ html, ul, li, span {
   width: 742px;
 }
 
+/* Welcome step styles */
+
+.brew-guide .title {}
+
+.brew-guide .description {}
+
+.brew-guide .youll-need {
+  position: relative;
+}
+
+.brew-guide .youll-need:after {
+  border: 2px solid #000;
+  content: "";
+  position: absolute;
+}
+
+.brew-guide .youll-need .col:first-child {}
+
+.brew-guide .youll-need .col:last-child {}
+
+.brew-guide .youll-need .icon {
+  background: no-repeat bottom center;
+}
+
+.brew-guide .youll-need .icon .label {}
+
+.brew-guide .youll-need .amount {
+  background-image: url(/images/icons/icon-coffee-grounds.svg);
+}
+
+.brew-guide .youll-need .weight .label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.brew-guide .youll-need .temp {
+  background-image: url(/images/icons/icon-temperature.svg);
+}
+
+.brew-guide .youll-need .water {}
+
+.brew-guide .youll-need .time {}
+
+.brew-guide .youll-need .cups {}
+
 /* General animations */
 
 .fade-up {

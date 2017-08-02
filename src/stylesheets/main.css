@@ -47,6 +47,66 @@ $red4: #F29783;
   transform: translate(-50%, -50%);
 }
 
+.brew-guide {
+  /* Welcome step styles */
+  .title {
+
+  }
+  .description {
+
+  }
+  .youll-need {
+    position: relative;
+
+    &:after {
+      border: 2px solid #000;
+      content: "";
+      position: absolute;
+    }
+
+    .col:first-child {
+
+    }
+
+    .col:last-child {
+
+    }
+
+    .icon {
+      background: no-repeat bottom center;
+
+      .label {
+        
+      }
+    }
+
+    .amount {
+      background-image: url(/images/icons/icon-coffee-grounds.svg);
+    }
+    .weight {
+      .label {
+        text-transform: uppercase;
+        display: block;
+        font-size: 10px;
+      }
+    }
+    .temp {
+      background-image: url(/images/icons/icon-temperature.svg);
+    }
+    .water {
+
+    }
+    .time {
+
+    }
+    .cups {
+
+    }
+  }
+
+
+}
+
 /* General animations */
 
 .fade-up {
