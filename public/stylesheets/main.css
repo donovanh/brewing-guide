@@ -3,53 +3,63 @@
    ----------------------------------------------- */
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block;
+    display: block;
 }
 
 body {
-  line-height: 1;
+    line-height: 1;
 }
 
 ol, ul {
-  list-style: none;
+    list-style: none;
 }
 
 blockquote, q {
-  quotes: none;
+    quotes: none;
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
-  content: '';
-  content: none;
+    content: '';
+    content: none;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 html, ul, li, span {
-  font-family: '3fe-grot' !important;
+    font-family: '3fe-grot' !important;
 }
-
-/* Settings */
 
 /* Dimensions */
 
 /* Colours */
 
+/* Animation-related */
+
 /* General layout */
+
+.red-bg-container {
+    bottom: 0;
+    left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+    right: 0;
+    top: 0;
+}
 
 .welcome .red-bg {
   -webkit-transform: translateX(742px);
@@ -57,21 +67,25 @@ html, ul, li, span {
 }
 
 .red-bg {
-  background: #EA5230;
+  background: #e9532f;
     bottom: 0;
     left: 0;
   position: absolute;
     right: 0;
     top: 0;
+  transition: all .5s cubic-bezier(0,1,.3,1);
   z-index: 1;
+}
+
+.intro .red-bg {
+  transition-duration: 0;
 }
 
 .brew-guide {
   background: #fff;
-  box-shadow: 0 2px 12px #F29783;
+  box-shadow: 0 2px 12px #f19572;
   height: 500px;
     left: 50%;
-  overflow: hidden;
   position: absolute;
     top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -79,228 +93,273 @@ html, ul, li, span {
   width: 742px;
 }
 
-.brew-guide * {
-  box-sizing: border-box;
+.cssanimations .brew-guide {
+    -webkit-animation: introduce-container 1.2s .3s cubic-bezier(0,1.01,.47,1.17) forwards;
+    animation: introduce-container 1.2s .3s cubic-bezier(0,1.01,.47,1.17) forwards;
+    opacity: 0;
 }
+
+
+.brew-guide * {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
 
 /* Welcome step styles */
 
+
 .brew-guide .welcome-container {
-  max-width: 600px;
-  padding: 40px 80px;
-  width: 100%;
+    max-width: 600px;
+    padding: 40px 80px;
+    width: 100%;
 }
+
 
 .brew-guide .title {
-  color: #EA5230;
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 1.25;
+    color: #e9532f;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.25;
 }
+
+
+.brew-guide .title h1 {
+    -webkit-animation-delay: .5s;
+    animation-delay: .5s;
+}
+
 
 .brew-guide .description {
-  color: #EA5230;
-  font-size: 15px;
-  line-height: 1.6;
-  padding: 32px 20px 38px 110px;
+    -webkit-animation-delay: .8s;
+    animation-delay: .8s;
+    color: #e9532f;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 32px 20px 38px 110px;
 }
+
 
 .brew-guide .youll-need {
-  border: 2px solid #000;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-width: 420px;
-  padding: 16px 10px 8px;
-  position: relative;
-  width: 100%;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+    -webkit-animation-duration: 1.8s;
+    animation-duration: 1.8s;
+    border: 2px solid #000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    max-width: 420px;
+    padding: 16px 10px 8px;
+    position: relative;
+    width: 100%;
 }
+
 
 .brew-guide .youll-need:before {
-  background: #fff;
-  content: "You'll need:";
-  font-size: 11px;
-  font-weight: 600;
-  height: 26px;
-  left: -4px;
-  letter-spacing: 1.5px;
-  position: absolute;
-  text-transform: uppercase;
-  top: -4px;
-  width: 114px;
+    background: #fff;
+    content: "You'll need:";
+    font-size: 11px;
+    font-weight: 600;
+    height: 26px;
+    left: -4px;
+    letter-spacing: 1.5px;
+    position: absolute;
+    text-transform: uppercase;
+    top: -4px;
+    width: 114px;
 }
+
 
 .brew-guide .youll-need .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
+
 
 .brew-guide .youll-need .col:first-child {
-  width: 60%;
+    width: 60%;
 }
+
 
 .brew-guide .youll-need .col:last-child {
-  width: 40%;
+    width: 40%;
 }
+
 
 .brew-guide .youll-need .icon {
-  background: no-repeat bottom center;
-  background-size: 22px 22px;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 800;
-  height: 40px;
-  margin: 16px 10px;
-  position: relative;
-  width: 32px;
+    background: no-repeat bottom center;
+    background-size: 22px 22px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 800;
+    height: 40px;
+    margin: 16px 10px;
+    position: relative;
+    width: 32px;
 }
+
 
 .brew-guide .youll-need .icon .label {
-  left: 0;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  top: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
 }
+
 
 .brew-guide .youll-need .amount {
-  background-image: url(/images/icons/icon-coffee-grounds.svg);
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+    background-image: url(/images/icons/icon-coffee-grounds.svg);
 }
+
 
 .brew-guide .youll-need .coarseness {
-  display: inline-block;
-  height: 40px;
-  margin: 16px 10px;
-  position: relative;
+    -webkit-animation-delay: 1.3s;
+    animation-delay: 1.3s;
+    display: inline-block;
+    height: 40px;
+    margin: 16px 10px;
+    position: relative;
 }
+
 
 .brew-guide .youll-need .coarseness .arrow {
-  position: absolute;
-  top: 33px;
+    -webkit-animation-delay: 2.8s;
+    animation-delay: 2.8s;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    position: absolute;
+    top: 33px;
 }
+
 
 .brew-guide .youll-need .coarseness .label {
-  display: block;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  padding-bottom: 10px;
-  text-transform: uppercase;
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
 }
+
 
 .brew-guide .youll-need .coarseness.level-1 .arrow {
-  left: -4px;
+    left: -4px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-2 .arrow {
-  left: 8px;
+    left: 8px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-3 .arrow {
-  left: 18px;
+    left: 18px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-4 .arrow {
-  left: 29px;
+    left: 29px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-5 .arrow {
-  left: 39px;
+    left: 39px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-6 .arrow {
-  left: 48px;
+    left: 48px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-7 .arrow {
-  left: 57px;
+    left: 57px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-8 .arrow {
-  left: 67px;
+    left: 67px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-9 .arrow {
-  left: 76px;
+    left: 76px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-10 .arrow {
-  left: 85px;
+    left: 85px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-11 .arrow {
-  left: 94px;
+    left: 94px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-12 .arrow {
-  left: 103px;
+    left: 103px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-13 .arrow {
-  left: 111px;
+    left: 111px;
 }
+
 
 .brew-guide .youll-need .coarseness.level-14 .arrow {
-  left: 120px;
+    left: 120px;
 }
+
 
 .brew-guide .youll-need .temp {
-  background-image: url(/images/icons/icon-temperature.svg);
+    -webkit-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+    background-image: url(/images/icons/icon-temperature.svg);
 }
+
 
 .brew-guide .youll-need .water {
-  background-image: url(/images/icons/icon-water.svg);
+    -webkit-animation-delay: 1.5s;
+    animation-delay: 1.5s;
+    background-image: url(/images/icons/icon-water.svg);
 }
+
 
 .brew-guide .youll-need .time {
-  background-image: url(/images/icons/icon-time.svg);
+    -webkit-animation-delay: 1.6s;
+    animation-delay: 1.6s;
+    background-image: url(/images/icons/icon-time.svg);
 }
+
 
 .brew-guide .youll-need .cups {
-  background-image: url(/images/icons/icon-cup.svg);
-  background-position: 4px 18px;
-  background-size: 26px;
+    -webkit-animation-delay: 1.7s;
+    animation-delay: 1.7s;
+    background-image: url(/images/icons/icon-cup.svg);
+    background-position: 4px 18px;
+    background-size: 26px;
 }
+
 
 .brew-guide .youll-need .items {
-  margin: 16px 0;
+    margin: 16px 0;
 }
+
 
 .brew-guide .youll-need .items li {
-  font-size: 16px;
-  line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.6;
 }
+
 
 .brew-guide .youll-need .items li:before {
-  content: "\2013\ ";
-}
-
-/* General animations */
-
-.fade-up {
-  opacity: 0;
-  -webkit-transform: translateY(18px);
-          transform: translateY(18px);
-  transition: all .5s ease-out;
-}
-
-.fade-in {
-  opacity: 0;
-  transition: all .5s ease-out;
-}
-
-.fade-zoom {
-  opacity: 0;
-  -webkit-transform: scale(.8);
-          transform: scale(.8);
-  transition: all .5s cubic-bezier(0,1.5,1,1);
-}
-
-.is-visible {
-  opacity: 1;
-  -webkit-transform: translateY(0) !important;
-          transform: translateY(0) !important;
+    content: "\2013\ ";
 }
 
 /* Steps */
@@ -317,129 +376,175 @@ html, ul, li, span {
 }
 
 .steps .step {
-  height: 500px;
-  left: 104px;
-  opacity: 0;
-  position: absolute;
-  top: 0;
+    height: 500px;
+    left: 100px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    transition: all 1s cubic-bezier(0,1,.3,1);
 }
 
 .steps .step-title {
-  font-weight: 800;
-  left: -62px;
-  position: absolute;
-  top: 112px;
-  -webkit-transform: rotateZ(-90deg);
-  transform: rotateZ(-90deg);
-  width: 160px;
+    font-weight: 800;
+    left: -62px;
+    opacity: 0;
+    position: absolute;
+    top: 112px;
+    -webkit-transform: rotateZ(-90deg);
+    transform: rotateZ(-90deg);
+    transition: opacity .5s ease-out;
+    width: 160px;
 }
 
 .steps .previous {
-  opacity: 1;
-  right: auto;
-  width: 16px;
+    opacity: 1;
+    right: auto;
+    width: 16px;
 }
 
 .steps .previous .step-title {
-  opacity: 0;
+    opacity: 0;
 }
 
 .steps .current {
-  left: 8%;
-  opacity: 1;
+    -webkit-animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
+    animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
+    left: 8%;
+    opacity: 1;
+}
+
+.steps .current .step-title {
+    opacity: 1;
+}
+
+.steps .next .step-title {
+    opacity: 1;
 }
 
 .steps .previous.bg-3 {
-  background: #EE755A;
+    background: #ed764f;
 }
 
 .steps .previous.bg-2 {
-  background: #F0866E;
+    background: #ef8661;
 }
 
 .steps .previous.bg-1 {
-  background: #F29783;
+    background: #f19572;
 }
 
 .steps .previous.position-2 {
-  left: 32px;
+    left: 32px;
 }
 
 .steps .previous.position-1 {
-  left: 16px;
+    left: 16px;
 }
 
 .steps .previous.position-0 {
-  left: 0;
+    left: 0;
 }
 
 .steps .next {
-  left: auto;
-  opacity: 1;
-  right: 0;
-  width: 34px;
+    left: auto;
+    opacity: 1;
+    right: 0;
+    width: 34px;
 }
 
 .steps .next.bg-0 {
-  background: #EE755A;
+    background: #ed764f;
 }
 
 .steps .next.bg-1 {
-  background: #F0866E;
+    background: #ef8661;
 }
 
 .steps .next.bg-2 {
-  background: #F29783;
+    background: #f19572;
 }
 
 .steps .next.position-1 {
-  right: 34px;
+    right: 34px;
 }
 
 .steps .next.position-2 {
-  right: 68px;
+    right: 68px;
+}
+
+.cssanimations.intro .step.next {
+  -webkit-animation: show-next-step .8s .1s cubic-bezier(.5,2,.5,1) forwards;
+          animation: show-next-step .8s .1s cubic-bezier(.5,2,.5,1) forwards;
+  opacity: 0;
+}
+
+.cssanimations.intro .step.previous {
+  -webkit-animation: show-prev-step 1s .2s cubic-bezier(.5,2,.5,1) forwards;
+          animation: show-prev-step 1s .2s cubic-bezier(.5,2,.5,1) forwards;
+  opacity: 0;
+}
+
+.cssanimations.intro .step.position-2 {
+  -webkit-animation-delay: .3s;
+          animation-delay: .3s;
+}
+
+.cssanimations.intro .step.position-1 {
+  -webkit-animation-delay: .35s;
+          animation-delay: .35s;
+}
+
+.cssanimations.intro .step.position-0 {
+  -webkit-animation-delay: .4s;
+          animation-delay: .4s;
 }
 
 .brew-guide.welcome .next.bg-0 {
-  background: #EA5230;
+  background: #e9532f;
 }
 
 .welcome .step.current {
   left: 1%;
 }
 
-.step-bg {
-  display: none;
-}
-
-.step-bg.current {
-  display: block;
-}
-
 /* Background images */
 
 
 .step-bg-container {
-  position: relative;
+    left: 0;
+  position: absolute;
+    right: 0;
+    top: 0;
   z-index: 1; 
 }
 
 
 .step-bg-container .step-bg {
-  opacity: 0;
-}
-
-
-.step-bg-container .step-bg.current {
-  opacity: 1;
+    opacity: 0;
 }
 
 
 .step-bg-container .step-bg.current img {
-  display: block;
-  height: 100%;
-  margin: 0 auto;
-  max-height: 430px;
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+    max-height: 400px;
+}
+
+.step-bg {
+    left: 0;
+  opacity: 0;
+  position: absolute;
+    right: 0;
+  text-align: center;
+    top: 0;
+
+}
+
+.step-bg.current {
+  -webkit-animation: fade-in-left 1s cubic-bezier(0,1,.3,1) forwards;
+          animation: fade-in-left 1s cubic-bezier(0,1,.3,1) forwards;
+  opacity: 1;
 }
 
 
@@ -452,7 +557,6 @@ html, ul, li, span {
   opacity: 0;
   position: absolute;
   width: 100%;
-  z-index: 1;
 }
 
 .actions {
@@ -466,137 +570,219 @@ html, ul, li, span {
 }
 
 .actions .action {
-  border-top: 2px solid transparent;
-  display: inline-block;
-  height: 10px;
-  list-style: none;
-  margin: 0;
-  min-width: 40px;
-  padding: 0;
-  position: relative;
+    border-top: 2px solid transparent;
+    display: inline-block;
+    height: 10px;
+    list-style: none;
+    margin: 0;
+    min-width: 40px;
+    padding: 0;
+    position: relative;
 }
 
 .actions .action:after {
-  background: #000;
-  border: 2px solid #000;
-  border-radius: 50%;
-  content: "";
-  height: 8px;
-  left: 0px;
-  position: absolute;
-  top: -7px;
-  width: 8px;
+    background: #000;
+    border: 2px solid #000;
+    border-radius: 50%;
+    content: "";
+    height: 6px;
+    left: 0px;
+    position: absolute;
+    top: -6px;
+    width: 6px;
 }
 
 .actions .action.current:after {
-  background: #fff;
+    -webkit-animation: highlight-current-action 1s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    animation: highlight-current-action 1s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    background: #fff;
 }
 
 .actions .action.zero {
-  display: none;
+    display: none;
 }
 
 .actions .action.timed {
-  border-top: 2px solid #000;
-  margin-left: -2px;
+    border-top: 2px solid #000;
+    margin-left: -2px;
 }
 
 .actions .timed-area {
-  min-width: 83%;
+    min-width: 83%;
 }
 
 .actions .action.standalone {
-  min-width: 20px;
+    min-width: 20px;
 }
 
 .actions .action:last-child {
-  margin-left: -14px;
-  width: 210px;
+    margin-left: -14px;
+    width: 210px;
 }
 
 .actions .timed-area {
-  margin-left: 20px;
-  position: relative;
+    margin-left: 20px;
+    position: relative;
 }
 
 .actions .timer {
-  font-size: 12px;
-  font-weight: 600;
-  position: absolute;
-  top: -18px;
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    top: -20px;
 }
 
 .actions .start-time {
-  left: -2px;
+    left: -2px;
+    transition: all 1s linear;
 }
 
 .actions .end-time {
-  right: -3px;
+    right: -3px;
+    transition: all .5s ease-out;
 }
 
 .actions .new-end-time {
-  left: auto !important;
-  right: -3px;
+    left: auto !important;
+    right: -3px;
 }
 
 .actions .timer-bar {
-  background: #C1DCD4;
-  height: 100%;
-  left: 3px;
+    background: #baddd4;
+    height: 100%;
+    left: 3px;
+    position: absolute;
+    top: 0px;
+    transition: all 1s linear;
+    width: 0;
+}
+
+.actions-container-container {
+    bottom: 0;
+    left: 0;
+  overflow: hidden;
   position: absolute;
-  top: 0px;
-  width: 0;
+    right: 0;
+    top: 0;
+  z-index: 1;
+}
+
+.brew-guide:not(.welcome) .actions-container {
+  -webkit-animation: show-actions-area 1s cubic-bezier(0,1,.3,1) forwards;
+          animation: show-actions-area 1s cubic-bezier(0,1,.3,1) forwards;
+}
+
+.intro .timer-bar, .intro .start-time {
+  transition: all 1s cubic-bezier(0,1,.3,1);
 }
 
 .actions-text-container {
     left: 10%;
   position: absolute;
-    right: 35%;
+    right: 32%;
     top: 32%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+
+  -webkit-perspective: 800px;
+
+          perspective: 800px;
 }
 
 .actions-text-container .actions-text {
-  font-size: .9em;
-  line-height: 1.5;
-  position: absolute;
+    font-size: .9em;
+    line-height: 1.5;
+    opacity: 0;
+    position: absolute;
+    transition: all .5s ease-out;
+}
+
+.actions-text-container .actions-text.current {
+    opacity: 1;
+}
+
+.cssanimations .actions-text.current {
+  -webkit-animation: show-actions-text 1s cubic-bezier(.54,-0.41,.29,1.42);
+          animation: show-actions-text 1s cubic-bezier(.54,-0.41,.29,1.42); 
 }
 
 /* Play button */
+
+.button-border-bg {
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.button-border-bg .button-border {
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+
+    /* 174.7667694091797 */
+    stroke-dasharray: 174.7667694091797;
+    stroke-dashoffset: 174.7667694091797;
+}
+
+.button-border-bg:after {
+  background: white;
+  border-radius: 50%;
+    bottom: 10px;
+  content: "";
+    left: 10px;
+  position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.cssanimations .button-border-bg.countdown .button-border {
+  -webkit-animation: show-button-border 6s linear forwards;
+          animation: show-button-border 6s linear forwards;
+}
 
 .brew-guide-button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #EA5230;
+  background: #e9532f;
   border-radius: 50%;
-    bottom: 82px;
+    bottom: 84px;
   box-shadow: 4px 4px 16px 0 #CC4535;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 58px;
+  height: 56px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-    left: 18px;
-  line-height: 58px;
+    left: 20px;
+  line-height: 56px;
   position: absolute;
   text-align: center;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
-  width: 58px;
+  transition: all 1s cubic-bezier(0,1,.3,1);
+  width: 56px;
   z-index: 10;
 }
 
 .brew-guide.welcome .brew-guide-button {
-  background: #EA5230;
-  bottom: 78px;
-  height: 100px;
-  left: auto;
-  line-height: 105px;
-  right: 56px;
-  width: 100px;
+    background: #e9532f;
+    height: 100px;
+    line-height: 105px;
+    -webkit-transform: translateX(570px);
+    transform: translateX(570px);
+    width: 100px;
+}
+
+.brew-guide.welcome .button-border-bg {
+    display: none;
+}
+
+.cssanimations .brew-guide.welcome .brew-guide-button {
+    -webkit-animation: show-start-button 1s 1.5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    animation: show-start-button 1s 1.5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    opacity: 0;
 }
 
 .brew-guide-button:hover {
@@ -611,56 +797,48 @@ html, ul, li, span {
 }
 
 .brew-guide-button.paused img, .brew-guide-button.playing img {
-  margin-left: 3px;
+    margin-left: 3px;
 }
 
 .brew-guide-button-start .start-text {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-  margin-right: 10px;
-  text-transform: uppercase;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.25;
+    margin-bottom: -2px;
+    margin-right: 10px;
+    text-transform: uppercase;
 }
 
 .brew-guide-button-start .start-arrow {
-  position: absolute;
-  right: 8px;
-  top: calc(50% - 9px);
+    position: absolute;
+    right: -10px;
+    top: calc(50% - 9px);
 }
 
 .brew-guide-button-start, .brew-guide-button-play, .brew-guide-button-pause, .brew-guide-button-end, .brew-guide-button-next {
   display: none;
 }
 
-.brew-guide-button.start .brew-guide-button-start {
+.brew-guide-button.start .brew-guide-button-start, .brew-guide-button.standalone .brew-guide-button-next, .brew-guide-button.playing .brew-guide-button-pause, .brew-guide-button.paused .brew-guide-button-play, .brew-guide-button.end .brew-guide-button-end {
+  -webkit-animation: fade-in-zoom .5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+          animation: fade-in-zoom .5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
   display: block;
+  opacity: 0;
 }
 
-.brew-guide-button.standalone .brew-guide-button-next {
-  display: block;
+.brew-guide-button.standalone .button-border-bg {
+    display: none;
 }
-
-.brew-guide-button.playing .brew-guide-button-pause {
-  display: block;
-}
-
-.brew-guide-button.paused .brew-guide-button-play {
-  display: block;
-}
-
-.brew-guide-button.end .brew-guide-button-end {
-  display: block;
-}
-
 
 /* Action text */
 
 .actions-text-container .actions-text {
-  opacity: 0;
+    opacity: 0;
 }
 
 .actions-text-container .actions-text.current {
-  opacity: 1;
+    opacity: 1;
 }
 
 /* Toggle autoplay */
@@ -670,22 +848,22 @@ html, ul, li, span {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-    right: 20%;
+    right: 19%;
     top: 22px;
   width: 102px;
 }
 
 .autoplay-container .autoplay-text {
-  display: inline-block;
-  font-size: .8em;
-  font-weight: 800;
-  letter-spacing: 1.1;
-  line-height: 1.33;
-  text-transform: uppercase;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.1;
+    line-height: 1.33;
+    text-transform: uppercase;
 }
 
 .autoplay-container .autoplay-toggle {
-  margin: -4px 0 0 10px;
+    margin: -3px 0 0 6px;
 }
 
 .tgl {
@@ -693,80 +871,80 @@ html, ul, li, span {
 }
 
 .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
-  background: none;
+    background: none;
 }
 
 .tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
-  background: none;
+    background: none;
 }
 
 .tgl + .tgl-btn {
-  cursor: pointer;
-  display: block;
-  font-size: 10px;
-  height: 2em;
-  outline: 0;
-  position: relative;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  width: 3.4em;
+    cursor: pointer;
+    display: block;
+    font-size: 8px;
+    height: 2em;
+    outline: 0;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 3.4em;
 }
 
 .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
-  content: "";
-  display: block;
-  height: .6em;
-  position: relative;
-  top: 7%;
-  width: .6em;
+    content: "";
+    display: block;
+    height: .5em;
+    position: relative;
+    top: 7%;
+    width: .5em;
 }
 
 .tgl + .tgl-btn:after {
-  left: 0;
+    left: 0;
 }
 
 .tgl + .tgl-btn:before {
-  display: none;
+    display: none;
 }
 
 .tgl:checked + .tgl-btn:after {
-  left: 55%;
-  top: 7%;
+    left: 55%;
+    top: 7%;
 }
 
 
 .tgl-flat + .tgl-btn {
-  background: #fff;
-  border: 2px solid  #aaa;
-  border-radius: 2em;
-  padding: 2px;
-  transition: all .2s ease;
+    background: #fff;
+    border: 2px solid  #000;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all .2s ease;
 }
 
 
 .tgl-flat + .tgl-btn:after {
-  border: 2px solid #aaa;
-  border-radius: 50%;
-  content: "";
-  left: 60%;
-  transition: all .2s ease;
+    border: 2px solid #000;
+    border-radius: 50%;
+    content: "";
+    left: 60%;
+    transition: all .2s ease;
 }
 
 
 .tgl-flat:checked + .tgl-btn {
-  background: #BADDD4;
-  border: 2px solid #000;
+    background: #baddd4;
+    border: 2px solid #000;
 }
 
 
 .tgl-flat:checked + .tgl-btn:after {
-  background: #000;
-  border-color: #000;
-  left: 7.5%;
+    background: #000;
+    border-color: #000;
+    left: 6.5%;
 }

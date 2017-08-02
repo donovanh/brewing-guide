@@ -7,11 +7,17 @@ $(function() {
   var allActions;
   var timer = 0;
   var timerTimeout;
-  var timePerTick = 100;
+  var timePerTick = 1000;
 
   if (currentStep > lastStep) {
     currentStep = 0;
   }
+
+  // Add a "intro-animation" class to body while the bars are animating into place
+  $('html').addClass('intro');
+  setTimeout(function() {
+    $('html').removeClass('intro');
+  }, 2000);
 
   // For when a timed step is running
   var autoPlay = false;
@@ -100,11 +106,13 @@ $(function() {
     $('#cups-label').text(brewGuide.overview.cups);
 
     // items
-    var itemsList = $('#items-list');;
+    var itemsList = $('#items-list');
+    var delay = 1.5;
     $(brewGuide.items).each(function(index, item) {
-      // items
-      var newItem = $('<li>'+ item +'</li>')
+      var newItem = $('<li class="fade-in">'+ item +'</li>');
+      $(newItem).css('animation-delay', delay + 's');
       itemsList.append(newItem);
+      delay += .1;
     });
 
   }
@@ -282,6 +290,11 @@ $(function() {
   function countdownTimer() {
     if (timer > 0 && isPlaying) {
       timerTimeout = setTimeout(function() {
+        if (timer <= 6) {
+          $('.button-border-bg').addClass('countdown');
+        } else{
+          $('.button-border-bg').removeClass('countdown');
+        }
         timer--;
         var timeSoFar = timeElapsed();
         updateTimeOnPage(timeSoFar);

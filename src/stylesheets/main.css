@@ -1,7 +1,5 @@
 @import "default";
 
-/* Settings */
-
 /* Dimensions */
 
 $width: 742px;
@@ -11,15 +9,30 @@ $previous-widthx2: 32px;
 $next-width: 34px;
 $next-widthx2: 68px;
 $currentLeft: 68px;
-$stepInvisibleLeft: 104px;
+$stepInvisibleLeft: 100px;
 
 /* Colours */
-$red: #EA5230;
-$red2: #EE755A;
-$red3: #F0866E;
-$red4: #F29783;
+$red: #e9532f;
+$red2: #ed764f;
+$red3: #ef8661;
+$red4: #f19572;
+$green: #baddd4;
+
+/* Animation-related */
+$slight-bounce: cubic-bezier(0,1.01,.47,1.17);
+$exponential-ease: cubic-bezier(0,1,.3,1);
 
 /* General layout */
+
+.red-bg-container {
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
 
 .welcome .red-bg {
   transform: translateX($width);
@@ -33,6 +46,11 @@ $red4: #F29783;
     bottom: 0;
     left: 0;
   z-index: 1;
+  transition: all .5s $exponential-ease;
+}
+
+.intro .red-bg {
+  transition-duration: 0;
 }
 
 .brew-guide {
@@ -40,16 +58,26 @@ $red4: #F29783;
   height: $height;
   width: $width;
   box-shadow: 0 2px 12px $red4;
-  overflow: hidden;
   position: absolute;
     top: 50%;
     left: 50%;
   transform: translate(-50%, -50%);
 }
 
+.cssanimations {
+  .brew-guide {
+    animation: introduce-container 1.2s .3s $slight-bounce forwards;
+    opacity: 0;
+  }
+}
+
+
 .brew-guide {
+
+
   * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* Welcome step styles */
@@ -63,14 +91,21 @@ $red4: #F29783;
     font-size: 28px;
     font-weight: 800;
     line-height: 1.25;
+
+    h1 {
+      animation-delay: .5s;
+    }
   }
   .description {
+    animation-delay: .8s;
     color: $red;
     font-size: 15px;
     padding: 32px 20px 38px 110px;
     line-height: 1.6;
   }
   .youll-need {
+    animation-delay: 1s;
+    animation-duration: 1.8s;
     border: 2px solid #000;
     display: flex;
     max-width: 420px;
@@ -125,15 +160,19 @@ $red4: #F29783;
     }
 
     .amount {
+      animation-delay: 1.2s;
       background-image: url(/images/icons/icon-coffee-grounds.svg);
     }
     .coarseness {
+      animation-delay: 1.3s;
       display: inline-block;
       height: 40px;
       margin: 16px 10px;
       position: relative;
 
       .arrow {
+        animation-delay: 2.8s;
+        animation-duration: 2s;
         position: absolute;
         top: 33px;
       }
@@ -147,86 +186,34 @@ $red4: #F29783;
         padding-bottom: 10px;
       }
     }
-    .coarseness.level-1 {
-      .arrow {
-        left: -4px;
-      }
-    }
-    .coarseness.level-2 {
-      .arrow {
-        left: 8px;
-      }
-    }
-    .coarseness.level-3 {
-      .arrow {
-        left: 18px;
-      }
-    }
-    .coarseness.level-4 {
-      .arrow {
-        left: 29px;
-      }
-    }
-    .coarseness.level-5 {
-      .arrow {
-        left: 39px;
-      }
-    }
-    .coarseness.level-6 {
-      .arrow {
-        left: 48px;
-      }
-    }
-    .coarseness.level-7 {
-      .arrow {
-        left: 57px;
-      }
-    }
-    .coarseness.level-8 {
-      .arrow {
-        left: 67px;
-      }
-    }
-    .coarseness.level-9 {
-      .arrow {
-        left: 76px;
-      }
-    }
-    .coarseness.level-10 {
-      .arrow {
-        left: 85px;
-      }
-    }
-    .coarseness.level-11 {
-      .arrow {
-        left: 94px;
-      }
-    }
-    .coarseness.level-12 {
-      .arrow {
-        left: 103px;
-      }
-    }
-    .coarseness.level-13 {
-      .arrow {
-        left: 111px;
-      }
-    }
-    .coarseness.level-14 {
-      .arrow {
-        left: 120px;
-      }
-    }
+    .coarseness.level-1 .arrow { left: -4px; }
+    .coarseness.level-2 .arrow { left: 8px; }
+    .coarseness.level-3 .arrow { left: 18px; }
+    .coarseness.level-4 .arrow { left: 29px; }
+    .coarseness.level-5 .arrow { left: 39px; }
+    .coarseness.level-6 .arrow { left: 48px; }
+    .coarseness.level-7 .arrow { left: 57px; }
+    .coarseness.level-8 .arrow { left: 67px; }
+    .coarseness.level-9 .arrow { left: 76px; }
+    .coarseness.level-10 .arrow { left: 85px; }
+    .coarseness.level-11 .arrow { left: 94px; }
+    .coarseness.level-12 .arrow { left: 103px; }
+    .coarseness.level-13 .arrow { left: 111px; }
+    .coarseness.level-14 .arrow { left: 120px; }
     .temp {
+      animation-delay: 1.4s;
       background-image: url(/images/icons/icon-temperature.svg);
     }
     .water {
+      animation-delay: 1.5s;
       background-image: url(/images/icons/icon-water.svg);
     }
     .time {
+      animation-delay: 1.6s;
       background-image: url(/images/icons/icon-time.svg);
     }
     .cups {
+      animation-delay: 1.7s;
       background-image: url(/images/icons/icon-cup.svg);
       background-size: 26px;
       background-position: 4px 18px;
@@ -248,30 +235,6 @@ $red4: #F29783;
 
 }
 
-/* General animations */
-
-.fade-up {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: all .5s ease-out;
-}
-
-.fade-in {
-  opacity: 0;
-  transition: all .5s ease-out;
-}
-
-.fade-zoom {
-  opacity: 0;
-  transform: scale(.8);
-  transition: all .5s cubic-bezier(0,1.5,1,1);
-}
-
-.is-visible {
-  opacity: 1;
-  transform: translateY(0) !important;
-}
-
 /* Steps */
 
 .steps {
@@ -289,6 +252,7 @@ $red4: #F29783;
     position: absolute;
       top: 0;
       left: $stepInvisibleLeft;
+    transition: all 1s $exponential-ease;
   }
 
   .step-title {
@@ -297,7 +261,9 @@ $red4: #F29783;
       left: -62px;
       top: 112px;
     width: 160px;
+    opacity: 0;
     transform: rotateZ(-90deg);
+    transition: opacity .5s ease-out;
   }
 
   .previous {
@@ -311,8 +277,19 @@ $red4: #F29783;
   }
 
   .current {
+    animation: show-current 1s $exponential-ease forwards;
     left: 8%;
     opacity: 1;
+
+    .step-title {
+      opacity: 1;
+    }
+  }
+
+  .next {
+    .step-title {
+      opacity: 1;
+    }
   }
 
   .previous.bg-3 {
@@ -368,6 +345,28 @@ $red4: #F29783;
 
 }
 
+.cssanimations.intro .step.next {
+  animation: show-next-step .8s .1s cubic-bezier(.5,2,.5,1) forwards;
+  opacity: 0;
+}
+
+.cssanimations.intro .step.previous {
+  animation: show-prev-step 1s .2s cubic-bezier(.5,2,.5,1) forwards;
+  opacity: 0;
+}
+
+.cssanimations.intro .step.position-2 {
+  animation-delay: .3s;
+}
+
+.cssanimations.intro .step.position-1 {
+  animation-delay: .35s;
+}
+
+.cssanimations.intro .step.position-0 {
+  animation-delay: .4s;
+}
+
 .brew-guide.welcome .next.bg-0 {
   background: $red;
 }
@@ -376,19 +375,14 @@ $red4: #F29783;
   left: 1%;
 }
 
-.step-bg {
-  display: none;
-}
-
-.step-bg.current {
-  display: block;
-}
-
 /* Background images */
 
 
 .step-bg-container {
-  position: relative;
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
   z-index: 1;
 
   .step-bg {
@@ -396,15 +390,28 @@ $red4: #F29783;
   }
 
   .step-bg.current {
-    opacity: 1;
-  
     img {
       display: block;
       height: 100%;
-      max-height: 430px;
+      max-height: 400px;
       margin: 0 auto;
     }
   } 
+}
+
+.step-bg {
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  text-align: center;
+  opacity: 0;
+
+}
+
+.step-bg.current {
+  animation: fade-in-left 1s $exponential-ease forwards;
+  opacity: 1;
 }
 
 
@@ -416,7 +423,6 @@ $red4: #F29783;
   height: 22%;
   opacity: 0;
   position: absolute;
-  z-index: 1;
   width: 100%;
 }
 
@@ -444,13 +450,14 @@ $red4: #F29783;
     border: 2px solid #000;
     border-radius: 50%;
     position: absolute;
-      top: -7px;
+      top: -6px;
       left: 0px;
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
 
   .action.current:after {
+    animation: highlight-current-action 1s cubic-bezier(.54,-0.41,.29,1.42) forwards;
     background: #fff;
   }
 
@@ -482,18 +489,20 @@ $red4: #F29783;
   }
 
   .timer {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     position: absolute;
-    top: -18px;
+      top: -20px;
   }
 
   .start-time {
     left: -2px;
+    transition: all 1s linear;
   }
 
   .end-time {
     right: -3px;
+    transition: all .5s ease-out;
   }
 
   .new-end-time {
@@ -503,28 +512,88 @@ $red4: #F29783;
 
   .timer-bar {
     height: 100%;
-    background: #C1DCD4;
+    background: $green;
     position: absolute;
       top: 0px;
       left: 3px;
     width: 0;
+    transition: all 1s linear;
   }
 }
 
+.actions-container-container {
+  overflow: hidden;
+  position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+  z-index: 1;
+}
+
+.brew-guide:not(.welcome) .actions-container {
+  animation: show-actions-area 1s $exponential-ease forwards;
+}
+
+.intro .timer-bar,
+.intro .start-time {
+  transition: all 1s $exponential-ease;
+}
+
 .actions-text-container {
+  transform-style: preserve-3d;
+  perspective: 800px;
   position: absolute;
     left: 10%;
     top: 32%;
-    right: 35%;
+    right: 32%;
 
   .actions-text {
     font-size: .9em;
     line-height: 1.5;
     position: absolute;
+    opacity: 0;
+    transition: all .5s ease-out;
+  }
+
+  .actions-text.current {
+    opacity: 1;
   }
 }
 
+.cssanimations .actions-text.current {
+  animation: show-actions-text 1s cubic-bezier(.54,-0.41,.29,1.42); 
+}
+
 /* Play button */
+
+.button-border-bg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+
+  .button-border {
+    /* 174.7667694091797 */
+    stroke-dasharray: 174.7667694091797;
+    stroke-dashoffset: 174.7667694091797;
+    transform-origin: 50% 50%;
+  }
+}
+
+.button-border-bg:after {
+  content: "";
+  position: absolute;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+  background: white;
+  border-radius: 50%;
+}
+
+.cssanimations .button-border-bg.countdown .button-border {
+  animation: show-button-border 6s linear forwards;
+}
 
 .brew-guide-button {
   background: $red;
@@ -534,26 +603,35 @@ $red4: #F29783;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  height: 58px;
-  line-height: 58px;
+  height: 56px;
+  line-height: 56px;
   position: absolute;
-    left: 18px;
-    bottom: 82px;
+    left: 20px;
+    bottom: 84px;
   text-align: center;
   transform: translateZ(0);
-  width: 58px;
+  width: 56px;
   z-index: 10;
+  transition: all 1s $exponential-ease;
 }
 
 .brew-guide.welcome {
   .brew-guide-button {
     background: $red;
-    left: auto;
-    right: 56px;
-    bottom: 78px;
     height: 100px;
     width: 100px;
     line-height: 105px;
+    transform: translateX(570px);
+  }
+  .button-border-bg {
+    display: none;
+  }
+}
+
+.cssanimations {
+  .brew-guide.welcome .brew-guide-button {
+    animation: show-start-button 1s 1.5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    opacity: 0;
   }
 }
 
@@ -571,16 +649,19 @@ $red4: #F29783;
 }
 
 .brew-guide-button-start {
+
   .start-text {
     color: #fff;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 800;
     text-transform: uppercase;
+    letter-spacing: 1.25;
+    margin-bottom: -2px;
     margin-right: 10px;
   }
   .start-arrow {
     position: absolute;
-    right: 8px;
+    right: -10px;
     top: calc(50% - 9px);
   }
 }
@@ -593,26 +674,21 @@ $red4: #F29783;
   display: none;
 }
 
-.brew-guide-button.start .brew-guide-button-start {
-  display: block;
-}
-
-.brew-guide-button.standalone .brew-guide-button-next {
-  display: block;
-}
-
-.brew-guide-button.playing .brew-guide-button-pause {
-  display: block;
-}
-
-.brew-guide-button.paused .brew-guide-button-play {
-  display: block;
-}
-
+.brew-guide-button.start .brew-guide-button-start,
+.brew-guide-button.standalone .brew-guide-button-next,
+.brew-guide-button.playing .brew-guide-button-pause,
+.brew-guide-button.paused .brew-guide-button-play,
 .brew-guide-button.end .brew-guide-button-end {
+  animation: fade-in-zoom .5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+  opacity: 0;
   display: block;
 }
 
+.brew-guide-button.standalone {
+  .button-border-bg {
+    display: none;
+  }
+}
 
 /* Action text */
 
@@ -630,7 +706,7 @@ $red4: #F29783;
 
 .autoplay-container {
   position: absolute;
-    right: 20%;
+    right: 19%;
     top: 22px;
   width: 102px;
   display: flex;
@@ -638,14 +714,14 @@ $red4: #F29783;
   .autoplay-text {
     text-transform: uppercase;
     font-weight: 800;
-    font-size: .8em;
+    font-size: 11px;
     line-height: 1.33;
     letter-spacing: 1.1;
     display: inline-block;
   }
 
   .autoplay-toggle {
-    margin: -4px 0 0 10px;
+    margin: -3px 0 0 6px;
   }
 }
 
@@ -665,7 +741,7 @@ $red4: #F29783;
   }
   
   + .tgl-btn {
-    font-size: 10px;
+    font-size: 8px;
     outline: 0;
     display: block;
     width: 3.4em;
@@ -678,8 +754,8 @@ $red4: #F29783;
       position: relative;
       display: block;
       content: "";
-      width: .6em;
-      height: .6em;
+      width: .5em;
+      height: .5em;
       top: 7%;
     }
     
@@ -704,11 +780,11 @@ $red4: #F29783;
     padding: 2px;
     transition: all .2s ease;
     background: #fff;
-    border: 2px solid  #aaa;
+    border: 2px solid  #000;
     border-radius: 2em;
     &:after {
       transition: all .2s ease;
-      border: 2px solid #aaa;
+      border: 2px solid #000;
       content: "";
       left: 60%;
       border-radius: 50%;
@@ -717,10 +793,10 @@ $red4: #F29783;
   
   &:checked + .tgl-btn {
     border: 2px solid #000;
-    background: #BADDD4;
+    background: $green;
     &:after {
       background: #000;
-      left: 7.5%;
+      left: 6.5%;
       border-color: #000;
     }
   }
