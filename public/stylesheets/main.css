@@ -846,7 +846,7 @@ html[data-prev="2"] .brew-guide-button {
   opacity: 0;
 }
 
-.brew-guide-button.standalone .button-border-bg {
+.brew-guide-button.standalone .button-border-bg, .brew-guide-button.end .button-border-bg {
     display: none;
 }
 

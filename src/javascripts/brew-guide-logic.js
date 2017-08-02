@@ -325,11 +325,14 @@ $(function() {
   function timeElapsed() {
     var currentTimedActions = $(allActions[currentStep]).parents('.timed-area').find('.action');
     var timeElapsed = 0;
+    if ($(allActions).index($(allActions[currentStep])) === ($(allActions).length - 1)) {
+      currentTimedActions = $('.timed-area').find('.action');
+    }
     $(currentTimedActions).each(function(index, action) {
       if (!$(action).hasClass('current')) {
         timeElapsed += parseInt($(action).attr('data-time'));
       } else {
-        if (timer >= 0) {
+        if (timer > 0) {
           timeElapsed += parseInt($(action).attr('data-time')) - timer;
         }
         return false;
@@ -355,7 +358,22 @@ $(function() {
       // Set width to that difference
       $(timerBar).css('width', distance + 'px');
       updateStartTimePosition(distance);
-    } else{
+    } else if ($(allActions).index($(allActions[currentStep])) === ($(allActions).length - 1)) {
+      currentTimedActions = $('.timed-area').find('.action');
+      console.log('ok: ', currentTimedActions);
+      var timerArea = $('.timed-area');
+      var timerBar = $(timerArea).find('.timer-bar');
+      // Get position of first timed action in this timer area
+      var firstTimedAction = $(timerArea).find('.action')[0];
+      var currentAction = $(allActions)[$(allActions).length - 1];
+      // Get difference between them
+      var distance = getDistanceBetweenActions(firstTimedAction, currentAction);
+      // Set width to that difference
+      $(timerBar).css('width', distance + 'px');
+      // hide the end time
+      hideEndTime();
+      updateStartTimePosition(distance);
+    } else {
       updateStartTimePosition(0);
     }
   }

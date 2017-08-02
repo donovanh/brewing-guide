@@ -703,7 +703,8 @@ html[data-prev="2"] .brew-guide-button {
   display: block;
 }
 
-.brew-guide-button.standalone {
+.brew-guide-button.standalone,
+.brew-guide-button.end {
   .button-border-bg {
     display: none;
   }
