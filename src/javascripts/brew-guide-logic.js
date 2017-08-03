@@ -238,6 +238,13 @@ $(function() {
       prevSteps++;
       positionIndex++;
     }
+    if (index >= 0) {
+      while (index >= 0) {
+        $(allSteps[index])
+          .addClass('more-previous');
+        index--;
+      }
+    }
     // Add a class to body so that I can position the button etc based on how many prev items
     $('html').attr('data-prev', prevSteps);
   }
@@ -258,6 +265,15 @@ $(function() {
         .addClass('position-' + (positionTarget - nextSteps));
       index++;
       nextSteps++;
+    }
+    console.log(index, $(allSteps).length);
+    if (index < ($(allSteps).length)) {
+      console.log('This many left: ', index);
+      while (index < ($(allSteps).length)) {
+        $(allSteps[index])
+          .addClass('more-next');
+        index++;
+      }
     }
     $('html').attr('data-next', nextSteps);
   }

@@ -377,7 +377,6 @@ html, ul, li, span {
     cursor: pointer;
     height: 500px;
     left: 0;
-    opacity: 0;
     position: absolute;
     top: 0;
     -webkit-transform: translateX(180px);
@@ -420,7 +419,6 @@ html, ul, li, span {
 }
 
 .steps .previous {
-    opacity: 1;
     width: 16px;
 }
 
@@ -474,9 +472,18 @@ html, ul, li, span {
     transform: translateX(0);
 }
 
+.steps .more-previous {
+    -webkit-transform: translateX(-16px);
+    transform: translateX(-16px);
+}
+
+.steps .more-next {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
 .steps .next {
     left: auto;
-    opacity: 1;
     right: 0;
     width: 34px;
 }
