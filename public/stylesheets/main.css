@@ -508,13 +508,9 @@ html, ul, li, span {
     transform: translateX(calc(100% - 102px));
 }
 
-/*.cssanimations.intro .step.next {
-  animation: show-next-step 1.5s 1s $exponential-ease forwards;
-  opacity: 0;
-}
-
+/*.cssanimations.intro .step.next,
 .cssanimations.intro .step.previous {
-  animation: show-prev-step 1.2s 1s $exponential-ease forwards;
+  animation: fade-in 2s $exponential-ease forwards;
   opacity: 0;
 }*/
 
