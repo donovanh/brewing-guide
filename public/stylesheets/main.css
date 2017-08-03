@@ -375,12 +375,36 @@ html, ul, li, span {
 }
 
 .steps .step {
+    cursor: pointer;
     height: 500px;
     left: -16px;
     opacity: 0;
     position: absolute;
     top: 0;
     transition: all .5s cubic-bezier(0,1,.3,1);
+}
+
+.steps .step:before {
+    bottom: 0;
+    box-shadow: 0 0 10px #e9532f;
+    box-shadow: 0 0 10px #e9532f;
+    content: "";
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all .5s ease-out;
+    z-index: 0;
+    will-change: opacity;
+}
+
+.steps .step:hover {
+    z-index: 10;
+}
+
+.steps .step:hover:before {
+    opacity: 1;
 }
 
 .steps .step-title {

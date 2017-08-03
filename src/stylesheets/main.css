@@ -247,11 +247,35 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 
   .step {
     height: $height;
+    cursor: pointer;
     opacity: 0;
     position: absolute;
       top: 0;
       left: $stepInvisibleLeft;
     transition: all .5s $exponential-ease;
+  }
+
+  .step:before {
+    content: "";
+    box-shadow: 0 0 10px $red;
+    position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    opacity: 0;
+    box-shadow: 0 0 10px $red;
+    transition: all .5s ease-out;
+    z-index: 0;
+    will-change: opacity;
+  }
+  
+  .step:hover {
+    z-index: 10;
+  }
+
+  .step:hover:before {
+    opacity: 1;
   }
 
   .step-title {
