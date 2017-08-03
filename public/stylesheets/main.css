@@ -431,6 +431,7 @@ html, ul, li, span {
 .steps .current {
     -webkit-animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
     animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
+    cursor: default;
     left: 8%;
     opacity: 1;
 }
