@@ -486,12 +486,6 @@ html, ul, li, span {
   width: 102px;
 }
 
-/*.cssanimations.intro .step.next,
-.cssanimations.intro .step.previous {
-  animation: fade-in 2s $exponential-ease forwards;
-  opacity: 0;
-}*/
-
 .brew-guide.welcome .next.bg-0 {
   background: #e9532f;
 }
@@ -817,6 +811,10 @@ html[data-prev="2"] .actions-text-container {
   transition: all 1s cubic-bezier(0,1,.3,1);
   width: 56px;
   z-index: 10;
+}
+
+.mob-start-button {
+  display: none;
 }
 
 /* Override position based on number of previous items */
