@@ -148,6 +148,7 @@ $(function() {
 
   function showStep(event) {
     // Get the index of the clicked item and show it
+    console.log('Clicking on ', event.target);
     if ($(event.target).hasClass('step')) {
       var target = $(event.target);
     } else {
@@ -266,9 +267,7 @@ $(function() {
       index++;
       nextSteps++;
     }
-    console.log(index, $(allSteps).length);
     if (index < ($(allSteps).length)) {
-      console.log('This many left: ', index);
       while (index < ($(allSteps).length)) {
         $(allSteps[index])
           .addClass('more-next');

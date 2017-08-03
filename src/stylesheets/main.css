@@ -244,16 +244,15 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     top: 0;
     right: 0;
     left: 0;
+  display: flex;
 
   .step {
     height: $height;
     cursor: pointer;
-    position: absolute;
-      top: 0;
-      left: 0;
-    transform: translateX(180px);
-    transition: transform .5s $exponential-ease;
-    will-change: transform;
+    display: inline-block;
+    transition: width 1s $exponential-ease;
+    will-change: width;
+    position: relative;
   }
 
   .step:before {
@@ -289,7 +288,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     transform: rotateZ(-90deg);
   }
 
-  .previous, .more-previous {
+  .previous {
     width: $previous-width;
 
     .step-title {
@@ -298,15 +297,15 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   }
 
   .current {
-    animation: show-current .5s $exponential-ease forwards;
+    /*animation: show-current .5s $exponential-ease forwards;*/
     cursor: default;
-    width: 32px;
-    transform: translateX(54px);
+    width: 600px;
     opacity: 1;
 
     .step-title {
       opacity: 1;
       transition: opacity .5s ease-out;
+      left: -48px;
     }
   }
 
@@ -328,24 +327,12 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     background: $red4;
   }
 
-  .previous.position-2 {
-    transform: translateX($previous-widthx2);
-  }
-
-  .previous.position-1 {
-    transform: translateX($previous-width);
-  }
-
-  .previous.position-0 {
-    transform: translateX(0);
-  }
-
-  .more-previous {
-    transform: translateX(-16px);
-  }
-
+  .more-previous,
   .more-next {
-    transform: translateX(100%);
+    display: none;
+    pointer-events: none;
+    width: 0;
+    transition: none;
   }
 
   .next {
@@ -366,18 +353,12 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     background: $red4;
   }
 
-  .next.position-0 {
-    transform: translateX(calc(100% - $next-width));
-  }
+}
 
-  .next.position-1 {
-    transform: translateX(calc(100% - $next-widthx2));
-  }
-
-  .next.position-2 {
-    transform: translateX(calc(100% - $next-widthx3));
-  }
-
+.welcome .steps {
+  width: 102px;
+  right: 0;
+  left: auto;
 }
 
 /*.cssanimations.intro .step.next,
@@ -400,10 +381,23 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 }
 
 html[data-prev="1"] .step.current {
-  transform: translateX(28px);
+  width: 628px;
 }
 html[data-prev="2"] .step.current {
-  transform: translateX(46px);
+  width: 646px;
+}
+
+html[data-prev="3"][data-next="0"] .step.current {
+  width: 694px;
+}
+html[data-prev="3"][data-next="1"] .step.current {
+  width: 660px;
+}
+html[data-prev="3"][data-next="2"] .step.current {
+  width: 626px;
+}
+html[data-prev="3"][data-next="3"] .step.current {
+  width: 600px;
 }
 
 
@@ -695,7 +689,7 @@ html[data-prev="2"] .brew-guide-button {
     height: 100px;
     width: 100px;
     line-height: 105px;
-    transform: translateX(600px);
+    transform: translateX(570px);
   }
   .button-border-bg {
     display: none;

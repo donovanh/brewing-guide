@@ -365,6 +365,9 @@ html, ul, li, span {
 /* Steps */
 
 .steps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
     left: 0;
   position: absolute;
     right: 0;
@@ -375,16 +378,11 @@ html, ul, li, span {
 
 .steps .step {
     cursor: pointer;
+    display: inline-block;
     height: 500px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    -webkit-transform: translateX(180px);
-    transform: translateX(180px);
-    transition: -webkit-transform .5s cubic-bezier(0,1,.3,1);
-    transition: transform .5s cubic-bezier(0,1,.3,1);
-    transition: transform .5s cubic-bezier(0,1,.3,1), -webkit-transform .5s cubic-bezier(0,1,.3,1);
-    will-change: transform;
+    position: relative;
+    transition: width 1s cubic-bezier(0,1,.3,1);
+    will-change: width;
 }
 
 .steps .step:before {
@@ -421,25 +419,24 @@ html, ul, li, span {
     width: 160px;
 }
 
-.steps .previous, .steps .more-previous {
+.steps .previous {
     width: 16px;
 }
 
-.steps .previous .step-title, .steps .more-previous .step-title {
+.steps .previous .step-title {
     opacity: 0;
 }
 
 .steps .current {
-    -webkit-animation: show-current .5s cubic-bezier(0,1,.3,1) forwards;
-    animation: show-current .5s cubic-bezier(0,1,.3,1) forwards;
+
+    /*animation: show-current .5s $exponential-ease forwards;*/
     cursor: default;
     opacity: 1;
-    -webkit-transform: translateX(54px);
-    transform: translateX(54px);
-    width: 32px;
+    width: 600px;
 }
 
 .steps .current .step-title {
+    left: -48px;
     opacity: 1;
     transition: opacity .5s ease-out;
 }
@@ -460,29 +457,11 @@ html, ul, li, span {
     background: #f19572;
 }
 
-.steps .previous.position-2 {
-    -webkit-transform: translateX(32px);
-    transform: translateX(32px);
-}
-
-.steps .previous.position-1 {
-    -webkit-transform: translateX(16px);
-    transform: translateX(16px);
-}
-
-.steps .previous.position-0 {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-}
-
-.steps .more-previous {
-    -webkit-transform: translateX(-16px);
-    transform: translateX(-16px);
-}
-
-.steps .more-next {
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
+.steps .more-previous, .steps .more-next {
+    display: none;
+    pointer-events: none;
+    transition: none;
+    width: 0;
 }
 
 .steps .next {
@@ -503,19 +482,10 @@ html, ul, li, span {
     background: #f19572;
 }
 
-.steps .next.position-0 {
-    -webkit-transform: translateX(calc(100% - 34px));
-    transform: translateX(calc(100% - 34px));
-}
-
-.steps .next.position-1 {
-    -webkit-transform: translateX(calc(100% - 68px));
-    transform: translateX(calc(100% - 68px));
-}
-
-.steps .next.position-2 {
-    -webkit-transform: translateX(calc(100% - 102px));
-    transform: translateX(calc(100% - 102px));
+.welcome .steps {
+  left: auto;
+  right: 0;
+  width: 102px;
 }
 
 /*.cssanimations.intro .step.next,
@@ -538,12 +508,23 @@ html, ul, li, span {
 }
 
 html[data-prev="1"] .step.current {
-  -webkit-transform: translateX(28px);
-          transform: translateX(28px);
+  width: 628px;
 }
 html[data-prev="2"] .step.current {
-  -webkit-transform: translateX(46px);
-          transform: translateX(46px);
+  width: 646px;
+}
+
+html[data-prev="3"][data-next="0"] .step.current {
+  width: 694px;
+}
+html[data-prev="3"][data-next="1"] .step.current {
+  width: 660px;
+}
+html[data-prev="3"][data-next="2"] .step.current {
+  width: 626px;
+}
+html[data-prev="3"][data-next="3"] .step.current {
+  width: 600px;
 }
 
 
@@ -852,8 +833,8 @@ html[data-prev="2"] .brew-guide-button {
     background: #e9532f;
     height: 100px;
     line-height: 105px;
-    -webkit-transform: translateX(600px);
-    transform: translateX(600px);
+    -webkit-transform: translateX(570px);
+    transform: translateX(570px);
     width: 100px;
 }
 
