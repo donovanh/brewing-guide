@@ -364,7 +364,6 @@ $(function() {
       var currentAction = $(allActions[currentStep])[0];
       // Get difference between them
       var distance = getDistanceBetweenActions(firstTimedAction, currentAction);
-      console.log('new distance: ', distance);
       // Set width to that difference
       $(timerBar).css('width', distance + 'px');
       updateStartTimePosition(distance);
@@ -438,7 +437,6 @@ $(function() {
     if (startTimeRightEdge > endTimeLeftEdge) {
       hideEndTime();
     }
-    console.log('Setting start time, ', rightBound, startTimeRightEdge, startTimeLeftEdge, endTimeLeftEdge);
     if (startTimeLeftEdge >= endTimeLeftEdge && startTimeLeftEdge > 0) {
       placeStartTimeOnEndTime();
     }
