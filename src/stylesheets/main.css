@@ -325,8 +325,12 @@ html[data-next="0"] {
     }
   }
 
+  .current {
+    animation: show-current .6s linear forwards;
+  }
+
   .next {
-    width: $next-width;
+    width: 38px;
 
     .step-title {
       opacity: 1;
@@ -336,6 +340,10 @@ html[data-next="0"] {
   .next:hover {
     width: 44px;
     z-index: 10;
+    .step-title {
+      transition: transform .6s $exponential-ease;
+      transform: rotateZ(-90deg) translateY(5px);
+    }
   }
 
   .next.bg-0 {
@@ -351,7 +359,6 @@ html[data-next="0"] {
   }
 
   .next.position-0 {
-
     transform: translateX(645px);
   }
 
@@ -360,13 +367,16 @@ html[data-next="0"] {
   }
 
   .next.position-1 {
-    padding-left: 10px;
     transform: translateX(679px);
   }
 
   .next.position-2 {
-    padding-left: 10px;
+    width: 34px;
     transform: translateX(713px);
+  }
+
+  .next.position-2:hover {
+    width: 44px;
   }
 
   .next.position-1.shift-right {
@@ -392,9 +402,16 @@ html[data-next="0"] {
 }
 
 .step[data-step="welcome"]:not(.current) {
+  cursor: pointer;
   background: $red3;
   width: $previous-width;
-  transform: translateX(-18px);
+  width: 19px;
+  transform: translateX(-17px);
+}
+
+.step[data-step="welcome"]:hover {
+  width: 24px;
+  transform: translateX(-22px);
 }
 
 
@@ -655,12 +672,12 @@ html[data-next="0"] {
 }
 
 /* Override position based on number of previous items */
-html[data-prev="1"] .brew-guide-button {
+/*html[data-prev="1"] .brew-guide-button {
   left: -12px;
 }
 html[data-prev="2"] .brew-guide-button {
   left: 4px;
-}
+}*/
 
 .brew-guide.welcome {
   .brew-guide-button {

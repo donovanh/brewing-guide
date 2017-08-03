@@ -450,8 +450,13 @@ html[data-next="0"] .brew-guide {
     opacity: 1;
 }
 
+.steps .current {
+    -webkit-animation: show-current .6s linear forwards;
+    animation: show-current .6s linear forwards;
+}
+
 .steps .next {
-    width: 34px;
+    width: 38px;
 }
 
 .steps .next .step-title {
@@ -461,6 +466,14 @@ html[data-next="0"] .brew-guide {
 .steps .next:hover {
     width: 44px;
     z-index: 10;
+}
+
+.steps .next:hover .step-title {
+    -webkit-transform: rotateZ(-90deg) translateY(5px);
+    transform: rotateZ(-90deg) translateY(5px);
+    transition: -webkit-transform .6s cubic-bezier(0,1,.3,1);
+    transition: transform .6s cubic-bezier(0,1,.3,1);
+    transition: transform .6s cubic-bezier(0,1,.3,1), -webkit-transform .6s cubic-bezier(0,1,.3,1);
 }
 
 .steps .next.bg-0 {
@@ -486,15 +499,18 @@ html[data-next="0"] .brew-guide {
 }
 
 .steps .next.position-1 {
-    padding-left: 10px;
     -webkit-transform: translateX(679px);
     transform: translateX(679px);
 }
 
 .steps .next.position-2 {
-    padding-left: 10px;
     -webkit-transform: translateX(713px);
     transform: translateX(713px);
+    width: 34px;
+}
+
+.steps .next.position-2:hover {
+    width: 44px;
 }
 
 .steps .next.position-1.shift-right {
@@ -522,9 +538,17 @@ html[data-next="0"] .brew-guide {
 
 .step[data-step="welcome"]:not(.current) {
   background: #ef8661;
-  -webkit-transform: translateX(-18px);
-          transform: translateX(-18px);
+  cursor: pointer;
+  -webkit-transform: translateX(-17px);
+          transform: translateX(-17px);
   width: 16px;
+  width: 19px;
+}
+
+.step[data-step="welcome"]:hover {
+  -webkit-transform: translateX(-22px);
+          transform: translateX(-22px);
+  width: 24px;
 }
 
 
@@ -804,12 +828,12 @@ html[data-next="0"] .brew-guide {
 }
 
 /* Override position based on number of previous items */
-html[data-prev="1"] .brew-guide-button {
+/*html[data-prev="1"] .brew-guide-button {
   left: -12px;
 }
 html[data-prev="2"] .brew-guide-button {
   left: 4px;
-}
+}*/
 
 .brew-guide.welcome .brew-guide-button {
     background: #e9532f;

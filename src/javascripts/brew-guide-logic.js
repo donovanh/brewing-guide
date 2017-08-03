@@ -130,7 +130,7 @@ $(function() {
     allActions = $('#actions-container').find('.action'); 
 
     $('.step').click(showStep);
-    $('.step').hover(hoverNext, hoverOut);
+    $('.step').not('.welcome').hover(hoverNext, hoverOut);
 
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
@@ -171,6 +171,9 @@ $(function() {
   }
 
   function hoverNext(event) {
+    if ($(event.target).hasClass('current')) {
+      return;
+    }
     if ($(event.target).hasClass('step')) {
       var target = $(event.target);
     } else {
