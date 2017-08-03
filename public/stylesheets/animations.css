@@ -194,31 +194,31 @@
 
 @-webkit-keyframes show-start-button {
   0% {
-    -webkit-transform: translateX(570px);
-            transform: translateX(570px);
+    -webkit-transform: translateX(594px);
+            transform: translateX(594px);
   }
-  30% {
-    -webkit-transform: translateX(570px) scale(1.2);
-            transform: translateX(570px) scale(1.2);
+  60% {
+    -webkit-transform: translateX(594px) scale(.9);
+            transform: translateX(594px) scale(.9);
   }
   100% {
-    -webkit-transform: translateX(570px);
-            transform: translateX(570px);
+    -webkit-transform: translateX(594px);
+            transform: translateX(594px);
   }
 }
 
 @keyframes show-start-button {
   0% {
-    -webkit-transform: translateX(570px);
-            transform: translateX(570px);
+    -webkit-transform: translateX(594px);
+            transform: translateX(594px);
   }
-  30% {
-    -webkit-transform: translateX(570px) scale(1.2);
-            transform: translateX(570px) scale(1.2);
+  60% {
+    -webkit-transform: translateX(594px) scale(.9);
+            transform: translateX(594px) scale(.9);
   }
   100% {
-    -webkit-transform: translateX(570px);
-            transform: translateX(570px);
+    -webkit-transform: translateX(594px);
+            transform: translateX(594px);
   }
 }
 

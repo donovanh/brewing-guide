@@ -664,20 +664,12 @@ html[data-next="0"] {
   transform: translateZ(0);
   width: 56px;
   z-index: 10;
-  transition: all 1s $exponential-ease;
+  transition: all 2s $exponential-ease;
 }
 
 .mob-start-button {
   display: none;
 }
-
-/* Override position based on number of previous items */
-/*html[data-prev="1"] .brew-guide-button {
-  left: -12px;
-}
-html[data-prev="2"] .brew-guide-button {
-  left: 4px;
-}*/
 
 .brew-guide.welcome {
   .brew-guide-button {
@@ -685,7 +677,7 @@ html[data-prev="2"] .brew-guide-button {
     height: 100px;
     width: 100px;
     line-height: 105px;
-    transform: translateX(570px);
+    transform: translateX(594px);
   }
   .button-border-bg {
     display: none;
