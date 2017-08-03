@@ -1,1 +1,24 @@
 /* Mobile overrides for the styles of the Brew Guide */
+
+/* Smartphones (portrait and landscape) ———– */
+@media only screen
+and (min-width : 320px)
+and (max-width : 520px) {
+  .brew-guide {
+    -webkit-animation: none !important;
+            animation: none !important;
+    background: #fff;
+    box-shadow: none;
+    height: 100%;
+      left: auto;
+    opacity: 1 !important;
+    overflow: hidden;
+    position: relative;
+      top: auto;
+    -webkit-transform: none;
+            transform: none;
+    width: 100%;
+  }
+
+
+}

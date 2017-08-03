@@ -94,8 +94,8 @@ html, ul, li, span {
 }
 
 .cssanimations .brew-guide {
-    -webkit-animation: introduce-container 1.2s .3s cubic-bezier(0,1.01,.47,1.17) forwards;
-    animation: introduce-container 1.2s .3s cubic-bezier(0,1.01,.47,1.17) forwards;
+    -webkit-animation: introduce-container 1.2s .3s cubic-bezier(0,1,.5,1.17) forwards;
+    animation: introduce-container 1.2s .3s cubic-bezier(0,1,.5,1.17) forwards;
     opacity: 0;
 }
 
@@ -381,7 +381,7 @@ html, ul, li, span {
     display: inline-block;
     height: 500px;
     position: relative;
-    transition: width 1s cubic-bezier(0,1,.3,1);
+    transition: width .6s cubic-bezier(.27,.02,0,1.2);
     will-change: width;
 }
 
@@ -428,8 +428,6 @@ html, ul, li, span {
 }
 
 .steps .current {
-
-    /*animation: show-current .5s $exponential-ease forwards;*/
     cursor: default;
     opacity: 1;
     width: 600px;
