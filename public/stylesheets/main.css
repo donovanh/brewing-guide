@@ -493,19 +493,19 @@ html, ul, li, span {
     background: #f19572;
 }
 
-.steps .next.position-1 {
+.steps .next.position-0 {
     -webkit-transform: translateX(calc(100% - 34px));
     transform: translateX(calc(100% - 34px));
 }
 
-.steps .next.position-2 {
+.steps .next.position-1 {
     -webkit-transform: translateX(calc(100% - 68px));
     transform: translateX(calc(100% - 68px));
 }
 
-.steps .next.position-0 {
-    -webkit-transform: translateX(100%);
-    transform: translateX(100%);
+.steps .next.position-2 {
+    -webkit-transform: translateX(calc(100% - 102px));
+    transform: translateX(calc(100% - 102px));
 }
 
 /*.cssanimations.intro .step.next {
