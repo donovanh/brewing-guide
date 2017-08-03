@@ -9,7 +9,7 @@ $previous-widthx2: 32px;
 $next-width: 34px;
 $next-widthx2: 68px;
 $currentLeft: 68px;
-$stepInvisibleLeft: 100px;
+$stepInvisibleLeft: -16px;
 
 /* Colours */
 $red: #e9532f;
@@ -240,7 +240,6 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 .steps {
   z-index: 2;
   position: absolute;
-  pointer-events: none;
     top: 0;
     right: 0;
     bottom: 0;
@@ -252,7 +251,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     position: absolute;
       top: 0;
       left: $stepInvisibleLeft;
-    transition: all 1s $exponential-ease;
+    transition: all .5s $exponential-ease;
   }
 
   .step-title {
@@ -263,7 +262,6 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     width: 160px;
     opacity: 0;
     transform: rotateZ(-90deg);
-    transition: opacity .5s ease-out;
   }
 
   .previous {
@@ -283,6 +281,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 
     .step-title {
       opacity: 1;
+      transition: opacity .5s ease-out;
     }
   }
 
@@ -346,25 +345,13 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 }
 
 .cssanimations.intro .step.next {
-  animation: show-next-step .8s .1s cubic-bezier(.5,2,.5,1) forwards;
+  animation: show-next-step 1.5s 1s $exponential-ease forwards;
   opacity: 0;
 }
 
 .cssanimations.intro .step.previous {
-  animation: show-prev-step 1s .2s cubic-bezier(.5,2,.5,1) forwards;
+  animation: show-prev-step 1.2s 1s $exponential-ease forwards;
   opacity: 0;
-}
-
-.cssanimations.intro .step.position-2 {
-  animation-delay: .3s;
-}
-
-.cssanimations.intro .step.position-1 {
-  animation-delay: .35s;
-}
-
-.cssanimations.intro .step.position-0 {
-  animation-delay: .4s;
 }
 
 .brew-guide.welcome .next.bg-0 {
@@ -390,8 +377,8 @@ html[data-prev="2"] .step.current {
 .step-bg-container {
   position: absolute;
     top: 0;
-    right: 0;
-    left: 0;
+    right: 100px;
+    left: 48px;
   z-index: 1;
 
   .step-bg {
@@ -402,11 +389,29 @@ html[data-prev="2"] .step.current {
     img {
       display: block;
       height: 100%;
-      max-height: 400px;
+      max-height: 500px;
+      max-width: 100%;
       margin: 0 auto;
     }
   } 
 }
+
+html[data-prev="1"] .step-bg-container {
+  left: 16px;
+}
+html[data-prev="2"] .step-bg-container {
+  left: 32px;
+}
+html[data-next="0"] .step-bg-container {
+  right: 0;
+}
+html[data-next="1"] .step-bg-container {
+  right: 32px;
+}
+html[data-next="2"] .step-bg-container {
+  right: 66px;
+}
+
 
 .step-bg {
   position: absolute;
@@ -502,7 +507,7 @@ html[data-prev="2"] .step.current {
     font-size: 14px;
     font-weight: 600;
     position: absolute;
-      top: -20px;
+      top: -24px;
   }
 
   .start-time {
@@ -521,7 +526,7 @@ html[data-prev="2"] .step.current {
   }
 
   .timer-bar {
-    height: 100%;
+    height: 12px;
     background: $green;
     position: absolute;
       top: 0px;
@@ -559,11 +564,11 @@ html[data-prev="2"] .step.current {
     right: 32%;
 
   .actions-text {
-    font-size: .9em;
+    font-size: 12.5px;
     line-height: 1.5;
     position: absolute;
     opacity: 0;
-    transition: all .5s ease-out;
+    transition: all .2s ease-out;
   }
 
   .actions-text.current {
@@ -572,7 +577,7 @@ html[data-prev="2"] .step.current {
 }
 
 .cssanimations .actions-text.current {
-  animation: show-actions-text 1s cubic-bezier(.54,-0.41,.29,1.42); 
+  animation: show-actions-text 1s $exponential-ease; 
 }
 
 /* Play button */
@@ -651,7 +656,6 @@ html[data-prev="2"] .brew-guide-button {
 .cssanimations {
   .brew-guide.welcome .brew-guide-button {
     animation: show-start-button 1s .5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
-    opacity: 0;
   }
 }
 
@@ -665,6 +669,12 @@ html[data-prev="2"] .brew-guide-button {
   background: #fff;
   img {
     margin-left: 3px;
+  }
+}
+
+.brew-guide-button.playing {
+  img {
+    margin-left: 0;
   }
 }
 

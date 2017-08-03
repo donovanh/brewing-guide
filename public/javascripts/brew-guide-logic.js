@@ -86,7 +86,7 @@ $(function() {
     $('#amount-label').text(brewGuide.overview.amount + 'g');
 
     // grindText / grindValue
-    $('#grind-label').text(brewGuide.overview.grindText);
+    $('#grind-label').text('Coarseness: ' + brewGuide.overview.grindText);
     $('.coarseness').addClass('level-' + brewGuide.overview.grindValue);
 
     // temp
@@ -122,6 +122,8 @@ $(function() {
     lastStep = allSteps.length - 1;
     allActions = $('#actions-container').find('.action'); 
 
+    $('.step').click(showStep);
+
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
     updateButtonStatus();
@@ -145,14 +147,19 @@ $(function() {
   /* Steps */
 
   function showStep(event) {
-    // Get the index of the clicked quote and show it
+    // Get the index of the clicked item and show it
     if ($(event.target).hasClass('step')) {
       var target = $(event.target);
     } else {
       var target = $(event.target).parents('.step');
     }
     var index = $('#brew-guide').find('.step').index(target);
-    showStepbyIndex(index);
+    if (index === 0) {
+      showStart();
+    } else {
+      $('#brew-guide').removeClass('welcome');
+      showStepbyIndex(index);
+    }
   }
 
   function showStart() {
@@ -194,6 +201,8 @@ $(function() {
     addNextClasses(index);
     showCurrentAction(index);
     showCurrentContent();
+    updateTimeOnPage(timeElapsed());
+    setTimerBar();
     updateButtonStatus();
     // Save to URL
     updateURL();
@@ -208,7 +217,7 @@ $(function() {
   }
 
   function removePreviousNextClasses() {
-    $('#brew-guide').find('.step').attr('class', 'step')
+    $('#brew-guide').find('.step').attr('class', 'step');
   }
 
   function addPreviousClasses(index) {
@@ -250,6 +259,7 @@ $(function() {
       index++;
       nextSteps++;
     }
+    $('html').attr('data-next', nextSteps);
   }
 
   function showCurrentContent() {
@@ -354,6 +364,7 @@ $(function() {
       var currentAction = $(allActions[currentStep])[0];
       // Get difference between them
       var distance = getDistanceBetweenActions(firstTimedAction, currentAction);
+      console.log('new distance: ', distance);
       // Set width to that difference
       $(timerBar).css('width', distance + 'px');
       updateStartTimePosition(distance);
@@ -427,6 +438,7 @@ $(function() {
     if (startTimeRightEdge > endTimeLeftEdge) {
       hideEndTime();
     }
+    console.log('Setting start time, ', rightBound, startTimeRightEdge, startTimeLeftEdge, endTimeLeftEdge);
     if (startTimeLeftEdge >= endTimeLeftEdge && startTimeLeftEdge > 0) {
       placeStartTimeOnEndTime();
     }
