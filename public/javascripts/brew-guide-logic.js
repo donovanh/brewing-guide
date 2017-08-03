@@ -33,6 +33,13 @@ $(function() {
     alert('Missing Brew Guide definition');
   }
 
+  // Detect if mobile
+  var isMobile = false;
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    isMobile = true;
+    setUpMobileMode();
+  }
+
   function drawBrewGuideHTML() {
  
     var stepsContainer = $('.steps');
@@ -123,6 +130,7 @@ $(function() {
     allActions = $('#actions-container').find('.action'); 
 
     $('.step').click(showStep);
+    $('.step').hover(hoverNext, hoverOut);
 
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
@@ -148,7 +156,6 @@ $(function() {
 
   function showStep(event) {
     // Get the index of the clicked item and show it
-    console.log('Clicking on ', event.target);
     if ($(event.target).hasClass('step')) {
       var target = $(event.target);
     } else {
@@ -161,6 +168,26 @@ $(function() {
       $('#brew-guide').removeClass('welcome');
       showStepbyIndex(index);
     }
+  }
+
+  function hoverNext(event) {
+    if ($(event.target).hasClass('step')) {
+      var target = $(event.target);
+    } else {
+      var target = $(event.target).parents('.step');
+    }
+    var index = $('#brew-guide').find('.step').index(target);
+    var count = 0;
+    while (index < lastStep) {
+      index++;
+      $(allSteps[index])
+        .addClass('shift-right');
+    }
+  }
+
+  function hoverOut() {
+    $(allSteps)
+      .removeClass('shift-right');
   }
 
   function showStart() {
@@ -250,6 +277,15 @@ $(function() {
     $('html').attr('data-prev', prevSteps);
   }
 
+  function addPreviousClass(index) {
+    if (index > 0) {
+      positionTarget = index - 1;
+    } else {
+      return;
+    }
+    $(allSteps[positionTarget]).addClass('previous');
+  }
+
   function addNextClasses(index) {
     nextSteps = 0;
     index++;
@@ -263,7 +299,7 @@ $(function() {
       $(allSteps[index])
         .addClass('next')
         .addClass('bg-' + nextSteps)
-        .addClass('position-' + (positionTarget - nextSteps));
+        .addClass('position-' + nextSteps);
       index++;
       nextSteps++;
     }
@@ -620,6 +656,60 @@ $(function() {
         }
       });
     });
+  }
+
+  function setUpMobileMode() {
+    var scroll = window.requestAnimationFrame ||
+                 // IE Fallback
+                 function(callback){ window.setTimeout(callback, 1000/60)};
+    var elementsToShow = document.querySelectorAll('.step-bg'); 
+    var welcomeContainer = document.querySelectorAll('.welcome-container')[0].getBoundingClientRect(); 
+    var loop = function() {
+      //console.log(welcomeContainer.height, window.scrollY);
+      if (window.scrollY > welcomeContainer.height - 100) {
+        // Activate the actions bar
+        $('.brew-guide').removeClass('welcome');
+      } else {
+        $('.brew-guide').addClass('welcome');
+      }
+      elementsToShow.forEach(function (element) {
+        if (isElementInViewport(element)) {
+          element.classList.add('is-visible');
+          // Get the action number, and show that action
+        } else {
+          element.classList.remove('is-visible');
+        }
+      });
+      scroll(loop);
+    };
+    // Call the loop for the first time
+    loop();
+    // Check which step's background is in view
+    // Show the actions bar if height is greater than the welcome part + a bit
+    // Progress the action to the next action if the button is pressed
+    // Scroll the right background into view
+    // Note: Make sure the action bar fits the view properly
+  }
+
+  
+
+  // Helper function from: http://stackoverflow.com/a/7557433/274826
+  function isElementInViewport(el) {
+    // special bonus for those using jQuery
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+      el = el[0];
+    }
+    var rect = el.getBoundingClientRect();
+    return (
+      (rect.top <= 0
+        && rect.bottom >= 0)
+      ||
+      (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+      ||
+      (rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+    );
   }
 
 });

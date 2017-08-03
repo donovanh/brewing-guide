@@ -170,6 +170,16 @@ and (max-width : 520px) {
 
 
   }
+  .actions-container-container {
+    position: fixed;
+
+  }
+  .actions-container {
+    bottom: 0;
+    position: fixed;
+    top: 80%;
+    z-index: 10;
+  }
 
 
 }

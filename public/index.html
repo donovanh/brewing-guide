@@ -31,91 +31,93 @@
   </head>
   <body>
     <article class="brew-guide welcome" id="brew-guide">
-      <section class="welcome-container">
-        <div class="title"><h1 class="fade-in-left"></h1></div>
-        <div class="description fade-in-left"><p></p></div>
-        <div class="youll-need fade-in-left">
-          <div class="col">
-            <div class="row">
-              <div class="icon amount fade-in">
-                <span class="label" id="amount-label"></span>
-              </div>
-              <div class="coarseness fade-in">
-                <span class="label" id="grind-label">Coarseness</span>
-                <svg width="129px" height="9px" viewBox="0 0 129 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g fill-rule="nonzero" fill="#000000">
-                    <ellipse id="Oval" cx="4.08" cy="4.3" rx="4.03" ry="4.08"></ellipse>
-                    <ellipse id="Oval" cx="15.32" cy="4.18" rx="3.6" ry="3.64"></ellipse>
-                    <ellipse id="Oval" cx="25.99" cy="4.13" rx="3.38" ry="3.42"></ellipse>
-                    <ellipse id="Oval" cx="36.19" cy="4.07" rx="3.17" ry="3.2"></ellipse>
-                    <ellipse id="Oval" cx="45.85" cy="4.01" rx="2.95" ry="2.99"></ellipse>
-                    <ellipse id="Oval" cx="55.47" cy="3.95" rx="2.74" ry="2.77"></ellipse>
-                    <ellipse id="Oval" cx="64.78" cy="3.9" rx="2.52" ry="2.55"></ellipse>
-                    <ellipse id="Oval" cx="74.62" cy="3.84" rx="2.31" ry="2.33"></ellipse>
-                    <ellipse id="Oval" cx="83.44" cy="3.78" rx="2.09" ry="2.11"></ellipse>
-                    <ellipse id="Oval" cx="92.26" cy="3.73" rx="1.88" ry="1.9"></ellipse>
-                    <ellipse id="Oval" cx="101.08" cy="3.67" rx="1.66" ry="1.68"></ellipse>
-                    <ellipse id="Oval" cx="109.89" cy="3.61" rx="1.44" ry="1.46"></ellipse>
-                    <ellipse id="Oval" cx="118.71" cy="3.55" rx="1.23" ry="1.24"></ellipse>
-                    <ellipse id="Oval" cx="127.53" cy="3.5" rx="1.01" ry="1.02"></ellipse>
-                  </g>
-                </svg>
-                <svg class="arrow fade-in-left" width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <path d="M1.9,13.29 L8.2,2.36 L7.38,1.63 L13.68,12.56 L13.46,11.49 L0.86,11.49 C0.54,11.49 1.28,13.37 1.78,13.37 L14.38,13.37 C14.75,13.37 14.21,12.37 14.16,12.3 L7.86,1.37 C7.8,1.27 7.23,0.32 7.04,0.64 L0.74,11.57 C0.49,12 1.74,13.57 1.9,13.29 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
-                </svg>
-              </div>
-            </div>
-            <div class="row">
-              <div class="icon temp fade-in">
-                <span class="label" id="temp-label"></span>
-              </div>
-              <div class="icon water fade-in">
-                <span class="label" id="water-label"></span>
-              </div>
-              <div class="icon time fade-in">
-                <span class="label" id="brewTime-label"></span>
-              </div>
-              <div class="icon cups fade-in">
-                <span class="label" id="cups-label"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <ul class="items" id="items-list">
-            </ul>
-          </div>
-        </div>
-        <section class="mob-start-button" id="mob-start-button">
-          <span class="start-text">
-            Start<br>
-            <img class="start-arrow" src="./images/btn/start-arrow.svg">
-          </span>
-        </section>
-      </section>
-      <section class="red-bg-container">
-        <section class="red-bg"></section>
-      </section>
-      <section class="step-bg-container"></section>
-      <section class="actions-container-container">
-        <section class="actions-container" id="actions-container">
-          <ul class="actions">
-            <li class="action zero"></li>
-          </ul>
-          <div class="autoplay-container">
-            <span class="autoplay-text">Autoplay</span>
-            <span class="autoplay-toggle">
-              <input class="tgl tgl-flat" id="autoplay" type="checkbox">
-              <label class="tgl-btn" for="autoplay"></label>
-            </span>
-          </div>
-          <div class="actions-text-container"></div>
-        </section>
-      </section>
       <ul class="steps">
-        <li class="step current welcome">
-          <h1 class="step-title">00. Set Up</h1>
+        <li class="step current welcome" data-step="welcome">
+          <h1 class="step-title"></h1>
         </li>
       </ul>
+      <section class="main-content shadowed">
+        <section class="welcome-container">
+          <div class="title"><h1 class="fade-in-left"></h1></div>
+          <div class="description fade-in-left"><p></p></div>
+          <div class="youll-need fade-in-left">
+            <div class="col">
+              <div class="row">
+                <div class="icon amount fade-in">
+                  <span class="label" id="amount-label"></span>
+                </div>
+                <div class="coarseness fade-in">
+                  <span class="label" id="grind-label">Coarseness</span>
+                  <svg width="129px" height="9px" viewBox="0 0 129 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g fill-rule="nonzero" fill="#000000">
+                      <ellipse id="Oval" cx="4.08" cy="4.3" rx="4.03" ry="4.08"></ellipse>
+                      <ellipse id="Oval" cx="15.32" cy="4.18" rx="3.6" ry="3.64"></ellipse>
+                      <ellipse id="Oval" cx="25.99" cy="4.13" rx="3.38" ry="3.42"></ellipse>
+                      <ellipse id="Oval" cx="36.19" cy="4.07" rx="3.17" ry="3.2"></ellipse>
+                      <ellipse id="Oval" cx="45.85" cy="4.01" rx="2.95" ry="2.99"></ellipse>
+                      <ellipse id="Oval" cx="55.47" cy="3.95" rx="2.74" ry="2.77"></ellipse>
+                      <ellipse id="Oval" cx="64.78" cy="3.9" rx="2.52" ry="2.55"></ellipse>
+                      <ellipse id="Oval" cx="74.62" cy="3.84" rx="2.31" ry="2.33"></ellipse>
+                      <ellipse id="Oval" cx="83.44" cy="3.78" rx="2.09" ry="2.11"></ellipse>
+                      <ellipse id="Oval" cx="92.26" cy="3.73" rx="1.88" ry="1.9"></ellipse>
+                      <ellipse id="Oval" cx="101.08" cy="3.67" rx="1.66" ry="1.68"></ellipse>
+                      <ellipse id="Oval" cx="109.89" cy="3.61" rx="1.44" ry="1.46"></ellipse>
+                      <ellipse id="Oval" cx="118.71" cy="3.55" rx="1.23" ry="1.24"></ellipse>
+                      <ellipse id="Oval" cx="127.53" cy="3.5" rx="1.01" ry="1.02"></ellipse>
+                    </g>
+                  </svg>
+                  <svg class="arrow fade-in-left" width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path d="M1.9,13.29 L8.2,2.36 L7.38,1.63 L13.68,12.56 L13.46,11.49 L0.86,11.49 C0.54,11.49 1.28,13.37 1.78,13.37 L14.38,13.37 C14.75,13.37 14.21,12.37 14.16,12.3 L7.86,1.37 C7.8,1.27 7.23,0.32 7.04,0.64 L0.74,11.57 C0.49,12 1.74,13.57 1.9,13.29 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="row">
+                <div class="icon temp fade-in">
+                  <span class="label" id="temp-label"></span>
+                </div>
+                <div class="icon water fade-in">
+                  <span class="label" id="water-label"></span>
+                </div>
+                <div class="icon time fade-in">
+                  <span class="label" id="brewTime-label"></span>
+                </div>
+                <div class="icon cups fade-in">
+                  <span class="label" id="cups-label"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <ul class="items" id="items-list">
+              </ul>
+            </div>
+          </div>
+          <section class="mob-start-button" id="mob-start-button">
+            <span class="start-text">
+              Start<br>
+              <img class="start-arrow" src="./images/btn/start-arrow.svg">
+            </span>
+          </section>
+        </section>
+        <section class="red-bg-container">
+          <section class="red-bg"></section>
+        </section>
+        <section class="step-bg-container"></section>
+        <section class="actions-container-container">
+          <section class="actions-container" id="actions-container">
+            <ul class="actions">
+              <li class="action zero"></li>
+            </ul>
+            <div class="autoplay-container">
+              <span class="autoplay-text">Autoplay</span>
+              <span class="autoplay-toggle">
+                <input class="tgl tgl-flat" id="autoplay" type="checkbox">
+                <label class="tgl-btn" for="autoplay"></label>
+              </span>
+            </div>
+            <div class="actions-text-container"></div>
+          </section>
+        </section>
+      </section>
       <section class="brew-guide-button start" id="brew-guide-button">
         <span class="button-border-bg">
           <svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

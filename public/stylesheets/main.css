@@ -82,15 +82,27 @@ html, ul, li, span {
 }
 
 .brew-guide {
-  background: #fff;
-  box-shadow: 0 2px 12px #f19572;
+  background: none;
   height: 500px;
     left: 50%;
   position: absolute;
     top: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  transition: width .5s linear;
   width: 742px;
+}
+
+html[data-next="2"] .brew-guide {
+    width: 735px;
+}
+
+html[data-next="1"] .brew-guide {
+    width: 701px;
+}
+
+html[data-next="0"] .brew-guide {
+    width: 667px;
 }
 
 .cssanimations .brew-guide {
@@ -362,6 +374,19 @@ html, ul, li, span {
     content: "\2013\ ";
 }
 
+.main-content {
+  background: #fff;
+  height: 500px;
+  margin: 0 0 0 30px; /* Adjust the left margin based on number of previous items */
+  position: relative;
+  width: 615px;
+  z-index: 5;
+}
+
+.main-content.shadowed {
+  box-shadow: 0 1px 12px 2px #D05C47;
+}
+
 /* Steps */
 
 .steps {
@@ -372,7 +397,7 @@ html, ul, li, span {
   position: absolute;
     right: 0;
     top: 0;
-  z-index: 2;
+  z-index: 1;
 
 }
 
@@ -380,33 +405,17 @@ html, ul, li, span {
     cursor: pointer;
     display: inline-block;
     height: 500px;
-    position: relative;
-    transition: width .6s cubic-bezier(.27,.02,0,1.2);
-    will-change: width;
-}
-
-.steps .step:before {
-    bottom: 0;
-    box-shadow: 0 0 10px #e9532f;
-    box-shadow: 0 0 10px #e9532f;
-    content: "";
     left: 0;
-    opacity: 0;
     position: absolute;
-    right: 0;
-    top: 0;
-    transition: all .5s ease-out;
-    z-index: 0;
-    will-change: opacity;
+    -webkit-transform: translateX(747px);
+    transform: translateX(747px);
+    transition: background .5s ease-out, width .5s cubic-bezier(0,1,.3,1), -webkit-transform .6s cubic-bezier(0,1,.3,1);
+    transition: background .5s ease-out, transform .6s cubic-bezier(0,1,.3,1), width .5s cubic-bezier(0,1,.3,1);
+    transition: background .5s ease-out, transform .6s cubic-bezier(0,1,.3,1), width .5s cubic-bezier(0,1,.3,1), -webkit-transform .6s cubic-bezier(0,1,.3,1);
+    will-change: background, transform;
 }
 
-.steps .step:hover {
-    z-index: 10;
-}
-
-.steps .step:hover:before {
-    opacity: 1;
-}
+.steps .step:hover {}
 
 .steps .step-title {
     font-weight: 800;
@@ -424,48 +433,34 @@ html, ul, li, span {
 }
 
 .steps .previous .step-title {
-    opacity: 0;
+    opacity: 1;
 }
 
-.steps .current {
+.steps .current, .steps .previous {
+    background: #ed764f;
     cursor: default;
     opacity: 1;
-    width: 600px;
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+    width: 34px;
 }
 
-.steps .current .step-title {
-    left: -48px;
+.steps .current .step-title, .steps .previous .step-title {
+    left: -62px;
     opacity: 1;
-    transition: opacity .5s ease-out;
+}
+
+.steps .next {
+    width: 34px;
 }
 
 .steps .next .step-title {
     opacity: 1;
 }
 
-.steps .previous.bg-3 {
-    background: #ed764f;
-}
-
-.steps .previous.bg-2 {
-    background: #ef8661;
-}
-
-.steps .previous.bg-1 {
-    background: #f19572;
-}
-
-.steps .more-previous, .steps .more-next {
-    display: none;
-    pointer-events: none;
-    transition: none;
-    width: 0;
-}
-
-.steps .next {
-    left: auto;
-    right: 0;
-    width: 34px;
+.steps .next:hover {
+    width: 44px;
+    z-index: 10;
 }
 
 .steps .next.bg-0 {
@@ -480,10 +475,41 @@ html, ul, li, span {
     background: #f19572;
 }
 
-.welcome .steps {
-  left: auto;
-  right: 0;
-  width: 102px;
+.steps .next.position-0 {
+    -webkit-transform: translateX(645px);
+    transform: translateX(645px);
+}
+
+.steps .next.position-0:hover {
+    -webkit-transform: translateX(645px);
+    transform: translateX(645px);
+}
+
+.steps .next.position-1 {
+    padding-left: 10px;
+    -webkit-transform: translateX(679px);
+    transform: translateX(679px);
+}
+
+.steps .next.position-2 {
+    padding-left: 10px;
+    -webkit-transform: translateX(713px);
+    transform: translateX(713px);
+}
+
+.steps .next.position-1.shift-right {
+    -webkit-transform: translateX(689px);
+    transform: translateX(689px);
+}
+
+.steps .next.position-2.shift-right {
+    -webkit-transform: translateX(723px);
+    transform: translateX(723px);
+}
+
+.steps .next.position-2.shift-right.shifter-2 {
+    -webkit-transform: translateX(733px);
+    transform: translateX(733px);
 }
 
 .brew-guide.welcome .next.bg-0 {
@@ -491,32 +517,14 @@ html, ul, li, span {
 }
 
 .welcome .step.current {
-  /*left: 1%;*/
   display: none;
 }
 
-.step.current:hover:before {
-  display: none !important;
-}
-
-html[data-prev="1"] .step.current {
-  width: 628px;
-}
-html[data-prev="2"] .step.current {
-  width: 646px;
-}
-
-html[data-prev="3"][data-next="0"] .step.current {
-  width: 694px;
-}
-html[data-prev="3"][data-next="1"] .step.current {
-  width: 660px;
-}
-html[data-prev="3"][data-next="2"] .step.current {
-  width: 626px;
-}
-html[data-prev="3"][data-next="3"] .step.current {
-  width: 600px;
+.step[data-step="welcome"]:not(.current) {
+  background: #ef8661;
+  -webkit-transform: translateX(-18px);
+          transform: translateX(-18px);
+  width: 16px;
 }
 
 
@@ -524,9 +532,9 @@ html[data-prev="3"][data-next="3"] .step.current {
 
 
 .step-bg-container {
-    left: 48px;
+    left: 0;
   position: absolute;
-    right: 100px;
+    right: 0;
     top: 0;
   z-index: 1; 
 }
@@ -534,6 +542,7 @@ html[data-prev="3"][data-next="3"] .step.current {
 
 .step-bg-container .step-bg {
     opacity: 0;
+    pointer-events: none;
 }
 
 
@@ -543,22 +552,6 @@ html[data-prev="3"][data-next="3"] .step.current {
     margin: 0 auto;
     max-height: 500px;
     max-width: 100%;
-}
-
-html[data-prev="1"] .step-bg-container {
-  left: 16px;
-}
-html[data-prev="2"] .step-bg-container {
-  left: 32px;
-}
-html[data-next="0"] .step-bg-container {
-  right: 0;
-}
-html[data-next="1"] .step-bg-container {
-  right: 32px;
-}
-html[data-next="2"] .step-bg-container {
-  right: 66px;
 }
 
 
@@ -711,7 +704,7 @@ html[data-next="2"] .step-bg-container {
 .actions-text-container {
     bottom: 0;
   height: 100%;
-    left: 64px;
+    left: 24px;
   max-width: 100%;
   position: absolute;
     right: 260px;
@@ -744,13 +737,6 @@ html[data-next="2"] .step-bg-container {
 .cssanimations .actions-text.current {
   -webkit-animation: show-actions-text 1s cubic-bezier(0,1,.3,1);
           animation: show-actions-text 1s cubic-bezier(0,1,.3,1);
-}
-
-html[data-prev="1"] .actions-text-container {
-  left: 38px;
-}
-html[data-prev="2"] .actions-text-container {
-  left: 56px;
 }
 
 /* Play button */
@@ -802,7 +788,7 @@ html[data-prev="2"] .actions-text-container {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-    left: 20px;
+    left: 0;
   line-height: 56px;
   position: absolute;
   text-align: center;
@@ -911,7 +897,7 @@ html[data-prev="2"] .brew-guide-button {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-    right: 139px;
+    right: 39px;
     top: 22px;
   width: 102px;
 }

@@ -6,6 +6,7 @@ $width: 742px;
 $height: 500px;
 $previous-width: 16px;
 $previous-widthx2: 32px;
+$current-width: 34px;
 $next-width: 34px;
 $next-widthx2: 68px;
 $next-widthx3: 102px;
@@ -55,14 +56,32 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 }
 
 .brew-guide {
-  background: #fff;
+  background: none;
   height: $height;
   width: $width;
-  box-shadow: 0 2px 12px $red4;
   position: absolute;
     top: 50%;
     left: 50%;
   transform: translate(-50%, -50%);
+  transition: width .5s linear;
+}
+
+html[data-next="2"] {
+  .brew-guide {
+    width: 735px;
+  }
+}
+
+html[data-next="1"] {
+  .brew-guide {
+    width: 701px;
+  }
+}
+
+html[data-next="0"] {
+  .brew-guide {
+    width: 667px;
+  }
 }
 
 .cssanimations {
@@ -236,10 +255,23 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 
 }
 
+.main-content {
+  background: #fff;
+  height: 500px;
+  position: relative;
+  width: 615px;
+  margin: 0 0 0 30px; /* Adjust the left margin based on number of previous items */
+  z-index: 5;
+}
+
+.main-content.shadowed {
+  box-shadow: 0 1px 12px 2px #D05C47;
+}
+
 /* Steps */
 
 .steps {
-  z-index: 2;
+  z-index: 1;
   position: absolute;
     top: 0;
     right: 0;
@@ -250,32 +282,15 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     height: $height;
     cursor: pointer;
     display: inline-block;
-    transition: width .6s cubic-bezier(.27,.02,0,1.2);
-    will-change: width;
-    position: relative;
-  }
-
-  .step:before {
-    content: "";
-    box-shadow: 0 0 10px $red;
+    transition: background .5s ease-out, transform .6s $exponential-ease, width .5s $exponential-ease;
+    transform: translateX(747px);
+    left: 0;
+    will-change: background, transform;
     position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    opacity: 0;
-    box-shadow: 0 0 10px $red;
-    transition: all .5s ease-out;
-    z-index: 0;
-    will-change: opacity;
   }
 
   .step:hover {
-    z-index: 10;
-  }
-
-  .step:hover:before {
-    opacity: 1;
+    
   }
 
   .step-title {
@@ -292,52 +307,35 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     width: $previous-width;
 
     .step-title {
-      opacity: 0;
+      opacity: 1;
     }
   }
 
-  .current {
+  .current,
+  .previous {
+    background: $red2;
     cursor: default;
-    width: 600px;
+    transform: translateX(-2px);
+    width: $current-width;
     opacity: 1;
 
     .step-title {
       opacity: 1;
-      transition: opacity .5s ease-out;
-      left: -48px;
+      left: -62px;
     }
   }
 
   .next {
+    width: $next-width;
+
     .step-title {
       opacity: 1;
     }
   }
 
-  .previous.bg-3 {
-    background: $red2;
-  }
-
-  .previous.bg-2 {
-    background: $red3;
-  }
-
-  .previous.bg-1 {
-    background: $red4;
-  }
-
-  .more-previous,
-  .more-next {
-    display: none;
-    pointer-events: none;
-    width: 0;
-    transition: none;
-  }
-
-  .next {
-    right: 0;
-    left: auto;
-    width: $next-width;
+  .next:hover {
+    width: 44px;
+    z-index: 10;
   }
 
   .next.bg-0 {
@@ -352,12 +350,37 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     background: $red4;
   }
 
-}
+  .next.position-0 {
 
-.welcome .steps {
-  width: 102px;
-  right: 0;
-  left: auto;
+    transform: translateX(645px);
+  }
+
+  .next.position-0:hover {
+    transform: translateX(645px);
+  }
+
+  .next.position-1 {
+    padding-left: 10px;
+    transform: translateX(679px);
+  }
+
+  .next.position-2 {
+    padding-left: 10px;
+    transform: translateX(713px);
+  }
+
+  .next.position-1.shift-right {
+    transform: translateX(689px);
+  }
+
+  .next.position-2.shift-right {
+    transform: translateX(723px);
+  }
+
+  .next.position-2.shift-right.shifter-2 {
+    transform: translateX(733px);
+  }
+
 }
 
 .brew-guide.welcome .next.bg-0 {
@@ -365,32 +388,13 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 }
 
 .welcome .step.current {
-  /*left: 1%;*/
   display: none;
 }
 
-.step.current:hover:before {
-  display: none !important;
-}
-
-html[data-prev="1"] .step.current {
-  width: 628px;
-}
-html[data-prev="2"] .step.current {
-  width: 646px;
-}
-
-html[data-prev="3"][data-next="0"] .step.current {
-  width: 694px;
-}
-html[data-prev="3"][data-next="1"] .step.current {
-  width: 660px;
-}
-html[data-prev="3"][data-next="2"] .step.current {
-  width: 626px;
-}
-html[data-prev="3"][data-next="3"] .step.current {
-  width: 600px;
+.step[data-step="welcome"]:not(.current) {
+  background: $red3;
+  width: $previous-width;
+  transform: translateX(-18px);
 }
 
 
@@ -400,12 +404,13 @@ html[data-prev="3"][data-next="3"] .step.current {
 .step-bg-container {
   position: absolute;
     top: 0;
-    right: 100px;
-    left: 48px;
+    right: 0;
+    left: 0;
   z-index: 1;
 
   .step-bg {
     opacity: 0;
+    pointer-events: none;
   }
 
   .step-bg.current {
@@ -417,22 +422,6 @@ html[data-prev="3"][data-next="3"] .step.current {
       margin: 0 auto;
     }
   } 
-}
-
-html[data-prev="1"] .step-bg-container {
-  left: 16px;
-}
-html[data-prev="2"] .step-bg-container {
-  left: 32px;
-}
-html[data-next="0"] .step-bg-container {
-  right: 0;
-}
-html[data-next="1"] .step-bg-container {
-  right: 32px;
-}
-html[data-next="2"] .step-bg-container {
-  right: 66px;
 }
 
 
@@ -584,7 +573,7 @@ html[data-next="2"] .step-bg-container {
   transform-style: preserve-3d;
   perspective: 800px;
   position: absolute;
-    left: 64px;
+    left: 24px;
     top: 0;
     right: 260px;
     bottom: 0;
@@ -608,13 +597,6 @@ html[data-next="2"] .step-bg-container {
 
 .cssanimations .actions-text.current {
   animation: show-actions-text 1s $exponential-ease;
-}
-
-html[data-prev="1"] .actions-text-container {
-  left: 38px;
-}
-html[data-prev="2"] .actions-text-container {
-  left: 56px;
 }
 
 /* Play button */
@@ -659,7 +641,7 @@ html[data-prev="2"] .actions-text-container {
   height: 56px;
   line-height: 56px;
   position: absolute;
-    left: 20px;
+    left: 0;
     bottom: 84px;
   text-align: center;
   transform: translateZ(0);
@@ -776,7 +758,7 @@ html[data-prev="2"] .brew-guide-button {
 
 .autoplay-container {
   position: absolute;
-    right: 139px;
+    right: 39px;
     top: 22px;
   width: 102px;
   display: flex;
