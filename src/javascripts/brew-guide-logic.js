@@ -86,7 +86,7 @@ $(function() {
     $('#amount-label').text(brewGuide.overview.amount + 'g');
 
     // grindText / grindValue
-    $('#grind-label').text('Coarseness: ' + brewGuide.overview.grindText);
+    //$('#grind-label').text('Coarseness: ' + brewGuide.overview.grindText);
     $('.coarseness').addClass('level-' + brewGuide.overview.grindValue);
 
     // temp
