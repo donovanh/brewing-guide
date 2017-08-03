@@ -430,8 +430,8 @@ html, ul, li, span {
 }
 
 .steps .current {
-    -webkit-animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
-    animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
+    -webkit-animation: show-current .5s cubic-bezier(0,1,.3,1) forwards;
+    animation: show-current .5s cubic-bezier(0,1,.3,1) forwards;
     cursor: default;
     opacity: 1;
     -webkit-transform: translateX(54px);
@@ -788,8 +788,6 @@ html[data-prev="2"] .actions-text-container {
 .button-border-bg .button-border {
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
-
-    /* 174.7667694091797 */
     stroke-dasharray: 174.7667694091797;
     stroke-dashoffset: 174.7667694091797;
 }

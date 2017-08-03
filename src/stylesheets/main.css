@@ -299,7 +299,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   }
 
   .current {
-    animation: show-current 1s $exponential-ease forwards;
+    animation: show-current .5s $exponential-ease forwards;
     cursor: default;
     width: 32px;
     transform: translateX(54px);
@@ -638,7 +638,6 @@ html[data-prev="2"] .actions-text-container {
   left: -10px;
 
   .button-border {
-    /* 174.7667694091797 */
     stroke-dasharray: 174.7667694091797;
     stroke-dashoffset: 174.7667694091797;
     transform-origin: 50% 50%;
