@@ -377,10 +377,12 @@ html, ul, li, span {
 .steps .step {
     cursor: pointer;
     height: 500px;
-    left: -16px;
+    left: 0;
     opacity: 0;
     position: absolute;
     top: 0;
+    -webkit-transform: translateX(180px);
+    transform: translateX(180px);
     transition: all .5s cubic-bezier(0,1,.3,1);
 }
 
@@ -420,7 +422,6 @@ html, ul, li, span {
 
 .steps .previous {
     opacity: 1;
-    right: auto;
     width: 16px;
 }
 
@@ -432,8 +433,10 @@ html, ul, li, span {
     -webkit-animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
     animation: show-current 1s cubic-bezier(0,1,.3,1) forwards;
     cursor: default;
-    left: 54px;
     opacity: 1;
+    -webkit-transform: translateX(54px);
+    transform: translateX(54px);
+    width: 32px;
 }
 
 .steps .current .step-title {
@@ -458,15 +461,18 @@ html, ul, li, span {
 }
 
 .steps .previous.position-2 {
-    left: 32px;
+    -webkit-transform: translateX(32px);
+    transform: translateX(32px);
 }
 
 .steps .previous.position-1 {
-    left: 16px;
+    -webkit-transform: translateX(16px);
+    transform: translateX(16px);
 }
 
 .steps .previous.position-0 {
-    left: 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
 }
 
 .steps .next {
@@ -489,24 +495,29 @@ html, ul, li, span {
 }
 
 .steps .next.position-1 {
-    right: 34px;
+    -webkit-transform: translateX(calc(100% - 34px));
+    transform: translateX(calc(100% - 34px));
 }
 
 .steps .next.position-2 {
-    right: 68px;
+    -webkit-transform: translateX(calc(100% - 68px));
+    transform: translateX(calc(100% - 68px));
 }
 
-.cssanimations.intro .step.next {
-  -webkit-animation: show-next-step 1.5s 1s cubic-bezier(0,1,.3,1) forwards;
-          animation: show-next-step 1.5s 1s cubic-bezier(0,1,.3,1) forwards;
+.steps .next.position-0 {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+/*.cssanimations.intro .step.next {
+  animation: show-next-step 1.5s 1s $exponential-ease forwards;
   opacity: 0;
 }
 
 .cssanimations.intro .step.previous {
-  -webkit-animation: show-prev-step 1.2s 1s cubic-bezier(0,1,.3,1) forwards;
-          animation: show-prev-step 1.2s 1s cubic-bezier(0,1,.3,1) forwards;
+  animation: show-prev-step 1.2s 1s $exponential-ease forwards;
   opacity: 0;
-}
+}*/
 
 .brew-guide.welcome .next.bg-0 {
   background: #e9532f;
@@ -517,11 +528,17 @@ html, ul, li, span {
   display: none;
 }
 
+.step.current:hover:before {
+  display: none !important;
+}
+
 html[data-prev="1"] .step.current {
-  left: 28px;
+  -webkit-transform: translateX(28px);
+          transform: translateX(28px);
 }
 html[data-prev="2"] .step.current {
-  left: 46px;
+  -webkit-transform: translateX(46px);
+          transform: translateX(46px);
 }
 
 
@@ -832,8 +849,8 @@ html[data-prev="2"] .brew-guide-button {
     background: #e9532f;
     height: 100px;
     line-height: 105px;
-    -webkit-transform: translateX(570px);
-    transform: translateX(570px);
+    -webkit-transform: translateX(600px);
+    transform: translateX(600px);
     width: 100px;
 }
 

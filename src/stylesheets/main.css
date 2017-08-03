@@ -251,7 +251,8 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     opacity: 0;
     position: absolute;
       top: 0;
-      left: $stepInvisibleLeft;
+      left: 0;
+    transform: translateX(180px);
     transition: all .5s $exponential-ease;
   }
 
@@ -291,7 +292,6 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   .previous {
     opacity: 1;
     width: $previous-width;
-    right: auto;
 
     .step-title {
       opacity: 0;
@@ -301,7 +301,8 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   .current {
     animation: show-current 1s $exponential-ease forwards;
     cursor: default;
-    left: 54px;
+    width: 32px;
+    transform: translateX(54px);
     opacity: 1;
 
     .step-title {
@@ -329,15 +330,15 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   }
 
   .previous.position-2 {
-    left: $previous-widthx2;
+    transform: translateX($previous-widthx2);
   }
 
   .previous.position-1 {
-    left: $previous-width;
+    transform: translateX($previous-width);
   }
 
   .previous.position-0 {
-    left: 0;
+    transform: translateX(0);
   }
 
   .next {
@@ -360,16 +361,20 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   }
 
   .next.position-1 {
-    right: $next-width;
+    transform: translateX(calc(100% - $next-width));
   }
 
   .next.position-2 {
-    right: $next-widthx2;
+    transform: translateX(calc(100% - $next-widthx2));
+  }
+
+  .next.position-0 {
+    transform: translateX(100%);
   }
 
 }
 
-.cssanimations.intro .step.next {
+/*.cssanimations.intro .step.next {
   animation: show-next-step 1.5s 1s $exponential-ease forwards;
   opacity: 0;
 }
@@ -377,7 +382,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 .cssanimations.intro .step.previous {
   animation: show-prev-step 1.2s 1s $exponential-ease forwards;
   opacity: 0;
-}
+}*/
 
 .brew-guide.welcome .next.bg-0 {
   background: $red;
@@ -388,11 +393,15 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   display: none;
 }
 
+.step.current:hover:before {
+  display: none !important;
+}
+
 html[data-prev="1"] .step.current {
-  left: 28px;
+  transform: translateX(28px);
 }
 html[data-prev="2"] .step.current {
-  left: 46px;
+  transform: translateX(46px);
 }
 
 
@@ -685,7 +694,7 @@ html[data-prev="2"] .brew-guide-button {
     height: 100px;
     width: 100px;
     line-height: 105px;
-    transform: translateX(570px);
+    transform: translateX(600px);
   }
   .button-border-bg {
     display: none;

@@ -65,11 +65,11 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 @keyframes show-current {
   0% {
     opacity: 0;
-    transform: translateX(200px);
+    left: 80px;
   }
   100% {
     opacity: 1;
-    transform: none;
+    left: 0;
   }
 }
 
@@ -87,13 +87,13 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 
 @keyframes show-start-button {
   0% {
-    transform: translateX(570px);
+    transform: translateX(600px);
   }
   30% {
-    transform: translateX(570px) scale(1.2);
+    transform: translateX(600px) scale(1.2);
   }
   100% {
-    transform: translateX(570px);
+    transform: translateX(600px);
   }
 }
 
