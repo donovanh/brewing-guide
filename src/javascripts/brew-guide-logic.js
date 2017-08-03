@@ -59,7 +59,7 @@ $(function() {
       $(actionsContainer).append(newAction);
 
       // Build the actions text
-      var actionsText = $('<span class="actions-text step-'+ (parseInt(index) + 1) +'"></span>');
+      var actionsText = $('<div class="actions-text step-'+ (parseInt(index) + 1) +'"></div>');
       $(actionsText).text(step.instruction);
       $(actionsTextContainer).append(actionsText);
 

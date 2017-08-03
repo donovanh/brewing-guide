@@ -111,10 +111,11 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 @keyframes show-actions-text {
   0% {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateY(-50%) translateX(40px);
   }
   100% {
     opacity: 1;
+    transform: translateY(-50%);
   }
 }
 
