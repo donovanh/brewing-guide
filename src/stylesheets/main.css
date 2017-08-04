@@ -22,7 +22,7 @@ $green: #baddd4;
 
 /* Animation-related */
 $slight-bounce: cubic-bezier(0,1,.5,1.17);
-$exponential-ease: cubic-bezier(0,1,.3,1);
+$exponential-ease: cubic-bezier(0,.7,.3,1);
 
 /* General layout */
 
@@ -38,6 +38,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 
 .welcome .red-bg {
   transform: translateX($width);
+  transition: all 1.4s $exponential-ease;
 }
 
 .red-bg {
@@ -48,11 +49,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
     bottom: 0;
     left: 0;
   z-index: 1;
-  transition: all .5s $exponential-ease;
-}
-
-.intro .red-bg {
-  transition-duration: 0;
+  transition: all .8s $exponential-ease;
 }
 
 .brew-guide {
@@ -191,7 +188,7 @@ html[data-next="0"] {
       position: relative;
 
       .arrow {
-        animation-delay: 2.8s;
+        animation-delay: 1.8s;
         animation-duration: 2s;
         position: absolute;
         top: 33px;
@@ -264,9 +261,9 @@ html[data-next="0"] {
   z-index: 5;
 }
 
-.main-content.shadowed {
+/*.main-content.shadowed {
   box-shadow: 0 1px 12px 2px #D05C47;
-}
+}*/
 
 /* Steps */
 
@@ -282,7 +279,7 @@ html[data-next="0"] {
     height: $height;
     cursor: pointer;
     display: inline-block;
-    transition: background .5s ease-out, transform .6s $exponential-ease, width .5s $exponential-ease;
+    transition: background .4s ease-out, transform .8s $exponential-ease, width .8s $exponential-ease;
     transform: translateX(747px);
     left: 0;
     will-change: background, transform;
@@ -315,9 +312,10 @@ html[data-next="0"] {
   .previous {
     background: $red2;
     cursor: default;
-    transform: translateX(-2px);
+    transform: translateX(-4px);
     width: $current-width;
     opacity: 1;
+    z-index: 1;
 
     .step-title {
       opacity: 1;
@@ -326,7 +324,8 @@ html[data-next="0"] {
   }
 
   .current {
-    animation: show-current .6s linear forwards;
+    animation: show-current .7s linear forwards;
+    z-index: 2;
   }
 
   .next {
@@ -338,7 +337,7 @@ html[data-next="0"] {
   }
 
   .next:hover {
-    width: 44px;
+    width: 48px;
     z-index: 10;
     .step-title {
       transition: transform .6s $exponential-ease;
@@ -359,20 +358,20 @@ html[data-next="0"] {
   }
 
   .next.position-0 {
-    transform: translateX(645px);
+    transform: translateX(642px);
   }
 
   .next.position-0:hover {
-    transform: translateX(645px);
+    transform: translateX(642px);
   }
 
   .next.position-1 {
-    transform: translateX(679px);
+    transform: translateX(677px);
   }
 
   .next.position-2 {
     width: 34px;
-    transform: translateX(713px);
+    transform: translateX(712px);
   }
 
   .next.position-2:hover {
@@ -380,15 +379,15 @@ html[data-next="0"] {
   }
 
   .next.position-1.shift-right {
-    transform: translateX(689px);
+    transform: translateX(686px);
   }
 
   .next.position-2.shift-right {
-    transform: translateX(723px);
+    transform: translateX(721px);
   }
 
   .next.position-2.shift-right.shifter-2 {
-    transform: translateX(733px);
+    transform: translateX(731px);
   }
 
 }
@@ -401,7 +400,12 @@ html[data-next="0"] {
   display: none;
 }
 
+.going-back .step.current {
+  animation: show-current-from-left .4s linear forwards;
+}
+
 .step[data-step="welcome"]:not(.current) {
+  animation: show-welcome-bit 1.4s $exponential-ease forwards;
   cursor: pointer;
   background: $red3;
   width: $previous-width;
@@ -453,8 +457,8 @@ html[data-next="0"] {
 }
 
 .step-bg.current {
-  animation: fade-in-left 1s $exponential-ease forwards;
-  opacity: 1;
+  animation: fade-in-left 2.5s .3s $exponential-ease forwards;
+  opacity: 0;
 }
 
 
@@ -477,15 +481,17 @@ html[data-next="0"] {
   width: 483px;
 
   .action {
+    cursor: pointer;
     display: inline-block;
     border-top: 2px solid transparent;
     height: 10px;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     position: relative;
     min-width: 40px;
     top: -1px;
+    z-index: 10;
   }
 
   .action:after {
@@ -613,7 +619,7 @@ html[data-next="0"] {
 }
 
 .cssanimations .actions-text.current {
-  animation: show-actions-text 1s $exponential-ease;
+  animation: show-actions-text 1.6s $exponential-ease;
 }
 
 /* Play button */
@@ -658,13 +664,13 @@ html[data-next="0"] {
   height: 56px;
   line-height: 56px;
   position: absolute;
-    left: 0;
+    left: 2px;
     bottom: 84px;
   text-align: center;
   transform: translateZ(0);
   width: 56px;
   z-index: 10;
-  transition: all 2s $exponential-ease;
+  transition: all .8s $exponential-ease;
 }
 
 .mob-start-button {
@@ -684,15 +690,12 @@ html[data-next="0"] {
   }
 }
 
-.cssanimations {
+.cssanimations.intro {
   .brew-guide.welcome .brew-guide-button {
     animation: show-start-button 1s .5s cubic-bezier(.54,-0.41,.29,1.42) forwards;
+    transition: none;
+    opacity: 0;
   }
-}
-
-.brew-guide-button:hover {
-  animation: border 5s linear forwards;
-  /* Note: Add in an animated SVG stroke border on the element */;
 }
 
 .brew-guide-button.paused,
@@ -769,14 +772,14 @@ html[data-next="0"] {
   position: absolute;
     right: 39px;
     top: 22px;
-  width: 102px;
+  width: 100px;
   display: flex;
 
   .autoplay-text {
     text-transform: uppercase;
     font-weight: 800;
     font-size: 11px;
-    line-height: 1.33;
+    line-height: 1.35;
     letter-spacing: 1.1;
     display: inline-block;
   }
@@ -805,8 +808,8 @@ html[data-next="0"] {
     font-size: 8px;
     outline: 0;
     display: block;
-    width: 3.4em;
-    height: 2em;
+    width: 24px;
+    height: 15px;
     position: relative;
     cursor: pointer;
     user-select: none;
@@ -815,8 +818,8 @@ html[data-next="0"] {
       position: relative;
       display: block;
       content: "";
-      width: .5em;
-      height: .5em;
+      width: 3px;
+      height: 3px;
       top: 7%;
     }
     

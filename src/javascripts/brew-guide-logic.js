@@ -130,6 +130,7 @@ $(function() {
     allActions = $('#actions-container').find('.action'); 
 
     $('.step').click(showStep);
+    $('.action').click(showByAction);
     $('.step').not('.welcome').hover(hoverNext, hoverOut);
 
     showStepbyIndex(currentStep);
@@ -162,12 +163,25 @@ $(function() {
       var target = $(event.target).parents('.step');
     }
     var index = $('#brew-guide').find('.step').index(target);
+    $('#brew-guide').removeClass('going-back');
     if (index === 0) {
-      showStart();
+      if (currentStep > 1) {
+        $('#brew-guide').addClass('going-back');
+        showStepbyIndex(currentStep - 1);
+      } else {
+        showStart();
+      }
     } else {
       $('#brew-guide').removeClass('welcome');
       showStepbyIndex(index);
     }
+  }
+
+  function showByAction(event) {
+    console.log('Action: ', event.target);
+    var target = $(event.target);
+    var index = $('#brew-guide').find('.action').index(target);
+    showStepbyIndex(index);
   }
 
   function hoverNext(event) {
@@ -558,6 +572,7 @@ $(function() {
   /* Button */
 
   function buttonClick() {
+    $('#brew-guide').removeClass('going-back');
     if ($('#brew-guide-button').hasClass('start')) {
       showFirstStep();
     } else if($('#brew-guide-button').hasClass('standalone')) {

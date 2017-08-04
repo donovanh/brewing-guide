@@ -15,8 +15,8 @@
 @-webkit-keyframes introduce-container {
   0% {
     opacity: 0;
-    -webkit-transform: translate(-50%, -80%) scale(.9);
-            transform: translate(-50%, -80%) scale(.9);
+    -webkit-transform: translate(-50%, -80%);
+            transform: translate(-50%, -80%);
   }
   100% {
     opacity: 1;
@@ -28,8 +28,8 @@
 @keyframes introduce-container {
   0% {
     opacity: 0;
-    -webkit-transform: translate(-50%, -80%) scale(.9);
-            transform: translate(-50%, -80%) scale(.9);
+    -webkit-transform: translate(-50%, -80%);
+            transform: translate(-50%, -80%);
   }
   100% {
     opacity: 1;
@@ -128,6 +128,54 @@
   }
 }
 
+@-webkit-keyframes show-current-from-left {
+  0% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    width: 50px;
+  }
+  100% {
+    -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+  }
+}
+
+@keyframes show-current-from-left {
+  0% {
+    -webkit-transform: translateX(-10px);
+            transform: translateX(-10px);
+    width: 50px;
+  }
+  100% {
+    -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+  }
+}
+
+@-webkit-keyframes show-welcome-bit {
+  0%, 40% {
+    -webkit-transform: translateX(120px);
+            transform: translateX(120px);
+    width: 50px;
+  }
+  100% {
+    -webkit-transform: translateX(-20px);
+            transform: translateX(-20px);
+  }
+}
+
+@keyframes show-welcome-bit {
+  0%, 40% {
+    -webkit-transform: translateX(120px);
+            transform: translateX(120px);
+    width: 50px;
+  }
+  100% {
+    -webkit-transform: translateX(-20px);
+            transform: translateX(-20px);
+  }
+}
+
 @-webkit-keyframes fade-in {
   to {
     opacity: 1;
@@ -194,14 +242,12 @@
 
 @-webkit-keyframes show-start-button {
   0% {
+    opacity: 0;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
   }
-  60% {
-    -webkit-transform: translateX(594px) scale(.9);
-            transform: translateX(594px) scale(.9);
-  }
   100% {
+    opacity: 1;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
   }
@@ -209,14 +255,12 @@
 
 @keyframes show-start-button {
   0% {
+    opacity: 0;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
   }
-  60% {
-    -webkit-transform: translateX(594px) scale(.9);
-            transform: translateX(594px) scale(.9);
-  }
   100% {
+    opacity: 1;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
   }
