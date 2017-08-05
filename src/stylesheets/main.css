@@ -429,6 +429,16 @@ html[data-next="0"] {
   animation: none;
 }
 
+.going-back .next.position-0 {
+  animation: show-next-from-left .7s linear forwards;
+}
+
+.going-back .next.position-0,
+.going-back .next.position-1,
+.going-back .next.position-2 {
+  transition-delay: .6s, .6s, .6s !important;
+}
+
 /*.step[data-step="welcome"]:not(.current) {
   animation: show-welcome-bit 1.4s $exponential-ease forwards;
   cursor: pointer;

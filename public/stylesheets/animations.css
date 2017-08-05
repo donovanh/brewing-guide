@@ -178,6 +178,44 @@
   }
 }
 
+@-webkit-keyframes show-next-from-left {
+  0% {
+    -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+  }
+  50% {
+    -webkit-transform: translateX(30px);
+            transform: translateX(30px);
+  }
+  51% {
+    -webkit-transform: translateX(610px);
+            transform: translateX(610px);
+  }
+  100% {
+    -webkit-transform: translateX(645px);
+            transform: translateX(645px);
+  }
+}
+
+@keyframes show-next-from-left {
+  0% {
+    -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+  }
+  50% {
+    -webkit-transform: translateX(30px);
+            transform: translateX(30px);
+  }
+  51% {
+    -webkit-transform: translateX(610px);
+            transform: translateX(610px);
+  }
+  100% {
+    -webkit-transform: translateX(645px);
+            transform: translateX(645px);
+  }
+}
+
 @-webkit-keyframes show-welcome-bit {
   0%, 40% {
     -webkit-transform: translateX(120px);
