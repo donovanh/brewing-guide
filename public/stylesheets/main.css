@@ -433,7 +433,7 @@ html[data-next="0"] .brew-guide {
     opacity: 1;
 }
 
-.steps .current, .steps .previous {
+.steps .current {
     background: #ed764f;
     cursor: default;
     opacity: 1;
@@ -443,7 +443,7 @@ html[data-next="0"] .brew-guide {
     z-index: 1;
 }
 
-.steps .current .step-title, .steps .previous .step-title {
+.steps .current .step-title {
     left: -62px;
     opacity: 1;
 }
@@ -452,6 +452,24 @@ html[data-next="0"] .brew-guide {
     -webkit-animation: show-current .7s linear forwards;
     animation: show-current .7s linear forwards;
     z-index: 2;
+}
+
+.steps .previous {
+    background: #ef8661;
+    -webkit-transform: translateX(-17px);
+    transform: translateX(-17px);
+    transition-delay: 1s, 1s, 1s;
+    width: 16px;
+}
+
+.steps .previous .step-title {
+    opacity: 0;
+    transition-delay: .6s;
+}
+
+.steps .previous.bg-3 {
+    -webkit-animation: show-previous 1s ease-out forwards;
+    animation: show-previous 1s ease-out forwards;
 }
 
 .steps .next {
@@ -463,8 +481,10 @@ html[data-next="0"] .brew-guide {
 }
 
 .steps .next:hover {
+    transition: background .5s ease-out, width .4s cubic-bezier(0,.7,.3,1), -webkit-transform .5s cubic-bezier(0,.7,.3,1);
+    transition: background .5s ease-out, transform .5s cubic-bezier(0,.7,.3,1), width .4s cubic-bezier(0,.7,.3,1);
+    transition: background .5s ease-out, transform .5s cubic-bezier(0,.7,.3,1), width .4s cubic-bezier(0,.7,.3,1), -webkit-transform .5s cubic-bezier(0,.7,.3,1);
     width: 48px;
-    z-index: 10;
 }
 
 .steps .next:hover .step-title {
@@ -535,21 +555,30 @@ html[data-next="0"] .brew-guide {
   display: none;
 }
 
-.going-back .step.current {
-  -webkit-animation: show-current-from-left .4s linear forwards;
-          animation: show-current-from-left .4s linear forwards;
+.intro .step.previous {
+  -webkit-animation-delay: .6s !important;
+          animation-delay: .6s !important;
+  opacity: 0;
 }
 
-.step[data-step="welcome"]:not(.current) {
-  -webkit-animation: show-welcome-bit 1.4s cubic-bezier(0,.7,.3,1) forwards;
-          animation: show-welcome-bit 1.4s cubic-bezier(0,.7,.3,1) forwards;
-  background: #ef8661;
-  cursor: pointer;
-  -webkit-transform: translateX(-17px);
-          transform: translateX(-17px);
-  width: 16px;
-  width: 19px;
+.going-back .step.current {
+  -webkit-animation: show-current-from-left .6s linear forwards;
+          animation: show-current-from-left .6s linear forwards;
 }
+
+.going-back .step.previous {
+  -webkit-animation: none;
+          animation: none;
+}
+
+/*.step[data-step="welcome"]:not(.current) {
+  animation: show-welcome-bit 1.4s $exponential-ease forwards;
+  cursor: pointer;
+  background: $red3;
+  width: $previous-width;
+  width: 19px;
+  transform: translateX(-17px);
+}*/
 
 .step[data-step="welcome"]:hover {
   -webkit-transform: translateX(-22px);

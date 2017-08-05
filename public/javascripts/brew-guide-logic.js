@@ -163,10 +163,13 @@ $(function() {
       var target = $(event.target).parents('.step');
     }
     var index = $('#brew-guide').find('.step').index(target);
-    $('#brew-guide').removeClass('going-back');
+    if ($(target).hasClass('previous')) {
+      $('#brew-guide').addClass('going-back');
+    } else {
+      $('#brew-guide').removeClass('going-back');
+    }
     if (index === 0) {
       if (currentStep > 1) {
-        $('#brew-guide').addClass('going-back');
         showStepbyIndex(currentStep - 1);
       } else {
         showStart();
@@ -178,14 +181,15 @@ $(function() {
   }
 
   function showByAction(event) {
-    console.log('Action: ', event.target);
     var target = $(event.target);
     var index = $('#brew-guide').find('.action').index(target);
+    setTimerBar();
     showStepbyIndex(index);
   }
 
   function hoverNext(event) {
-    if ($(event.target).hasClass('current')) {
+    if ($(event.target).hasClass('previous') ||
+      $(event.target).hasClass('current')) {
       return;
     }
     if ($(event.target).hasClass('step')) {
@@ -436,6 +440,7 @@ $(function() {
       $(timerBar).css('width', distance + 'px');
       updateStartTimePosition(distance);
     } else if ($(allActions).index($(allActions[currentStep])) === ($(allActions).length - 1)) {
+      // This is the last item
       currentTimedActions = $('.timed-area').find('.action');
       var timerArea = $('.timed-area');
       var timerBar = $(timerArea).find('.timer-bar');
@@ -449,6 +454,13 @@ $(function() {
       // hide the end time
       hideEndTime();
       updateStartTimePosition(distance);
+    } else if ($(allActions[currentStep]).hasClass('standalone')) {
+      // Reset the bar position entirely
+      $('.start-time').text(formatTime(0));
+      $('.start-time').removeClass('new-end-time');
+      showEndTime();
+      $('.timer-bar').css('width', 0);
+      updateStartTimePosition(0);
     } else {
       updateStartTimePosition(0);
     }

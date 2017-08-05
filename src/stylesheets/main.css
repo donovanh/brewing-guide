@@ -308,8 +308,7 @@ html[data-next="0"] {
     }
   }
 
-  .current,
-  .previous {
+  .current {
     background: $red2;
     cursor: default;
     transform: translateX(-4px);
@@ -328,6 +327,21 @@ html[data-next="0"] {
     z-index: 2;
   }
 
+  .previous {
+    background: $red3;
+    width: $previous-width;
+    transform: translateX(-17px);
+    transition-delay: 1s, 1s, 1s;
+    .step-title {
+      opacity: 0;
+      transition-delay: .6s;
+    }
+  }
+
+  .previous.bg-3 {
+    animation: show-previous 1s ease-out forwards;
+  }
+
   .next {
     width: 38px;
 
@@ -338,7 +352,9 @@ html[data-next="0"] {
 
   .next:hover {
     width: 48px;
-    z-index: 10;
+    transition: background .5s ease-out, transform .5s $exponential-ease, width .4s $exponential-ease;
+
+
     .step-title {
       transition: transform .6s $exponential-ease;
       transform: rotateZ(-90deg) translateY(5px);
@@ -400,18 +416,27 @@ html[data-next="0"] {
   display: none;
 }
 
-.going-back .step.current {
-  animation: show-current-from-left .4s linear forwards;
+.intro .step.previous {
+  animation-delay: .6s !important;
+  opacity: 0;
 }
 
-.step[data-step="welcome"]:not(.current) {
+.going-back .step.current {
+  animation: show-current-from-left .6s linear forwards;
+}
+
+.going-back .step.previous {
+  animation: none;
+}
+
+/*.step[data-step="welcome"]:not(.current) {
   animation: show-welcome-bit 1.4s $exponential-ease forwards;
   cursor: pointer;
   background: $red3;
   width: $previous-width;
   width: 19px;
   transform: translateX(-17px);
-}
+}*/
 
 .step[data-step="welcome"]:hover {
   width: 24px;

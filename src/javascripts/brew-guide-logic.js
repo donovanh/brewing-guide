@@ -163,10 +163,13 @@ $(function() {
       var target = $(event.target).parents('.step');
     }
     var index = $('#brew-guide').find('.step').index(target);
-    $('#brew-guide').removeClass('going-back');
+    if ($(target).hasClass('previous')) {
+      $('#brew-guide').addClass('going-back');
+    } else {
+      $('#brew-guide').removeClass('going-back');
+    }
     if (index === 0) {
       if (currentStep > 1) {
-        $('#brew-guide').addClass('going-back');
         showStepbyIndex(currentStep - 1);
       } else {
         showStart();
@@ -185,7 +188,8 @@ $(function() {
   }
 
   function hoverNext(event) {
-    if ($(event.target).hasClass('current')) {
+    if ($(event.target).hasClass('previous') ||
+      $(event.target).hasClass('current')) {
       return;
     }
     if ($(event.target).hasClass('step')) {

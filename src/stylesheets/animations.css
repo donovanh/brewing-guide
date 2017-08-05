@@ -61,9 +61,20 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   }
 }
 
+@keyframes show-previous {
+  0%, 50% {
+    transform: translateX(-2px);
+    width: 50px;
+  }
+  100% {
+    transform: translateX(-17px);
+    opacity: 1;
+  }
+}
+
 @keyframes show-current-from-left {
   0% {
-    transform: translateX(-10px);
+    transform: translateX(-17px);
     width: 50px;
   }
   100% {
