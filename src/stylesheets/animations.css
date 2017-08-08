@@ -46,6 +46,70 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
   }
 }
 
+/* Animations for the step bars */
+
+@keyframes from-previous-to-current {
+  0% {
+    background: #ef8661;
+    transform: translateX(-17px);
+    width: 16px;
+  }
+  100% {
+    background: #ed764f;
+    transform: translateX(-2px);
+    width: 50px;
+  }
+}
+
+@keyframes from-current-to-next-0 {
+  0% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(30px);
+  }
+  51% {
+    transform: translateX(610px);
+  }
+  100% {
+    transform: translateX(645px);
+  }
+}
+
+@keyframes from-next-0-to-next-1 {
+  0% {
+    transform: translateX(642px);
+  }
+  100% {
+    transform: translateX(677px);
+  }
+}
+
+@keyframes from-next-1-to-next-2 {
+  0% {
+    transform: translateX(677px);
+  }
+  100% {
+    transform: translateX(712px);
+  }
+}
+
+@keyframes from-next-2-to-off-right {
+  0% {
+    transform: translateX(712px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(738px);
+  }
+}
+
+
+
+
+
+
+
 @keyframes show-current {
   0% {
     transform: translateX(645px);
@@ -73,13 +137,7 @@ $exponential-ease: cubic-bezier(0,1,.3,1);
 }
 
 @keyframes show-current-from-left {
-  0% {
-    transform: translateX(-17px);
-    width: 50px;
-  }
-  100% {
-    transform: translateX(-2px);
-  }
+  
 }
 
 @keyframes show-next-from-left {

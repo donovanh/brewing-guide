@@ -279,8 +279,6 @@ html[data-next="0"] {
     height: $height;
     cursor: pointer;
     display: inline-block;
-    transition: background .4s ease-out, transform .8s $exponential-ease, width .8s $exponential-ease;
-    transform: translateX(747px);
     left: 0;
     will-change: background, transform;
     position: absolute;
@@ -314,8 +312,6 @@ html[data-next="0"] {
     transform: translateX(-4px);
     width: $current-width;
     opacity: 1;
-    z-index: 1;
-    animation: show-current .7s linear forwards;
     z-index: 2;
 
     .step-title {
@@ -335,10 +331,6 @@ html[data-next="0"] {
     }
   }
 
-  .previous.bg-3 {
-    animation: show-previous 1s ease-out forwards;
-  }
-
   .next {
     width: 38px;
 
@@ -349,10 +341,8 @@ html[data-next="0"] {
 
   .next:hover {
     width: 48px;
-    transition: background .5s ease-out, transform .5s $exponential-ease, width .4s $exponential-ease;
 
     .step-title {
-      transition: transform .6s $exponential-ease;
       transform: rotateZ(-90deg) translateY(5px);
     }
   }
@@ -369,36 +359,36 @@ html[data-next="0"] {
     background: $red4;
   }
 
-  .next.position-0 {
+  .next-0 {
     transform: translateX(642px);
   }
 
-  .next.position-0:hover {
+  .next-0:hover {
     transform: translateX(642px);
   }
 
-  .next.position-1 {
+  .next-1 {
     transform: translateX(677px);
   }
 
-  .next.position-2 {
+  .next-2 {
     width: 34px;
     transform: translateX(712px);
   }
 
-  .next.position-2:hover {
+  .next-2:hover {
     width: 44px;
   }
 
-  .next.position-1.shift-right {
+  .next-1.shift-right {
     transform: translateX(686px);
   }
 
-  .next.position-2.shift-right {
+  .next-2.shift-right {
     transform: translateX(721px);
   }
 
-  .next.position-2.shift-right.shifter-2 {
+  .next-2.shift-right.shifter-2 {
     transform: translateX(731px);
   }
 
@@ -412,39 +402,32 @@ html[data-next="0"] {
   display: none;
 }
 
-.intro .step.previous {
-  animation-delay: .6s !important;
-  opacity: 0;
-}
-
-.going-back .step.current {
-  animation: show-current-from-left 1s linear forwards;
-}
-
-.going-back .next.position-0 {
-  /*animation: show-next-from-left .7s linear forwards;*/
-}
-
-.going-back .next.position-0,
-.going-back .next.position-1,
-.going-back .next.position-2 {
-  /*transition-delay: .6s, .6s, .6s !important;*/
-}
-
-/*.step[data-step="welcome"]:not(.current) {
-  animation: show-welcome-bit 1.4s $exponential-ease forwards;
-  cursor: pointer;
-  background: $red3;
-  width: $previous-width;
-  width: 19px;
-  transform: translateX(-17px);
-}*/
-
 .step[data-step="welcome"]:hover {
   width: 24px;
   transform: translateX(-22px);
 }
 
+/* Animations for moving the steps around */
+
+/*.animating-previous {
+  .step.current { animation: from-previous-to-current 1s linear forwards; }
+  .step.next-0 { animation: from-current-to-next-0 1s linear forwards; }
+  .step.next-1 { animation: from-next-0-to-next-1 1s linear forwards; }
+  .step.next-2 { animation: from-next-1-to-next-2 1s linear forwards; }
+  .step.more-next { 
+    animation: from-next-2-to-off-right 1s linear forwards;
+    opacity: 1;
+  }
+}
+
+.animating-next-0 {
+  .step.previous.bg-3 { display: block; animation: from-previous-to-current 1s linear forwards reverse; }
+  .step.current { animation: from-current-to-next-0 1s linear forwards reverse; }
+  .step.next-0 { animation: from-next-0-to-next-1 1s linear forwards reverse; }
+  .step.next-1 { animation: from-next-1-to-next-2 1s linear forwards reverse; }
+  .step.next-2 { animation: from-next-2-to-off-right 1s linear forwards reverse; }
+}
+*/
 
 /* Background images */
 
@@ -799,6 +782,7 @@ html[data-next="0"] {
   position: absolute;
     right: 39px;
     top: 22px;
+  transition: all .5s ease-out;
   width: 100px;
   display: flex;
 
@@ -814,6 +798,10 @@ html[data-next="0"] {
   .autoplay-toggle {
     margin: -3px 0 0 6px;
   }
+}
+
+.autoplay-container.hidden {
+  opacity: 0;
 }
 
 .tgl {

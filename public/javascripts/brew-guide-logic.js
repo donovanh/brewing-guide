@@ -129,7 +129,12 @@ $(function() {
     lastStep = allSteps.length - 1;
     allActions = $('#actions-container').find('.action'); 
 
-    $('.step').click(showStep);
+    $('#brew-guide').on('click', '.next-0', function(event) { addStepClass('next-0', event); });
+    $('#brew-guide').on('click', '.next-1', function(event) { addStepClass('next-1', event); });
+    $('#brew-guide').on('click', '.next-2', function(event) { addStepClass('next-2', event); });
+    $('#brew-guide').on('click', '.previous', function(event) { addStepClass('previous', event); });
+
+    // $('.step').click(showStep);
     $('.action').click(showByAction);
     $('.step').not('.welcome').hover(hoverNext, hoverOut);
 
@@ -146,6 +151,15 @@ $(function() {
     } else {
       $('#brew-guide').addClass('welcome');
     }
+
+  }
+
+  function addStepClass(className, event) {
+    $('body').removeClass().addClass('animating-' + className);
+    setTimeout(function() {
+      $('body').removeClass();
+    }, 1100)
+    showStep(event);
   }
 
   function isCurrentActionTimed() {
@@ -253,6 +267,7 @@ $(function() {
     updateTimeOnPage(timeElapsed());
     setTimerBar();
     updateButtonStatus();
+    updateAutoPlayVisibility(index);
     // Save to URL
     updateURL();
     if (currentStep > 0) {
@@ -264,6 +279,15 @@ $(function() {
       isPlaying = false;
     }
   }
+
+  function updateAutoPlayVisibility(index) {
+    console.log($(allActions[index]).hasClass('timed'));
+    if (!$(allActions[index]).hasClass('timed')) {
+      $('.autoplay-container').addClass('hidden');
+    } else {
+      $('.autoplay-container').removeClass('hidden');
+    }
+  } 
 
   function removePreviousNextClasses() {
     $('#brew-guide').find('.step').attr('class', 'step');
@@ -282,7 +306,7 @@ $(function() {
       $(allSteps[index])
         .addClass('previous')
         .addClass('bg-' + (3 - prevSteps))
-        .addClass('position-' + (positionTarget - positionIndex));
+        .addClass('previous-' + (positionTarget - positionIndex));
       index--;
       prevSteps++;
       positionIndex++;
@@ -320,17 +344,11 @@ $(function() {
       $(allSteps[index])
         .addClass('next')
         .addClass('bg-' + nextSteps)
-        .addClass('position-' + nextSteps);
+        .addClass('next-' + nextSteps);
       index++;
       nextSteps++;
     }
-    if (index < ($(allSteps).length)) {
-      while (index < ($(allSteps).length)) {
-        $(allSteps[index])
-          .addClass('more-next');
-        index++;
-      }
-    }
+    $(allSteps[index]).addClass('more-next');
     $('html').attr('data-next', nextSteps);
   }
 
@@ -695,7 +713,6 @@ $(function() {
     var elementsToShow = document.querySelectorAll('.step-bg'); 
     var welcomeContainer = document.querySelectorAll('.welcome-container')[0].getBoundingClientRect(); 
     var loop = function() {
-      //console.log(welcomeContainer.height, window.scrollY);
       if (window.scrollY > welcomeContainer.height - 100) {
         // Activate the actions bar
         $('.brew-guide').removeClass('welcome');
