@@ -434,6 +434,8 @@ html[data-next="0"] .brew-guide {
 }
 
 .steps .current {
+    -webkit-animation: show-current .7s linear forwards;
+    animation: show-current .7s linear forwards;
     background: #ed764f;
     cursor: default;
     opacity: 1;
@@ -441,17 +443,12 @@ html[data-next="0"] .brew-guide {
     transform: translateX(-4px);
     width: 34px;
     z-index: 1;
+    z-index: 2;
 }
 
 .steps .current .step-title {
     left: -62px;
     opacity: 1;
-}
-
-.steps .current {
-    -webkit-animation: show-current .7s linear forwards;
-    animation: show-current .7s linear forwards;
-    z-index: 2;
 }
 
 .steps .previous {
@@ -562,22 +559,16 @@ html[data-next="0"] .brew-guide {
 }
 
 .going-back .step.current {
-  -webkit-animation: show-current-from-left .6s linear forwards;
-          animation: show-current-from-left .6s linear forwards;
-}
-
-.going-back .step.previous {
-  -webkit-animation: none;
-          animation: none;
+  -webkit-animation: show-current-from-left 1s linear forwards;
+          animation: show-current-from-left 1s linear forwards;
 }
 
 .going-back .next.position-0 {
-  -webkit-animation: show-next-from-left .7s linear forwards;
-          animation: show-next-from-left .7s linear forwards;
+  /*animation: show-next-from-left .7s linear forwards;*/
 }
 
 .going-back .next.position-0, .going-back .next.position-1, .going-back .next.position-2 {
-  transition-delay: .6s, .6s, .6s !important;
+  /*transition-delay: .6s, .6s, .6s !important;*/
 }
 
 /*.step[data-step="welcome"]:not(.current) {

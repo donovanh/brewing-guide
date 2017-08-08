@@ -315,16 +315,13 @@ html[data-next="0"] {
     width: $current-width;
     opacity: 1;
     z-index: 1;
+    animation: show-current .7s linear forwards;
+    z-index: 2;
 
     .step-title {
       opacity: 1;
       left: -62px;
     }
-  }
-
-  .current {
-    animation: show-current .7s linear forwards;
-    z-index: 2;
   }
 
   .previous {
@@ -353,7 +350,6 @@ html[data-next="0"] {
   .next:hover {
     width: 48px;
     transition: background .5s ease-out, transform .5s $exponential-ease, width .4s $exponential-ease;
-
 
     .step-title {
       transition: transform .6s $exponential-ease;
@@ -422,21 +418,17 @@ html[data-next="0"] {
 }
 
 .going-back .step.current {
-  animation: show-current-from-left .6s linear forwards;
-}
-
-.going-back .step.previous {
-  animation: none;
+  animation: show-current-from-left 1s linear forwards;
 }
 
 .going-back .next.position-0 {
-  animation: show-next-from-left .7s linear forwards;
+  /*animation: show-next-from-left .7s linear forwards;*/
 }
 
 .going-back .next.position-0,
 .going-back .next.position-1,
 .going-back .next.position-2 {
-  transition-delay: .6s, .6s, .6s !important;
+  /*transition-delay: .6s, .6s, .6s !important;*/
 }
 
 /*.step[data-step="welcome"]:not(.current) {
