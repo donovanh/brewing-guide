@@ -386,6 +386,18 @@
   }
 }
 
+@-webkit-keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
 @-webkit-keyframes fade-in-left {
   0% {
     opacity: 0;

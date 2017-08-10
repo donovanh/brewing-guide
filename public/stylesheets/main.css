@@ -407,7 +407,10 @@ html[data-next="0"] .brew-guide {
     will-change: background, transform;
 }
 
-.steps .step:hover {}
+.steps .step:hover {
+
+    /*transition: all .5s ease-out;*/
+}
 
 .steps .step-title {
     font-weight: 800;
@@ -434,7 +437,7 @@ html[data-next="0"] .brew-guide {
     opacity: 1;
     -webkit-transform: translateX(-4px);
     transform: translateX(-4px);
-    width: 34px;
+    width: 40px;
     z-index: 2;
 }
 
@@ -576,15 +579,21 @@ html[data-next="0"] .brew-guide {
 .step-bg-container .step-bg {
     opacity: 0;
     pointer-events: none;
+    transition: opacity .5s ease-out;
 }
 
 
-.step-bg-container .step-bg.current img {
+.step-bg-container .step-bg img {
     display: block;
     height: 100%;
     margin: 0 auto;
     max-height: 500px;
     max-width: 100%;
+}
+
+
+.step-bg-container .step-bg.current {
+    opacity: 1;
 }
 
 
@@ -598,9 +607,15 @@ html[data-next="0"] .brew-guide {
 
 }
 
+.step-bg.hide {
+  -webkit-animation: fade-out .3s ease-out forwards;
+          animation: fade-out .3s ease-out forwards;
+  opacity: 1;
+}
+
 .step-bg.current {
-  -webkit-animation: fade-in-left 2.5s .3s cubic-bezier(0,.7,.3,1) forwards;
-          animation: fade-in-left 2.5s .3s cubic-bezier(0,.7,.3,1) forwards;
+  -webkit-animation: fade-in-left 2.5s cubic-bezier(0,.7,.3,1) forwards;
+          animation: fade-in-left 2.5s cubic-bezier(0,.7,.3,1) forwards;
   opacity: 0;
 }
 

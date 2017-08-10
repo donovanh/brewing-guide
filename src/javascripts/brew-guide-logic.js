@@ -353,10 +353,13 @@ $(function() {
   }
 
   function showCurrentContent() {
-    $('.step-bg').removeClass('current');
+    $('.step-bg.current').addClass('hide').removeClass('current');
     $('.actions-text').removeClass('current');
-    var currentBg = $('.step-' + [currentStep]);
-    $(currentBg).addClass('current');
+    setTimeout(function() {
+      var currentBg = $('.step-' + [currentStep]);
+      $('.step-bg').removeClass('hide');
+      $(currentBg).addClass('current');
+    }, 500);
   }
 
   /* Actions */
