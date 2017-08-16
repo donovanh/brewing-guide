@@ -18,7 +18,7 @@ and (max-width : 520px) {
       top: auto;
     -webkit-transform: none;
             transform: none;
-    width: 100%;
+    width: 100vw;
   }
   .red-bg-container, .step {
     display: none !important;
@@ -30,10 +30,13 @@ and (max-width : 520px) {
 
 
   }
+  .main-content {
+    margin-left: 0;
+  }
   .brew-guide .welcome-container {
-    max-width: 600px;
-    padding: 40px 20px;
-    width: 100%;
+    max-width: 100vw;
+    padding: 40px;
+    width: 100vw;
 
 
   }
@@ -42,7 +45,7 @@ and (max-width : 520px) {
     animation-delay: .8s;
     font-size: 15px;
     line-height: 1.6;
-    padding: 32px 10px 38px 40px;
+    padding: 32px 0px 38px 40px;
 
 
   }
@@ -146,11 +149,11 @@ and (max-width : 520px) {
   .step-bg-container .step-bg {
     display: block;
     height: 100%;
+    height: 100vh;
     margin: 0 auto;
-    max-height: 100vh;
-    max-width: 100%;
     opacity: 1;
     position: relative;
+    width: 100vw;
 
 
   }
@@ -176,9 +179,22 @@ and (max-width : 520px) {
   }
   .actions-container {
     bottom: 0;
+    height: 220px;
+    opacity: 1;
     position: fixed;
-    top: 80%;
+    width: 100vw;
     z-index: 10;
+  }
+  .actions {
+    width: 100%;
+  }
+  .actions-text-container {
+    right: 20%;
+  }
+  .brew-guide-button {
+    bottom: 190px;
+    left: 10px;
+    position: fixed;
   }
 
 

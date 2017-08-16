@@ -11,7 +11,7 @@ and (max-width : 520px) {
     animation: none !important;
     background: #fff;
     height: 100%;
-    width: 100%;
+    width: 100vw;
     opacity: 1 !important;
     box-shadow: none;
     position: relative;
@@ -36,16 +36,20 @@ and (max-width : 520px) {
     }
   }
 
+  .main-content {
+    margin-left: 0;
+  }
+
   .brew-guide {
     .welcome-container {
-      padding: 40px 20px;
-      width: 100%;
-      max-width: 600px;
+      padding: 40px;
+      width: 100vw;
+      max-width: 100vw;
     }
     .description {
       animation-delay: .8s;
       font-size: 15px;
-      padding: 32px 10px 38px 40px;
+      padding: 32px 0px 38px 40px;
       line-height: 1.6;
     }
     .youll-need {
@@ -140,8 +144,8 @@ and (max-width : 520px) {
       display: block;
       opacity: 1;
       height: 100%;
-      max-height: 100vh;
-      max-width: 100%;
+      height: 100vh;
+      width: 100vw;
       margin: 0 auto;
     }
 
@@ -169,8 +173,24 @@ and (max-width : 520px) {
   .actions-container {
     position: fixed;
     z-index: 10;
+    height: 220px;
     bottom: 0;
-    top: 80%;
+    opacity: 1;
+    width: 100vw;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .actions-text-container {
+    right: 20%;
+  }
+
+  .brew-guide-button {
+    position: fixed;
+    bottom: 190px;
+    left: 10px;
   }
 
 

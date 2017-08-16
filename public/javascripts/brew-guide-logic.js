@@ -281,7 +281,6 @@ $(function() {
   }
 
   function updateAutoPlayVisibility(index) {
-    console.log($(allActions[index]).hasClass('timed'));
     if (!$(allActions[index]).hasClass('timed')) {
       $('.autoplay-container').addClass('hidden');
     } else {
@@ -715,6 +714,8 @@ $(function() {
                  function(callback){ window.setTimeout(callback, 1000/60)};
     var elementsToShow = document.querySelectorAll('.step-bg'); 
     var welcomeContainer = document.querySelectorAll('.welcome-container')[0].getBoundingClientRect(); 
+    var debounceTO = null;
+    var currentStep = 0;
     var loop = function() {
       if (window.scrollY > welcomeContainer.height - 100) {
         // Activate the actions bar
@@ -722,10 +723,20 @@ $(function() {
       } else {
         $('.brew-guide').addClass('welcome');
       }
+      // Debounce the updating
       elementsToShow.forEach(function (element) {
         if (isElementInViewport(element)) {
-          element.classList.add('is-visible');
-          // Get the action number, and show that action
+          if (!debounceTO) {
+            debounceTO = setTimeout(function() {
+              //element.classList.add('is-visible');
+              var index = $(elementsToShow).index($(element));
+              if (currentStep != index + 1) {
+                showStepbyIndex(index + 1);
+              }
+              currentStep = index + 1;
+              debounceTO = null;
+            }, 500);
+          }
         } else {
           element.classList.remove('is-visible');
         }
