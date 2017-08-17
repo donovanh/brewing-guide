@@ -273,7 +273,7 @@ $(function() {
     addNextClasses(index);
     showCurrentAction(index);
     showCurrentContent();
-    updateTimeOnPage(timeElapsed());
+    updateTimeOnPage(timeToSpecificStep(index));
     setTimerBar();
     updateButtonStatus();
     updateAutoPlayVisibility(index);
@@ -458,6 +458,18 @@ $(function() {
       }
     });
     return timeElapsed;
+  }
+
+  function timeToSpecificStep() {
+    var timedActions = $(allActions[currentStep]).parents('.timed-area').find('.action');
+    var index = $(timedActions).index($(allActions[currentStep]));
+    var totalTime = 0;
+    $(timedActions).each(function(i, action) {
+      if (i < index) {
+        totalTime += parseInt($(action).attr('data-time'));
+      }
+    });
+    return totalTime;
   }
 
   function updateTimeOnPage(timeSoFar) {
