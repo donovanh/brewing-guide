@@ -620,7 +620,6 @@ html[data-next="0"] {
     bottom: 0;
 
   .actions-text {
-    display: none;
     font-size: 12.5px;
     line-height: 1.5;
     position: absolute;
@@ -631,7 +630,6 @@ html[data-next="0"] {
   }
 
   .actions-text.current {
-    display: block;
     opacity: 1;
   }
 }

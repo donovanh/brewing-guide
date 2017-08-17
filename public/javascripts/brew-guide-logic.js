@@ -133,9 +133,10 @@ $(function() {
     $('#brew-guide').on('click', '.next-1', function(event) { addStepClass('next-1', event); });
     $('#brew-guide').on('click', '.next-2', function(event) { addStepClass('next-2', event); });
     $('#brew-guide').on('click', '.previous', function(event) { addStepClass('previous', event); });
+    $('#brew-guide').on('click', '#mob-start-button', function(event) { showStepbyIndex(1); });
 
     // $('.step').click(showStep);
-    $('.action').click(showByAction);
+    $('body').on('click', '.action', showByAction);
     $('.step').not('.welcome').hover(hoverNext, hoverOut);
 
     showStepbyIndex(currentStep);
@@ -231,6 +232,14 @@ $(function() {
     // Reset the visible timer
     $('.start-time').text(formatTime(0));
     $('#brew-guide').addClass('welcome');
+    if (isMobile) {
+      // Scroll to top 
+      window.isScrolling = true;
+      $('body').scrollTo(0, 300);
+      setTimeout(function() {
+          window.isScrolling = false;
+        }, 500);
+    }
     showStepbyIndex(0);
     hideActions();
     resetTimerBar();
@@ -258,7 +267,7 @@ $(function() {
     currentStep = index;
     // Remove any previous, current, next classes
     removePreviousNextClasses();
-  
+
     $(allSteps[currentStep]).addClass('current');
     addPreviousClasses(index);
     addNextClasses(index);
@@ -268,6 +277,15 @@ $(function() {
     setTimerBar();
     updateButtonStatus();
     updateAutoPlayVisibility(index);
+    if (isMobile) {
+      if (index > 0) {
+        window.isScrolling = true;
+        $('body').scrollTo($('.step-bg')[index - 1], 400);
+        setTimeout(function() {
+          window.isScrolling = false;
+        }, 500);
+      }
+    }
     // Save to URL
     updateURL();
     if (currentStep > 0) {
@@ -708,48 +726,118 @@ $(function() {
     });
   }
 
+  if ( !window.requestAnimationFrame ) {
+
+    window.requestAnimationFrame = ( function() {
+
+      return window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
+
+        window.setTimeout( callback, 1000 / 60 );
+
+      };
+
+    } )();
+
+  }
+
   function setUpMobileMode() {
     var scroll = window.requestAnimationFrame ||
                  // IE Fallback
                  function(callback){ window.setTimeout(callback, 1000/60)};
     var elementsToShow = document.querySelectorAll('.step-bg'); 
     var welcomeContainer = document.querySelectorAll('.welcome-container')[0].getBoundingClientRect(); 
-    var debounceTO = null;
-    var currentStep = 0;
-    var loop = function() {
-      if (window.scrollY > welcomeContainer.height - 100) {
+    var shown = false;
+
+    $(window).scroll(function() {
+      if (currentStep > 0) {
         // Activate the actions bar
         $('.brew-guide').removeClass('welcome');
       } else {
         $('.brew-guide').addClass('welcome');
       }
-      // Debounce the updating
-      elementsToShow.forEach(function (element) {
-        if (isElementInViewport(element)) {
-          if (!debounceTO) {
-            debounceTO = setTimeout(function() {
-              //element.classList.add('is-visible');
-              var index = $(elementsToShow).index($(element));
-              if (currentStep != index + 1) {
-                showStepbyIndex(index + 1);
-              }
-              currentStep = index + 1;
-              debounceTO = null;
-            }, 500);
+      if (!window.isScrolling) {
+        var visible = [];
+        elementsToShow.forEach(function (element) {
+          if (isElementInViewport(element)) {
+            visible.push(element);
           }
+        });
+        var closestElement = {};
+        visible.forEach(function(element, index) {
+          // Show whichever one is most visible
+          var offset = $(element).offset();
+          var height = $(element).height();
+          var centerY = offset.top + height / 2;
+          var screenCenterY = $(window).scrollTop() + ($(window).height() / 2);
+          var distance = centerY - screenCenterY;
+          if (distance < 0) distance = 1 - distance;
+          console.log("distance " + index, distance);
+          if (distance < closestElement.distance || !closestElement.distance) {
+            closestElement.element = element;
+            closestElement.distance = distance;
+          }
+        });
+        console.log(closestElement);
+        var targetStep = $(elementsToShow).index($(closestElement.element)) + 1;
+        if ((currentStep != targetStep && !shown) || (currentStep === 0 && !shown)) {
+          showStepbyIndex(targetStep);
+          currentStep = targetStep;
+          shown = true;
         } else {
-          element.classList.remove('is-visible');
+          shown = false;
         }
-      });
-      scroll(loop);
-    };
+      }
+    });
+    // Remove tap events on the steps
+    // $('body').off('click', '.action', showByAction);
+    // var loop = function() {
+    //   // console.log("Current step: ", currentStep)
+    //   if (currentStep > 0) {
+    //     // Activate the actions bar
+    //     $('.brew-guide').removeClass('welcome');
+    //   } else {
+    //     $('.brew-guide').addClass('welcome');
+    //   }
+    //   if (!window.isScrolling) {
+    //     var visible = [];
+    //     elementsToShow.forEach(function (element) {
+    //       if (isElementInViewport(element)) {
+    //         visible.push(element);
+    //       }
+    //     });
+    //     var closestElement = {};
+    //     visible.forEach(function(element, index) {
+    //       // Show whichever one is most visible
+    //       var offset = $(element).offset();
+    //       var height = $(element).height();
+    //       var centerY = offset.top + height / 2;
+    //       var screenCenterY = $(window).scrollTop() + ($(window).height() / 2);
+    //       var distance = centerY - screenCenterY;
+    //       if (distance < 0) distance = 1 - distance;
+    //       console.log("distance " + index, distance);
+    //       if (distance < closestElement.distance || !closestElement.distance) {
+    //         closestElement.element = element;
+    //         closestElement.distance = distance;
+    //       }
+    //     });
+    //     console.log(closestElement);
+    //     var targetStep = $(elementsToShow).index($(closestElement.element)) + 1;
+    //     if ((currentStep != targetStep && !shown) || (currentStep === 0 && !shown)) {
+    //       showStepbyIndex(targetStep);
+    //       currentStep = targetStep;
+    //       shown = true;
+    //     } else {
+    //       shown = false;
+    //     }
+    //   }
+    //   scroll(loop);
+    // };
     // Call the loop for the first time
-    loop();
-    // Check which step's background is in view
-    // Show the actions bar if height is greater than the welcome part + a bit
-    // Progress the action to the next action if the button is pressed
-    // Scroll the right background into view
-    // Note: Make sure the action bar fits the view properly
+    //loop();
   }
 
   
@@ -761,15 +849,16 @@ $(function() {
       el = el[0];
     }
     var rect = el.getBoundingClientRect();
+    var height = window.innerHeight || document.documentElement.clientHeight;
     return (
       (rect.top <= 0
         && rect.bottom >= 0)
       ||
-      (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+      (rect.bottom >= (height) &&
+        rect.top <= (height))
       ||
       (rect.top >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+        rect.bottom <= (height))
     );
   }
 

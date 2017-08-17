@@ -1,5 +1,6 @@
 /* Mobile overrides for the styles of the Brew Guide */
 $red: #e9532f;
+$exponential-ease: cubic-bezier(0,.7,.3,1);
 
 
 /* Smartphones (portrait and landscape) ———– */
@@ -38,6 +39,7 @@ and (max-width : 520px) {
 
   .main-content {
     margin-left: 0;
+    width: 100vw;
   }
 
   .brew-guide {
@@ -85,6 +87,22 @@ and (max-width : 520px) {
   .welcome-container {
     position: relative;
   }
+
+  .brew-guide:not(.welcome) {
+    .actions-container {
+      animation: show-actions-area-mob 1s $exponential-ease forwards;
+    }
+    .brew-guide-button {
+      animation: show-button-mobile 1s $exponential-ease forwards;
+      transition: none;
+    }
+  }
+
+/*  .brew-guide.welcome {
+    .actions-container {
+      animation: show-actions-area-mob 1s $exponential-ease reverse;
+    }
+  }*/
 
   .mob-start-button {
     background: $red;
@@ -138,6 +156,7 @@ and (max-width : 520px) {
       right: auto;
     width: 100vw;
     padding-top: 100px;
+    padding-bottom: 100px;
 
     .step-bg {
       position: relative;
@@ -146,7 +165,6 @@ and (max-width : 520px) {
       height: 100%;
       height: 100vh;
       width: 100vw;
-      margin: 0 auto;
     }
 
     .step-bg img { 
@@ -166,8 +184,8 @@ and (max-width : 520px) {
   }
 
   .actions-container-container {
+    height: 100vh;
     position: fixed;
-
   }
 
   .actions-container {
@@ -177,10 +195,24 @@ and (max-width : 520px) {
     bottom: 0;
     opacity: 1;
     width: 100vw;
+    transition: all .5s ease-out;
+  }
+
+  .welcome .actions-container {
+    top: 120vh;
+    bottom: auto;
   }
 
   .actions {
-    width: 100%;
+    width: calc(100vw - 20% - 20px);
+
+    .action {
+      min-width: 0;
+    }
+  }
+
+  .brew-guide .actions-container {
+    opacity: 0;
   }
 
   .actions-text-container {
@@ -189,8 +221,32 @@ and (max-width : 520px) {
 
   .brew-guide-button {
     position: fixed;
-    bottom: 190px;
+    bottom: 194px;
     left: 10px;
+  }
+
+  .step-bg.hide,
+  .step-bg.current {
+    animation: none !important;
+    opacity: 1;
+  }
+
+  .autoplay-container {
+    right: 22px;
+    top: 26px;
+  }
+
+  .cssanimations .actions-text {
+    animation: fade-out .5s ease-out forwards;
+  }
+
+  .cssanimations .actions-text.current {
+    animation: show-actions-text-mobile .8s $exponential-ease forwards !important;
+    opacity: 0;
+  }
+
+  .actions .timed-area {
+    margin-right: -9px;
   }
 
 

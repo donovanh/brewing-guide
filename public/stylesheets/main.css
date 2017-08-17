@@ -768,7 +768,6 @@ html[data-next="0"] .brew-guide {
 }
 
 .actions-text-container .actions-text {
-    display: none;
     font-size: 12.5px;
     line-height: 1.5;
     opacity: 0;
@@ -780,7 +779,6 @@ html[data-next="0"] .brew-guide {
 }
 
 .actions-text-container .actions-text.current {
-    display: block;
     opacity: 1;
 }
 

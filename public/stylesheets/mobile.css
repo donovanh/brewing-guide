@@ -32,6 +32,7 @@ and (max-width : 520px) {
   }
   .main-content {
     margin-left: 0;
+    width: 100vw;
   }
   .brew-guide .welcome-container {
     max-width: 100vw;
@@ -87,6 +88,24 @@ and (max-width : 520px) {
   .welcome-container {
     position: relative;
   }
+  .brew-guide:not(.welcome) .actions-container {
+    -webkit-animation: show-actions-area-mob 1s cubic-bezier(0,.7,.3,1) forwards;
+    animation: show-actions-area-mob 1s cubic-bezier(0,.7,.3,1) forwards;
+
+
+  }
+  .brew-guide:not(.welcome) .brew-guide-button {
+    -webkit-animation: show-button-mobile 1s cubic-bezier(0,.7,.3,1) forwards;
+    animation: show-button-mobile 1s cubic-bezier(0,.7,.3,1) forwards;
+    transition: none;
+
+
+  }
+/*  .brew-guide.welcome {
+    .actions-container {
+      animation: show-actions-area-mob 1s $exponential-ease reverse;
+    }
+  }*/
   .mob-start-button {
     -webkit-box-align: center;
         -ms-flex-align: center;
@@ -140,6 +159,7 @@ and (max-width : 520px) {
   .step-bg-container {
     background: #e9532f;
       left: auto;
+    padding-bottom: 100px;
     padding-top: 100px;
     position: relative;
       right: auto;
@@ -150,7 +170,6 @@ and (max-width : 520px) {
     display: block;
     height: 100%;
     height: 100vh;
-    margin: 0 auto;
     opacity: 1;
     position: relative;
     width: 100vw;
@@ -174,27 +193,61 @@ and (max-width : 520px) {
 
   }
   .actions-container-container {
+    height: 100vh;
     position: fixed;
-
   }
   .actions-container {
     bottom: 0;
     height: 220px;
     opacity: 1;
     position: fixed;
+    transition: all .5s ease-out;
     width: 100vw;
     z-index: 10;
   }
+  .welcome .actions-container {
+    bottom: auto;
+    top: 120vh;
+  }
   .actions {
-    width: 100%;
+    width: calc(100vw - 20% - 20px);
+  }
+  .actions .action {
+    min-width: 0;
+
+
+  }
+  .brew-guide .actions-container {
+    opacity: 0;
   }
   .actions-text-container {
     right: 20%;
   }
   .brew-guide-button {
-    bottom: 190px;
+    bottom: 194px;
     left: 10px;
     position: fixed;
+  }
+  .step-bg.hide, .step-bg.current {
+    -webkit-animation: none !important;
+            animation: none !important;
+    opacity: 1;
+  }
+  .autoplay-container {
+    right: 22px;
+    top: 26px;
+  }
+  .cssanimations .actions-text {
+    -webkit-animation: fade-out .5s ease-out forwards;
+            animation: fade-out .5s ease-out forwards;
+  }
+  .cssanimations .actions-text.current {
+    -webkit-animation: show-actions-text-mobile .8s cubic-bezier(0,.7,.3,1) forwards !important;
+            animation: show-actions-text-mobile .8s cubic-bezier(0,.7,.3,1) forwards !important;
+    opacity: 0;
+  }
+  .actions .timed-area {
+    margin-right: -9px;
   }
 
 
