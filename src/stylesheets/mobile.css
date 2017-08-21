@@ -8,6 +8,10 @@ $exponential-ease: cubic-bezier(0,.7,.3,1);
 and (min-width : 320px)
 and (max-width : 520px) {
 
+  body {
+    background: #fff;
+  }
+
   .brew-guide {
     animation: none !important;
     background: #fff;
