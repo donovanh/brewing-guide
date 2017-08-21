@@ -16,7 +16,7 @@ and (max-width : 520px) {
     animation: none !important;
     background: #fff;
     height: 100%;
-    width: 100vw;
+    width: 100vw !important;
     opacity: 1 !important;
     box-shadow: none;
     position: relative;
@@ -252,6 +252,5 @@ and (max-width : 520px) {
   .actions .timed-area {
     margin-right: -9px;
   }
-
 
 }

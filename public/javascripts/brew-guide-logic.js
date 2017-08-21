@@ -282,9 +282,8 @@ $(function() {
       if (index === 1) {
         scrollTime = 1000;
       } else if (index > 0) {
-        scrollTime = 400;
+        scrollTime = 600;
       }
-      console.log(index, scrollTime);
       if (scrollTime) {
         window.isScrolling = true;
         $('body').scrollTo($('.step-bg')[index - 1], scrollTime);
