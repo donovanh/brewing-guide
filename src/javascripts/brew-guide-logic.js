@@ -278,12 +278,19 @@ $(function() {
     updateButtonStatus();
     updateAutoPlayVisibility(index);
     if (isMobile) {
-      if (index > 0) {
+      scrollTime = 0;
+      if (index === 1) {
+        scrollTime = 1000;
+      } else if (index > 0) {
+        scrollTime = 400;
+      }
+      console.log(index, scrollTime);
+      if (scrollTime) {
         window.isScrolling = true;
-        $('body').scrollTo($('.step-bg')[index - 1], 400);
+        $('body').scrollTo($('.step-bg')[index - 1], scrollTime);
         setTimeout(function() {
           window.isScrolling = false;
-        }, 500);
+        }, scrollTime + 100);
       }
     }
     // Save to URL
@@ -711,7 +718,7 @@ $(function() {
   }
 
   function updateURL() {
-    if (currentStep > 0) {
+    if (currentStep > 0 && !isMobile) {
       var url = new URL(window.location.href);
       url.searchParams.set('step', currentStep);
       window.history.pushState('', 'Brew Guide - Step ' + currentStep, url);
@@ -787,13 +794,11 @@ $(function() {
           var screenCenterY = $(window).scrollTop() + ($(window).height() / 2);
           var distance = centerY - screenCenterY;
           if (distance < 0) distance = 1 - distance;
-          console.log("distance " + index, distance);
           if (distance < closestElement.distance || !closestElement.distance) {
             closestElement.element = element;
             closestElement.distance = distance;
           }
         });
-        console.log(closestElement);
         var targetStep = $(elementsToShow).index($(closestElement.element)) + 1;
         if ((currentStep != targetStep && !shown) || (currentStep === 0 && !shown)) {
           showStepbyIndex(targetStep);
