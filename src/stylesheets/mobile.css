@@ -195,7 +195,7 @@ and (max-width : 520px) {
   .actions-container {
     position: fixed;
     z-index: 10;
-    height: 220px;
+    height: 24%;
     bottom: 0;
     opacity: 1;
     width: 100vw;
@@ -225,7 +225,7 @@ and (max-width : 520px) {
 
   .brew-guide-button {
     position: fixed;
-    bottom: 194px;
+    bottom: 20%;
     left: 10px;
   }
 
