@@ -48,7 +48,6 @@ and (max-width : 520px) {
 
   .brew-guide {
     .welcome-container {
-      height: 90vh;
       max-width: 100vw;
       padding: 40px;
       width: 100vw;
