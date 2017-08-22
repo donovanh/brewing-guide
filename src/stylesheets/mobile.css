@@ -48,18 +48,20 @@ and (max-width : 520px) {
 
   .brew-guide {
     .welcome-container {
+      height: 90vh;
+      max-width: 100vw;
       padding: 40px;
       width: 100vw;
-      max-width: 100vw;
     }
     .description {
       animation-delay: .8s;
       font-size: 15px;
-      padding: 32px 0px 38px 40px;
+      padding: 22px 0px 28px 40px;
       line-height: 1.6;
     }
     .youll-need {
       display: block;
+      padding: 8px;
 
       .col {
         width: 100% !important;
@@ -120,7 +122,7 @@ and (max-width : 520px) {
     line-height: 105px;
     position: absolute;
       right: 26px;
-      bottom: 14px;
+      bottom: -26px;
     text-align: center;
     transform: translateZ(0);
     width: 100px;
