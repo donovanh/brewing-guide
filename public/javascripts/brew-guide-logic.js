@@ -235,10 +235,10 @@ $(function() {
     if (isMobile) {
       // Scroll to top 
       window.isScrolling = true;
-      $('body').scrollTo(0, 300);
+      $('body').scrollTo(0, 1000);
       setTimeout(function() {
           window.isScrolling = false;
-        }, 500);
+        }, 1200);
     }
     showStepbyIndex(0);
     hideActions();
@@ -763,11 +763,11 @@ $(function() {
   }
 
   function setUpMobileMode() {
+    
     var scroll = window.requestAnimationFrame ||
                  // IE Fallback
                  function(callback){ window.setTimeout(callback, 1000/60)};
     var elementsToShow = document.querySelectorAll('.step-bg'); 
-    var welcomeContainer = document.querySelectorAll('.welcome-container')[0].getBoundingClientRect(); 
     var shown = false;
 
     $(window).scroll(function() {
@@ -808,55 +808,8 @@ $(function() {
         }
       }
     });
-    // Remove tap events on the steps
-    // $('body').off('click', '.action', showByAction);
-    // var loop = function() {
-    //   // console.log("Current step: ", currentStep)
-    //   if (currentStep > 0) {
-    //     // Activate the actions bar
-    //     $('.brew-guide').removeClass('welcome');
-    //   } else {
-    //     $('.brew-guide').addClass('welcome');
-    //   }
-    //   if (!window.isScrolling) {
-    //     var visible = [];
-    //     elementsToShow.forEach(function (element) {
-    //       if (isElementInViewport(element)) {
-    //         visible.push(element);
-    //       }
-    //     });
-    //     var closestElement = {};
-    //     visible.forEach(function(element, index) {
-    //       // Show whichever one is most visible
-    //       var offset = $(element).offset();
-    //       var height = $(element).height();
-    //       var centerY = offset.top + height / 2;
-    //       var screenCenterY = $(window).scrollTop() + ($(window).height() / 2);
-    //       var distance = centerY - screenCenterY;
-    //       if (distance < 0) distance = 1 - distance;
-    //       console.log("distance " + index, distance);
-    //       if (distance < closestElement.distance || !closestElement.distance) {
-    //         closestElement.element = element;
-    //         closestElement.distance = distance;
-    //       }
-    //     });
-    //     console.log(closestElement);
-    //     var targetStep = $(elementsToShow).index($(closestElement.element)) + 1;
-    //     if ((currentStep != targetStep && !shown) || (currentStep === 0 && !shown)) {
-    //       showStepbyIndex(targetStep);
-    //       currentStep = targetStep;
-    //       shown = true;
-    //     } else {
-    //       shown = false;
-    //     }
-    //   }
-    //   scroll(loop);
-    // };
-    // Call the loop for the first time
-    //loop();
-  }
 
-  
+  }
 
   // Helper function from: http://stackoverflow.com/a/7557433/274826
   function isElementInViewport(el) {
