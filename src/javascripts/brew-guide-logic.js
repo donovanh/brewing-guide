@@ -467,11 +467,11 @@ $(function() {
   }
 
   function timeToSpecificStep() {
-    var timedActions = $(allActions[currentStep]).parents('.timed-area').find('.action');
+    var timedActions = $('.timed-area').find('.action');
     var index = $(timedActions).index($(allActions[currentStep]));
     var totalTime = 0;
     $(timedActions).each(function(i, action) {
-      if (i < index) {
+      if (i < index || index < 0) {
         totalTime += parseInt($(action).attr('data-time'));
       }
     });
@@ -570,19 +570,25 @@ $(function() {
     var endTimeLeftEdge = absolutePosition(
       $('.end-time')[0]
       ).left;
-    if (startTimeRightEdge > endTimeLeftEdge) {
-      hideEndTime();
-    }
-    if (startTimeLeftEdge >= endTimeLeftEdge && startTimeLeftEdge > 0) {
-      placeStartTimeOnEndTime();
+    if (!$('.end-time').hasClass('hidden')) {
+      if (startTimeRightEdge > endTimeLeftEdge) {
+        hideEndTime();
+      }
+      if (startTimeLeftEdge >= endTimeLeftEdge && startTimeLeftEdge > 0) {
+        placeStartTimeOnEndTime();
+      }
+    } else {
+
     }
   }
 
   function showEndTime() {
+    $('.end-time').removeClass('hidden');
     $('.end-time').css('opacity', 1);
   }
 
   function hideEndTime() {
+    $('.end-time').addClass('hidden');
     $('.end-time').css('opacity', 0);
   }
 
