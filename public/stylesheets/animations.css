@@ -640,34 +640,46 @@
 
 @-webkit-keyframes show-button-border {
   0% {
-    /*transform: scale(.5) rotateZ(90deg);*/
+    -webkit-transform: scale(.5) rotateZ(90deg);
+            transform: scale(.5) rotateZ(90deg);
   }
   5% {
-    /*transform: scale(1) rotateZ(90deg);*/
+    -webkit-transform: scale(1) rotateZ(90deg);
+            transform: scale(1) rotateZ(90deg);
   }
   84% { 
-    /*transform: scale(1) rotateZ(90deg); */
+    -webkit-transform: scale(1) rotateZ(90deg); 
+            transform: scale(1) rotateZ(90deg);
+ 
     stroke-dashoffset: 0;
   }
   100% {
-    /*transform: scale(.5) rotateZ(90deg);*/
+    -webkit-transform: scale(.5) rotateZ(90deg);
+            transform: scale(.5) rotateZ(90deg);
+
     stroke-dashoffset: 0;
   }
 }
 
 @keyframes show-button-border {
   0% {
-    /*transform: scale(.5) rotateZ(90deg);*/
+    -webkit-transform: scale(.5) rotateZ(90deg);
+            transform: scale(.5) rotateZ(90deg);
   }
   5% {
-    /*transform: scale(1) rotateZ(90deg);*/
+    -webkit-transform: scale(1) rotateZ(90deg);
+            transform: scale(1) rotateZ(90deg);
   }
   84% { 
-    /*transform: scale(1) rotateZ(90deg); */
+    -webkit-transform: scale(1) rotateZ(90deg); 
+            transform: scale(1) rotateZ(90deg);
+ 
     stroke-dashoffset: 0;
   }
   100% {
-    /*transform: scale(.5) rotateZ(90deg);*/
+    -webkit-transform: scale(.5) rotateZ(90deg);
+            transform: scale(.5) rotateZ(90deg);
+
     stroke-dashoffset: 0;
   }
 }
