@@ -370,7 +370,11 @@ html[data-next="0"] {
   }
 
   .next-2 {
-    width: 34px;
+    transform: translateX(712px);
+  }
+
+  .more-next {
+    opacity: 1;
     transform: translateX(712px);
   }
 

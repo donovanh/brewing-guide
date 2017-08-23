@@ -347,8 +347,11 @@ $(function() {
       TweenLite.fromTo($next0, 0.5, {x: 612, delay: .5}, {x: 643, delay: .5, background: '#ed764f', width: '36px'});
       TweenLite.fromTo($next1, 0.5, {x: 642, delay: .5}, {x: 677, delay: .5, background: '#ef8661', width: '36px'});
       TweenLite.fromTo($next2, 0.5, {x: 677, delay: .5}, {x: 712, delay: .5, background: '#f19572', width: '36px'});
-      TweenLite.fromTo($moreNext, 0.5, {x: 712, autoAlpha: 1}, {x: 728, autoAlpha: 0});
-      TweenLite.to($moreNextText, 0.1, {autoAlpha: 0});
+      TweenLite.set($moreNext, {x: 712, autoAlpha: 1});
+      setTimeout(function() {
+        TweenLite.fromTo($moreNext, 0.5, {x: 712, autoAlpha: 1}, {x: 728, autoAlpha: 0});
+        TweenLite.to($moreNextText, 0.1, {autoAlpha: 0});
+      }, 200);
     }
   }
 

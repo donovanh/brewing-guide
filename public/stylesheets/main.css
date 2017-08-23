@@ -504,7 +504,12 @@ html[data-next="0"] .brew-guide {
 .steps .next-2 {
     -webkit-transform: translateX(712px);
     transform: translateX(712px);
-    width: 34px;
+}
+
+.steps .more-next {
+    opacity: 1;
+    -webkit-transform: translateX(712px);
+    transform: translateX(712px);
 }
 
 .steps .next-1.shift-right {
