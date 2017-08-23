@@ -404,7 +404,8 @@ html[data-next="0"] .brew-guide {
     height: 500px;
     left: 0;
     position: absolute;
-    will-change: background, transform;
+    transition: opacity .5s linear;
+    will-change: opacity;
 }
 
 .steps .step:hover {
@@ -420,6 +421,7 @@ html[data-next="0"] .brew-guide {
     top: 112px;
     -webkit-transform: rotateZ(-90deg);
     transform: rotateZ(-90deg);
+    transition: opacity .3s linear;
     width: 160px;
 }
 
@@ -450,13 +452,15 @@ html[data-next="0"] .brew-guide {
     background: #ef8661;
     -webkit-transform: translateX(-17px);
     transform: translateX(-17px);
-    transition-delay: 1s, 1s, 1s;
     width: 16px;
 }
 
+/*transition-delay: 1s, 1s, 1s;*/
+
 .steps .previous .step-title {
     opacity: 0;
-    transition-delay: .6s;
+
+    /*transition-delay: .6s;*/
 }
 
 .steps .next {
@@ -467,14 +471,13 @@ html[data-next="0"] .brew-guide {
     opacity: 1;
 }
 
-.steps .next:hover {
+/*.next:hover {
     width: 48px;
-}
 
-.steps .next:hover .step-title {
-    -webkit-transform: rotateZ(-90deg) translateY(5px);
-    transform: rotateZ(-90deg) translateY(5px);
-}
+    .step-title {
+      transform: rotateZ(-90deg) translateY(5px);
+    }
+  }*/
 
 .steps .next.bg-0 {
     background: #ed764f;
@@ -493,11 +496,6 @@ html[data-next="0"] .brew-guide {
     transform: translateX(642px);
 }
 
-.steps .next-0:hover {
-    -webkit-transform: translateX(642px);
-    transform: translateX(642px);
-}
-
 .steps .next-1 {
     -webkit-transform: translateX(677px);
     transform: translateX(677px);
@@ -507,10 +505,6 @@ html[data-next="0"] .brew-guide {
     -webkit-transform: translateX(712px);
     transform: translateX(712px);
     width: 34px;
-}
-
-.steps .next-2:hover {
-    width: 44px;
 }
 
 .steps .next-1.shift-right {
@@ -536,33 +530,25 @@ html[data-next="0"] .brew-guide {
   display: none;
 }
 
-.step[data-step="welcome"]:hover {
-  -webkit-transform: translateX(-22px);
-          transform: translateX(-22px);
+.step[data-step="welcome"] {
+  background: #ef8661;
+  -webkit-transform: translateX(-17px);
+          transform: translateX(-17px);
+  width: 16px;
+}
+
+/*transition-delay: 1s, 1s, 1s;*/
+
+.step[data-step="welcome"] .step-title {
+    opacity: 0;
+
+    /*transition-delay: .6s;*/
+}
+
+/*.step[data-step="welcome"]:hover {
   width: 24px;
-}
-
-/* Animations for moving the steps around */
-
-/*.animating-previous {
-  .step.current { animation: from-previous-to-current 1s linear forwards; }
-  .step.next-0 { animation: from-current-to-next-0 1s linear forwards; }
-  .step.next-1 { animation: from-next-0-to-next-1 1s linear forwards; }
-  .step.next-2 { animation: from-next-1-to-next-2 1s linear forwards; }
-  .step.more-next { 
-    animation: from-next-2-to-off-right 1s linear forwards;
-    opacity: 1;
-  }
-}
-
-.animating-next-0 {
-  .step.previous.bg-3 { display: block; animation: from-previous-to-current 1s linear forwards reverse; }
-  .step.current { animation: from-current-to-next-0 1s linear forwards reverse; }
-  .step.next-0 { animation: from-next-0-to-next-1 1s linear forwards reverse; }
-  .step.next-1 { animation: from-next-1-to-next-2 1s linear forwards reverse; }
-  .step.next-2 { animation: from-next-2-to-off-right 1s linear forwards reverse; }
-}
-*/
+  transform: translateX(-22px);
+}*/
 
 /* Background images */
 

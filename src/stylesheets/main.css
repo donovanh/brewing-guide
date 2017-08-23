@@ -280,7 +280,8 @@ html[data-next="0"] {
     cursor: pointer;
     display: inline-block;
     left: 0;
-    will-change: background, transform;
+    will-change: opacity;
+    transition: opacity .5s linear;
     position: absolute;
   }
 
@@ -295,6 +296,7 @@ html[data-next="0"] {
       top: 112px;
     width: 160px;
     opacity: 0;
+    transition: opacity .3s linear;
     transform: rotateZ(-90deg);
   }
 
@@ -324,10 +326,10 @@ html[data-next="0"] {
     background: $red3;
     width: $previous-width;
     transform: translateX(-17px);
-    transition-delay: 1s, 1s, 1s;
+    /*transition-delay: 1s, 1s, 1s;*/
     .step-title {
       opacity: 0;
-      transition-delay: .6s;
+      /*transition-delay: .6s;*/
     }
   }
 
@@ -339,13 +341,13 @@ html[data-next="0"] {
     }
   }
 
-  .next:hover {
+  /*.next:hover {
     width: 48px;
 
     .step-title {
       transform: rotateZ(-90deg) translateY(5px);
     }
-  }
+  }*/
 
   .next.bg-0 {
     background: $red2;
@@ -363,10 +365,6 @@ html[data-next="0"] {
     transform: translateX(642px);
   }
 
-  .next-0:hover {
-    transform: translateX(642px);
-  }
-
   .next-1 {
     transform: translateX(677px);
   }
@@ -374,10 +372,6 @@ html[data-next="0"] {
   .next-2 {
     width: 34px;
     transform: translateX(712px);
-  }
-
-  .next-2:hover {
-    width: 44px;
   }
 
   .next-1.shift-right {
@@ -402,32 +396,21 @@ html[data-next="0"] {
   display: none;
 }
 
-.step[data-step="welcome"]:hover {
-  width: 24px;
-  transform: translateX(-22px);
-}
-
-/* Animations for moving the steps around */
-
-/*.animating-previous {
-  .step.current { animation: from-previous-to-current 1s linear forwards; }
-  .step.next-0 { animation: from-current-to-next-0 1s linear forwards; }
-  .step.next-1 { animation: from-next-0-to-next-1 1s linear forwards; }
-  .step.next-2 { animation: from-next-1-to-next-2 1s linear forwards; }
-  .step.more-next { 
-    animation: from-next-2-to-off-right 1s linear forwards;
-    opacity: 1;
+.step[data-step="welcome"] {
+  background: $red3;
+  width: $previous-width;
+  transform: translateX(-17px);
+  /*transition-delay: 1s, 1s, 1s;*/
+  .step-title {
+    opacity: 0;
+    /*transition-delay: .6s;*/
   }
 }
 
-.animating-next-0 {
-  .step.previous.bg-3 { display: block; animation: from-previous-to-current 1s linear forwards reverse; }
-  .step.current { animation: from-current-to-next-0 1s linear forwards reverse; }
-  .step.next-0 { animation: from-next-0-to-next-1 1s linear forwards reverse; }
-  .step.next-1 { animation: from-next-1-to-next-2 1s linear forwards reverse; }
-  .step.next-2 { animation: from-next-2-to-off-right 1s linear forwards reverse; }
-}
-*/
+/*.step[data-step="welcome"]:hover {
+  width: 24px;
+  transform: translateX(-22px);
+}*/
 
 /* Background images */
 

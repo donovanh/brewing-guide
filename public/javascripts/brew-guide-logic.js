@@ -46,13 +46,17 @@ $(function() {
     var actionsContainer = $('.actions');
     var actionsTextContainer = $('.actions-text-container');
     var bgContainer = $('.step-bg-container');
+    window.steps = {};
 
     $(brewGuide.steps).each(function(index, step) {
       // Build the steps
       var newStep = $('<li class="step"></li>');
-      var stepTitle = $('<h1 class="step-title">'+ step.title +'</h1>');
+      var stepTitle = $('<h1 class="step-title" id=step-"'+ index +'">'+ step.title +'</h1>');
       $(newStep).html(stepTitle);
       $(stepsContainer).append(newStep);
+
+      // Add each step to a global object for animating
+      //window.steps['step-' + index] = 
 
       // Build the actions
       var newAction = $('<li class="action"></li>');
@@ -137,7 +141,7 @@ $(function() {
 
     // $('.step').click(showStep);
     $('body').on('click', '.action', showByAction);
-    $('.step').not('.welcome').hover(hoverNext, hoverOut);
+    //$('.step').not('.welcome').hover(hoverNext, hoverOut);
 
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
@@ -199,7 +203,7 @@ $(function() {
     var target = $(event.target);
     var index = $('#brew-guide').find('.action').index(target);
     setTimerBar();
-    showStepbyIndex(index);
+    showStepbyIndex(index, 'action');
   }
 
   function hoverNext(event) {
@@ -216,14 +220,12 @@ $(function() {
     var count = 0;
     while (index < lastStep) {
       index++;
-      $(allSteps[index])
-        .addClass('shift-right');
+      $(allSteps[index]).addClass('shift-right');
     }
   }
 
   function hoverOut() {
-    $(allSteps)
-      .removeClass('shift-right');
+    $(allSteps).removeClass('shift-right');
   }
 
   function showStart() {
@@ -262,8 +264,15 @@ $(function() {
     showStepbyIndex(currentStep);
   }
 
-  function showStepbyIndex(index) {
+  function showStepbyIndex(index, action) {
     // Calculates the previous and next indices, and updates the carousel
+    var direction;
+    if (index > currentStep) {
+      direction = 'left';
+    } else if (currentStep > index) {
+      direction = 'right';
+    }
+    console.log('Going from ', currentStep, ' to ', index);
     currentStep = index;
     // Remove any previous, current, next classes
     removePreviousNextClasses();
@@ -292,6 +301,11 @@ $(function() {
         }, scrollTime + 100);
       }
     }
+    if (!isMobile && !action) {
+      animateSteps(direction);
+    } else {
+      clearStepStyles();
+    }
     // Save to URL
     updateURL();
     if (currentStep > 0) {
@@ -302,6 +316,45 @@ $(function() {
     } else {
       isPlaying = false;
     }
+  }
+
+  function animateSteps(direction) {
+    // Register the next and prev step items 
+    var $prevStep = $('.steps').find('.previous').last();
+    var $next0 = $('.steps').find('.next-0');
+    var $next1 = $('.steps').find('.next-1');
+    var $next2 = $('.steps').find('.next-2');
+    var $moreNext = $('.steps').find('.more-next');
+    $('.steps').find('.next-2').find('.step-title').attr('style', '');
+    var $moreNextText = $('.steps').find('.more-next').find('.step-title');
+    if (direction === 'left') {
+      // Going right to left
+      TweenLite.fromTo($prevStep, 0.5,
+        {x: -2, width: '36px', delay: .5, background: '#ed764f'},
+        {x: -17, delay: .5, width: '18px', background: '#ef8661'}
+      );
+      TweenLite.fromTo($(allSteps[currentStep]), 0.5, {x: 643}, {x: 610, width: '36px'});
+      TweenLite.fromTo($(allSteps[currentStep]), 0.5, {x: 32, delay: .5}, {x: -2, delay: .5, background: '#ed764f'});
+      TweenLite.fromTo($next0, 0.5, {x: 677}, {x: 642, background: '#ed764f', width: '36px'});
+      TweenLite.fromTo($next1, 0.5, {x: 712}, {x: 677, background: '#ef8661', width: '36px'});
+      TweenLite.fromTo($next2, 0.5, {x: 738, autoAlpha: 0}, {x: 712, autoAlpha: 1, background: '#f19572', width: '36px'});
+    } else if (direction === 'right') {
+      TweenLite.fromTo($(allSteps[currentStep]), 0.5,
+        {x: -17, width: '18px', background: '#ef8661'},
+        {x: -2, width: '36px', background: '#ed764f'}
+      );
+      TweenLite.fromTo($next0, 0.5, {x: -2}, {x: 32});
+      TweenLite.fromTo($next0, 0.5, {x: 612, delay: .5}, {x: 643, delay: .5, background: '#ed764f', width: '36px'});
+      TweenLite.fromTo($next1, 0.5, {x: 642, delay: .5}, {x: 677, delay: .5, background: '#ef8661', width: '36px'});
+      TweenLite.fromTo($next2, 0.5, {x: 677, delay: .5}, {x: 712, delay: .5, background: '#f19572', width: '36px'});
+      TweenLite.fromTo($moreNext, 0.5, {x: 712, autoAlpha: 1}, {x: 728, autoAlpha: 0});
+      TweenLite.to($moreNextText, 0.1, {autoAlpha: 0});
+    }
+  }
+
+  function clearStepStyles() {
+    $('.steps').attr('style', '');
+    $('.steps').find('.step-title').attr('style', '');
   }
 
   function updateAutoPlayVisibility(index) {
@@ -372,6 +425,7 @@ $(function() {
       nextSteps++;
     }
     $(allSteps[index]).addClass('more-next');
+    $(allSteps[index]).attr('style', '');
     $('html').attr('data-next', nextSteps);
   }
 
