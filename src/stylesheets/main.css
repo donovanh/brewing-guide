@@ -373,11 +373,6 @@ html[data-next="0"] {
     transform: translateX(712px);
   }
 
-  .more-next {
-    opacity: 1;
-    transform: translateX(712px);
-  }
-
   .next-1.shift-right {
     transform: translateX(686px);
   }
