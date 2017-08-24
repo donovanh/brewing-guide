@@ -351,7 +351,8 @@ $(function() {
       TweenLite.fromTo($next0, duration, {x: 612, delay: .5}, {x: 643, delay: .5, background: '#ed764f', width: '35.5px', ease:easing});
       TweenLite.fromTo($next1, duration, {x: 642, delay: .5}, {x: 677, delay: .5, background: '#ef8661', width: '35.5px', ease:easing});
       TweenLite.fromTo($next2, duration, {x: 677, delay: .5}, {x: 712, delay: .5, background: '#f19572', width: '35.5px', ease:easing});
-      TweenLite.fromTo($moreNext, duration, {background: '#f19572', width: '35.5px', x: 712, autoAlpha: 1, delay: duration / 1.5}, {background: '#f19572', width: '35.5px', x: 748, autoAlpha: 0, ease:easing, delay: duration / 1.5});
+      TweenLite.fromTo($moreNext, duration, {background: '#f19572', width: '35.5px', x: 712, delay: duration / 1.5}, {background: '#f19572', width: '35.5px', x: 748, ease:easing, delay: duration / 1.5});
+      TweenLite.to($moreNext, duration, {background: '#f19572', autoAlpha: 0, delay: duration / 2.5, ease:easing});
       TweenLite.to($moreNextText, duration, {autoAlpha: 0, ease:easing, delay: duration});
     }
   }
