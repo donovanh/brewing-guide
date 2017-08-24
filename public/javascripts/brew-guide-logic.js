@@ -267,12 +267,13 @@ $(function() {
   function showStepbyIndex(index, action) {
     // Calculates the previous and next indices, and updates the carousel
     var direction;
-    if (index > currentStep) {
-      direction = 'left';
+    if (index === (currentStep + 1)) {
+      direction = 'next';
     } else if (currentStep > index) {
-      direction = 'right';
+      direction = 'prev';
+    } else {
+      action = 'skip';
     }
-    console.log('Going from ', currentStep, ' to ', index);
     currentStep = index;
     // Remove any previous, current, next classes
     removePreviousNextClasses();
@@ -325,38 +326,38 @@ $(function() {
     var $next1 = $('.steps').find('.next-1');
     var $next2 = $('.steps').find('.next-2');
     var $moreNext = $('.steps').find('.more-next');
-    $('.steps').find('.next-2').find('.step-title').attr('style', '');
+    $('.steps').find('.step-title').attr('style', '');
     var $moreNextText = $('.steps').find('.more-next').find('.step-title');
-    if (direction === 'left') {
+
+    var easing = Expo.easeOut;
+    var duration = 0.8;
+    if (direction === 'next') {
       // Going right to left
-      TweenLite.fromTo($prevStep, 0.5,
-        {x: -2, width: '36px', delay: .5, background: '#ed764f'},
-        {x: -17, delay: .5, width: '18px', background: '#ef8661'}
+      TweenLite.fromTo($prevStep, duration,
+        {x: -2, width: '35.5px', delay: .5, background: '#ed764f'},
+        {x: -17, delay: .5, width: '18px', background: '#ef8661', ease:easing}
       );
-      TweenLite.fromTo($(allSteps[currentStep]), 0.5, {x: 643}, {x: 610, width: '36px'});
-      TweenLite.fromTo($(allSteps[currentStep]), 0.5, {x: 32, delay: .5}, {x: -2, delay: .5, background: '#ed764f'});
-      TweenLite.fromTo($next0, 0.5, {x: 677}, {x: 642, background: '#ed764f', width: '36px'});
-      TweenLite.fromTo($next1, 0.5, {x: 712}, {x: 677, background: '#ef8661', width: '36px'});
-      TweenLite.fromTo($next2, 0.5, {x: 738, autoAlpha: 0}, {x: 712, autoAlpha: 1, background: '#f19572', width: '36px'});
-    } else if (direction === 'right') {
-      TweenLite.fromTo($(allSteps[currentStep]), 0.5,
+      TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 643}, {x: 610, width: '35.5px', ease:easing});
+      TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 32, delay: .5}, {x: -2, delay: .5, background: '#ed764f', ease:easing});
+      TweenLite.fromTo($next0, duration, {x: 677}, {x: 642, background: '#ed764f', width: '35.5px', ease:easing});
+      TweenLite.fromTo($next1, duration, {x: 712}, {x: 677, background: '#ef8661', width: '35.5px', ease:easing});
+      TweenLite.fromTo($next2, duration, {x: 748, autoAlpha: 0}, {x: 712, autoAlpha: 1, background: '#f19572', width: '35.5px', ease:easing});
+    } else if (direction === 'prev') {
+      TweenLite.fromTo($(allSteps[currentStep]), duration,
         {x: -17, width: '18px', background: '#ef8661'},
-        {x: -2, width: '36px', background: '#ed764f'}
+        {x: -2, width: '35.5px', background: '#ed764f', ease:easing}
       );
-      TweenLite.fromTo($next0, 0.5, {x: -2}, {x: 32});
-      TweenLite.fromTo($next0, 0.5, {x: 612, delay: .5}, {x: 643, delay: .5, background: '#ed764f', width: '36px'});
-      TweenLite.fromTo($next1, 0.5, {x: 642, delay: .5}, {x: 677, delay: .5, background: '#ef8661', width: '36px'});
-      TweenLite.fromTo($next2, 0.5, {x: 677, delay: .5}, {x: 712, delay: .5, background: '#f19572', width: '36px'});
-      TweenLite.set($moreNext, {x: 712, autoAlpha: 1});
-      setTimeout(function() {
-        TweenLite.fromTo($moreNext, 0.5, {x: 712, autoAlpha: 1}, {x: 728, autoAlpha: 0});
-        TweenLite.to($moreNextText, 0.1, {autoAlpha: 0});
-      }, 200);
+      TweenLite.fromTo($next0, duration, {x: -2}, {x: 32, ease:easing});
+      TweenLite.fromTo($next0, duration, {x: 612, delay: .5}, {x: 643, delay: .5, background: '#ed764f', width: '35.5px', ease:easing});
+      TweenLite.fromTo($next1, duration, {x: 642, delay: .5}, {x: 677, delay: .5, background: '#ef8661', width: '35.5px', ease:easing});
+      TweenLite.fromTo($next2, duration, {x: 677, delay: .5}, {x: 712, delay: .5, background: '#f19572', width: '35.5px', ease:easing});
+      TweenLite.fromTo($moreNext, duration, {background: '#f19572', width: '35.5px', x: 712, autoAlpha: 1, delay: duration / 1.5}, {background: '#f19572', width: '35.5px', x: 748, autoAlpha: 0, ease:easing, delay: duration / 1.5});
+      TweenLite.to($moreNextText, duration, {autoAlpha: 0, ease:easing, delay: duration});
     }
   }
 
   function clearStepStyles() {
-    $('.steps').attr('style', '');
+    $('.steps').find('.step').attr('style', '');
     $('.steps').find('.step-title').attr('style', '');
   }
 

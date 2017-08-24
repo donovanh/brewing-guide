@@ -296,7 +296,7 @@ html[data-next="0"] {
       top: 112px;
     width: 160px;
     opacity: 0;
-    transition: opacity .3s linear;
+    transition: opacity .3s .5s linear;
     transform: rotateZ(-90deg);
   }
 
@@ -318,6 +318,7 @@ html[data-next="0"] {
 
     .step-title {
       opacity: 1;
+      transition: opacity .3s linear;
       left: -62px;
     }
   }
@@ -338,6 +339,7 @@ html[data-next="0"] {
 
     .step-title {
       opacity: 1;
+      transition: opacity .3s linear;
     }
   }
 

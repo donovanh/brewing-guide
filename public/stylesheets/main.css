@@ -421,7 +421,7 @@ html[data-next="0"] .brew-guide {
     top: 112px;
     -webkit-transform: rotateZ(-90deg);
     transform: rotateZ(-90deg);
-    transition: opacity .3s linear;
+    transition: opacity .3s .5s linear;
     width: 160px;
 }
 
@@ -446,6 +446,7 @@ html[data-next="0"] .brew-guide {
 .steps .current .step-title {
     left: -62px;
     opacity: 1;
+    transition: opacity .3s linear;
 }
 
 .steps .previous {
@@ -469,6 +470,7 @@ html[data-next="0"] .brew-guide {
 
 .steps .next .step-title {
     opacity: 1;
+    transition: opacity .3s linear;
 }
 
 /*.next:hover {
