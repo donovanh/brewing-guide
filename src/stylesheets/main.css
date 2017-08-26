@@ -339,17 +339,15 @@ html[data-next="0"] {
 
     .step-title {
       opacity: 1;
-      transition: opacity .3s linear;
+      transition: all .5s ease-out;
     }
   }
 
-  /*.next:hover {
-    width: 48px;
-
+  .next:hover {
     .step-title {
       transform: rotateZ(-90deg) translateY(5px);
     }
-  }*/
+  }
 
   .next.bg-0 {
     background: $red2;
@@ -373,18 +371,6 @@ html[data-next="0"] {
 
   .next-2 {
     transform: translateX(712px);
-  }
-
-  .next-1.shift-right {
-    transform: translateX(686px);
-  }
-
-  .next-2.shift-right {
-    transform: translateX(721px);
-  }
-
-  .next-2.shift-right.shifter-2 {
-    transform: translateX(731px);
   }
 
 }

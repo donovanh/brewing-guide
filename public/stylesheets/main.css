@@ -470,16 +470,13 @@ html[data-next="0"] .brew-guide {
 
 .steps .next .step-title {
     opacity: 1;
-    transition: opacity .3s linear;
+    transition: all .5s ease-out;
 }
 
-/*.next:hover {
-    width: 48px;
-
-    .step-title {
-      transform: rotateZ(-90deg) translateY(5px);
-    }
-  }*/
+.steps .next:hover .step-title {
+    -webkit-transform: rotateZ(-90deg) translateY(5px);
+    transform: rotateZ(-90deg) translateY(5px);
+}
 
 .steps .next.bg-0 {
     background: #ed764f;
@@ -506,21 +503,6 @@ html[data-next="0"] .brew-guide {
 .steps .next-2 {
     -webkit-transform: translateX(712px);
     transform: translateX(712px);
-}
-
-.steps .next-1.shift-right {
-    -webkit-transform: translateX(686px);
-    transform: translateX(686px);
-}
-
-.steps .next-2.shift-right {
-    -webkit-transform: translateX(721px);
-    transform: translateX(721px);
-}
-
-.steps .next-2.shift-right.shifter-2 {
-    -webkit-transform: translateX(731px);
-    transform: translateX(731px);
 }
 
 .brew-guide.welcome .next.bg-0 {

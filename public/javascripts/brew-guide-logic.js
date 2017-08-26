@@ -141,7 +141,7 @@ $(function() {
 
     // $('.step').click(showStep);
     $('body').on('click', '.action', showByAction);
-    //$('.step').not('.welcome').hover(hoverNext, hoverOut);
+    $('.step').not('.welcome').hover(hoverNext, hoverOut);
 
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
@@ -217,15 +217,34 @@ $(function() {
       var target = $(event.target).parents('.step');
     }
     var index = $('#brew-guide').find('.step').index(target);
+    TweenLite.to($(allSteps[index]), .3, {width: '48px'});
     var count = 0;
     while (index < lastStep) {
       index++;
       $(allSteps[index]).addClass('shift-right');
+      shiftRight();
+      // TweenLite.to($moreNext, duration, {autoAlpha: 0, delay: duration / 2.5});
     }
   }
 
+  function shiftRight() {
+    TweenLite.to($('.shift-right'), .3, {left: '10'});
+  }
+
+  function unShiftRight() {
+    TweenLite.to($('.shift-right'), .3, {left: '0'});
+  }
+
   function hoverOut() {
+    unShiftRight();
     $(allSteps).removeClass('shift-right');
+    if ($(event.target).hasClass('step')) {
+      var target = $(event.target);
+    } else {
+      var target = $(event.target).parents('.step');
+    }
+    var index = $('#brew-guide').find('.step').index(target);
+    TweenLite.to($(allSteps[index]), .5, {width: '38px'});
   }
 
   function showStart() {
@@ -352,7 +371,7 @@ $(function() {
       TweenLite.fromTo($next1, duration, {x: 642, delay: .5}, {x: 677, delay: .5, background: '#ef8661', width: '35.5px', ease:easing});
       TweenLite.fromTo($next2, duration, {x: 677, delay: .5}, {x: 712, delay: .5, background: '#f19572', width: '35.5px', ease:easing});
       TweenLite.fromTo($moreNext, duration, {background: '#f19572', width: '35.5px', x: 712, delay: duration / 1.5}, {background: '#f19572', width: '35.5px', x: 748, ease:easing, delay: duration / 1.5});
-      TweenLite.to($moreNext, duration, {background: '#f19572', autoAlpha: 0, delay: duration / 2.5, ease:easing});
+      TweenLite.to($moreNext, duration, {autoAlpha: 0, delay: duration / 2.5});
       TweenLite.to($moreNextText, duration, {autoAlpha: 0, ease:easing, delay: duration});
     }
   }
