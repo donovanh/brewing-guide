@@ -167,10 +167,10 @@ and (max-width : 520px) {
       position: relative;
       display: block;
       opacity: 1;
-      height: 100%;
-      height: 100vh;
+      height: 120vh;
       width: 100vw;
       overflow: hidden;
+      background-size: 100% auto;
     }
 
     .step-bg img { 
@@ -231,7 +231,7 @@ and (max-width : 520px) {
   .brew-guide-button {
     position: fixed;
     bottom: 20%;
-    left: 10px;
+    left: 0;
   }
 
   .step-bg.hide,

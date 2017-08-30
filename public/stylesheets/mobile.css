@@ -160,9 +160,9 @@ and (max-width : 520px) {
     z-index: 1;
   }
   .step-bg-container .step-bg {
+    background-size: 100% auto;
     display: block;
-    height: 100%;
-    height: 100vh;
+    height: 120vh;
     opacity: 1;
     overflow: hidden;
     position: relative;
@@ -218,7 +218,7 @@ and (max-width : 520px) {
   }
   .brew-guide-button {
     bottom: 20%;
-    left: 10px;
+    left: 0;
     position: fixed;
   }
   .step-bg.hide, .step-bg.current {

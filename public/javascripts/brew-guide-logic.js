@@ -13,6 +13,12 @@ $(function() {
     currentStep = 0;
   }
 
+  // Detect if mobile
+  var isMobile = false;
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    isMobile = true;
+  }
+
   // Add a "intro-animation" class to body while the bars are animating into place
   $('html').addClass('intro');
   setTimeout(function() {
@@ -31,13 +37,6 @@ $(function() {
     setUpInitialView(currentStep);
   } else {
     alert('Missing Brew Guide definition');
-  }
-
-  // Detect if mobile
-  var isMobile = false;
-  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    isMobile = true;
-    setUpMobileMode();
   }
 
   function drawBrewGuideHTML() {
@@ -75,7 +74,12 @@ $(function() {
       $(actionsTextContainer).append(actionsText);
 
       // Build the backgrounds
-      var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"><img src="./images/'+ step.illustration +'"></span>');
+      if (isMobile) {
+        var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"></span>');
+        $(backgroundImage).css('background-image', 'url("./images/' + step.mobile_illustration +'")');
+      } else {
+        var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"><img src="./images/'+ step.illustration +'"></span>');
+      }
       $(bgContainer).append(backgroundImage);
 
     });
@@ -141,7 +145,7 @@ $(function() {
 
     // $('.step').click(showStep);
     $('body').on('click', '.action', showByAction);
-    $('.step').not('.welcome').not('.previous').hover(hoverNext, hoverOut);
+    $('.step').hover(hoverNext, hoverOut);
 
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
@@ -157,6 +161,10 @@ $(function() {
       $('#brew-guide').addClass('welcome');
     }
 
+  }
+
+  if (isMobile) {
+    setUpMobileMode();
   }
 
   function addStepClass(className, event) {
@@ -207,22 +215,26 @@ $(function() {
   }
 
   function hoverNext(event) {
-    if ($(event.target).hasClass('previous') ||
-      $(event.target).hasClass('current')) {
-      return;
-    }
-    if ($(event.target).hasClass('step')) {
-      var target = $(event.target);
-    } else {
-      var target = $(event.target).parents('.step');
-    }
-    var index = $('#brew-guide').find('.step').index(target);
-    TweenLite.to($(allSteps[index]), .3, {width: '48px'});
-    var count = 0;
-    while (index < lastStep) {
-      index++;
-      $(allSteps[index]).addClass('shift-right');
-      shiftRight();
+    if ($(event.target).hasClass('welcome')) {
+      // Do welcome hover bit
+      console.log('welcome bit');
+    } else if ($(event.target).hasClass('next')) {
+      if ($(event.target).hasClass('step')) {
+        var target = $(event.target);
+      } else {
+        var target = $(event.target).parents('.step');
+      }
+      if ($(event.target).hasClass('previous') ||
+        $(event.target).hasClass('current')) {
+        return;
+      }
+      var index = $('#brew-guide').find('.step').index(target);
+      TweenLite.to($(allSteps[index]), .3, {width: '48px'});
+      while (index < lastStep) {
+        index++;
+        $(allSteps[index]).addClass('shift-right');
+        shiftRight();
+      }
     }
   }
 
@@ -243,7 +255,7 @@ $(function() {
       var target = $(event.target).parents('.step');
     }
     var index = $('#brew-guide').find('.step').index(target);
-    TweenLite.to($(allSteps[index]), .5, {width: '38px'});
+    TweenLite.to($(allSteps[index]), .3, {width: '38px'});
   }
 
   function hoverPrev() {
@@ -363,16 +375,16 @@ $(function() {
         {x: -2, width: '35.5px', delay: .5, background: '#ed764f', left: 0},
         {x: -17, delay: .5, width: '18px', background: '#ef8661', ease:easing}
       );
-      TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 643}, {x: 610, width: '35.5px', ease:easing});
-      TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 32, delay: .5}, {x: -2, delay: .5, background: '#ed764f', ease:easing});
+      TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 643, background: '#ef8661'}, {x: 610, width: '35.5px', ease:easing, background: '#ed764f'});
+      TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 32, background: '#ed764f', delay: .5}, {x: -2, delay: .5, background: '#ed764f', ease:easing});
       TweenLite.fromTo($next0, duration, {x: 677}, {left: 0, x: 642, background: '#ed764f', width: '35.5px', ease:easing});
       TweenLite.fromTo($next1, duration, {x: 712}, {left: 0, x: 677, background: '#ef8661', width: '35.5px', ease:easing});
       TweenLite.fromTo($next2, duration, {x: 748, autoAlpha: 0}, {left: 0, x: 712, autoAlpha: 1, background: '#f19572', width: '35.5px', ease:easing});
     } else if (direction === 'prev') {
-      TweenLite.to($('.previous'), .2, {width: '38px', left: -10, ease:easing});
+      TweenLite.to($('.previous'), .2, {width: '38px', x: -10, ease:easing});
       TweenLite.fromTo($(allSteps[currentStep]), duration,
         {x: -17, width: '30px', background: '#ef8661'},
-        {x: 7, width: '35.5px', background: '#ed764f', ease:easing}
+        {x: 6, width: '35.5px', background: '#ed764f', ease:easing}
       );
       TweenLite.fromTo($next0, duration, {x: -2}, {x: 32, ease:easing, left: 0});
       TweenLite.fromTo($next0, duration, {x: 612, delay: .5}, {x: 643, delay: .5, background: '#ed764f', width: '35.5px', ease:easing});
@@ -382,6 +394,9 @@ $(function() {
       TweenLite.to($moreNext, duration, {autoAlpha: 0, delay: duration / 2.5});
       TweenLite.to($moreNextText, duration, {autoAlpha: 0, ease:easing, delay: duration});
     }
+    setTimeout(function() {
+      clearStepStyles();
+    }, duration * 1000);
   }
 
   function clearStepStyles() {
