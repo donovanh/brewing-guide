@@ -186,6 +186,13 @@ and (max-width : 520px) {
     top: 10px;
 
   }
+  .step-title-mobile {
+    font-size: 24px;
+    font-weight: bold;
+    left: 16px;
+    position: absolute;
+    top: 30px;
+  }
   .actions-container-container {
     height: 100vh;
     position: fixed;

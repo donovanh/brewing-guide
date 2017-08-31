@@ -76,6 +76,7 @@ $(function() {
       // Build the backgrounds
       if (isMobile) {
         var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"></span>');
+        $(backgroundImage).html('<h1 class="step-title-mobile">'+ step.title +'</h1>');
         $(backgroundImage).css('background-image', 'url("./images/' + step.mobile_illustration +'")');
       } else {
         var backgroundImage = $('<span class="step-bg step-'+ (parseInt(index) + 1) +'"><img src="./images/'+ step.illustration +'"></span>');
