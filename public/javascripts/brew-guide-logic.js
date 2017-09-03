@@ -142,7 +142,7 @@ $(function() {
     $('#brew-guide').on('click', '.next-1', function(event) { addStepClass('next-1', event); });
     $('#brew-guide').on('click', '.next-2', function(event) { addStepClass('next-2', event); });
     $('#brew-guide').on('click', '.previous', function(event) { addStepClass('previous', event); });
-    $('#brew-guide').on('click', '#mob-start-button', function(event) { showStepbyIndex(1); });
+    $('#brew-guide').on('click', '#mob-start-button', function(event) { showStartMob(); });
 
     // $('.step').click(showStep);
     $('body').on('click', '.action', showByAction);
@@ -303,6 +303,15 @@ $(function() {
     showStepbyIndex(currentStep);
   }
 
+  function showStartMob() {
+    scrollTime = 1000;
+    window.isScrolling = true;
+    $('body').scrollTo($('.step-bg')[0], scrollTime);
+    setTimeout(function() {
+      window.isScrolling = false;
+    }, scrollTime + 100);
+  }
+
   function showStepbyIndex(index, action) {
     // Calculates the previous and next indices, and updates the carousel
     var direction;
@@ -314,6 +323,12 @@ $(function() {
       action = 'skip';
     }
     currentStep = index;
+    if (currentStep > 0) {
+      // Activate the actions bar
+      $('.brew-guide').removeClass('welcome');
+    } else {
+      $('.brew-guide').addClass('welcome');
+    }
     // Remove any previous, current, next classes
     removePreviousNextClasses();
 
@@ -326,21 +341,6 @@ $(function() {
     setTimerBar();
     updateButtonStatus();
     updateAutoPlayVisibility(index);
-    if (isMobile) {
-      scrollTime = 0;
-      if (index === 1) {
-        scrollTime = 1000;
-      } else if (index > 0) {
-        scrollTime = 600;
-      }
-      if (scrollTime) {
-        window.isScrolling = true;
-        $('body').scrollTo($('.step-bg')[index - 1], scrollTime);
-        setTimeout(function() {
-          window.isScrolling = false;
-        }, scrollTime + 100);
-      }
-    }
     if (!isMobile && !action) {
       animateSteps(direction);
     } else {
@@ -853,29 +853,13 @@ $(function() {
     });
   }
 
-  if ( !window.requestAnimationFrame ) {
-
-    window.requestAnimationFrame = ( function() {
-
-      return window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      window.oRequestAnimationFrame ||
-      window.msRequestAnimationFrame ||
-      function( /* function FrameRequestCallback */ callback, /* DOMElement Element */ element ) {
-
-        window.setTimeout( callback, 1000 / 60 );
-
-      };
-
-    } )();
-
+  function setUpMobileMode() {
+    updateStepOnScrolling();
+    correctStepBackgroundOnScrollEnd();
   }
 
-  function setUpMobileMode() {
-    
-    var scroll = window.requestAnimationFrame ||
-                 // IE Fallback
-                 function(callback){ window.setTimeout(callback, 1000/60)};
+  function updateStepOnScrolling() {
+
     var elementsToShow = document.querySelectorAll('.step-bg'); 
     var shown = false;
 
@@ -917,6 +901,40 @@ $(function() {
         }
       }
     });
+  }
+
+  function correctStepBackgroundOnScrollEnd() {
+
+    // Setup isScrolling variable
+    var isScrolling;
+
+    // Listen for scroll events
+    window.addEventListener('scroll', function ( event ) {
+      if (!window.isScrolling) {
+        // Clear our timeout throughout the scroll
+        window.clearTimeout( isScrolling );
+
+        // Set a timeout to run after scrolling ends
+        isScrolling = setTimeout(function() {
+
+          scrollTime = 0;
+          if (currentStep === 1) {
+            scrollTime = 1000;
+          } else if (currentStep > 0) {
+            scrollTime = 600;
+          }
+          if (scrollTime) {
+            window.isScrolling = true;
+            $('body').scrollTo($('.step-bg')[currentStep - 1], scrollTime);
+            setTimeout(function() {
+              window.isScrolling = false;
+            }, scrollTime + 100);
+          }
+
+        }, 266);
+      }
+
+    }, false);
 
   }
 

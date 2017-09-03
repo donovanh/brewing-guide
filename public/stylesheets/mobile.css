@@ -199,7 +199,7 @@ and (max-width : 520px) {
   }
   .actions-container {
     bottom: 0;
-    height: 24%;
+    height: 180px;
     opacity: 1;
     position: fixed;
     transition: all .5s ease-out;
@@ -224,7 +224,7 @@ and (max-width : 520px) {
     right: 20%;
   }
   .brew-guide-button {
-    bottom: 20%;
+    bottom: 152px;
     left: 0;
     position: fixed;
   }
