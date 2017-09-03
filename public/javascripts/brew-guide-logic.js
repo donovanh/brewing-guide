@@ -146,7 +146,7 @@ $(function() {
 
     // $('.step').click(showStep);
     $('body').on('click', '.action', showByAction);
-    $('.step').hover(hoverNext, hoverOut);
+    attachHovers();
 
     showStepbyIndex(currentStep);
     showCurrentAction(currentStep);
@@ -260,11 +260,11 @@ $(function() {
   }
 
   function hoverPrev() {
-    TweenLite.to($('.previous'), .2, {width: '38px', left: -10});
+    TweenLite.to($('.previous'), .2, {width: '38px', x: -27});
   }
 
   function hoverPrevOut() {
-    TweenLite.to($('.previous'), .2, {width: '16px', left: 0});
+    TweenLite.to($('.previous'), .2, {width: '16px', x: -17});
   }
 
   function showStart() {
@@ -344,6 +344,8 @@ $(function() {
     if (!isMobile && !action) {
       animateSteps(direction);
     } else {
+      // Skip, make the text animation quicker
+      $('.steps').find('.previous').find('.step-title').hide();
       setTimeout(function() {
         clearStepStyles();
       }, 100);
@@ -462,7 +464,14 @@ $(function() {
     }
     // Add a class to body so that I can position the button etc based on how many prev items
     $('html').attr('data-prev', prevSteps);
-    //$('.step.previous').hover(hoverPrev, hoverPrevOut);
+    attachHovers();
+  }
+
+  function attachHovers() {
+    // Remove all hover effects from steps
+    $('.step').unbind('mouseenter mouseleave');
+    $('.step').hover(hoverNext, hoverOut);
+    $('.step.bg-3').hover(hoverPrev, hoverPrevOut);
   }
 
   function addPreviousClass(index) {
