@@ -344,7 +344,9 @@ $(function() {
     if (!isMobile && !action) {
       animateSteps(direction);
     } else {
-      clearStepStyles();
+      setTimeout(function() {
+        clearStepStyles();
+      }, 100);
     }
     // Save to URL
     updateURL();
@@ -360,6 +362,7 @@ $(function() {
 
   function animateSteps(direction) {
     // Register the next and prev step items 
+    var $welcomeStep = $('.steps').find('[data-step=welcome]');
     var $prevStep = $('.steps').find('.previous').last();
     var $next0 = $('.steps').find('.next-0');
     var $next1 = $('.steps').find('.next-1');
@@ -372,32 +375,47 @@ $(function() {
     var duration = 0.8;
     if (direction === 'next') {
       // Going right to left
-      TweenLite.fromTo($prevStep, duration,
-        {x: -2, width: '35.5px', delay: .5, background: '#ed764f', left: 0},
-        {x: -17, delay: .5, width: '18px', background: '#ef8661', ease:easing}
-      );
+      if (currentStep === 1) {
+        $('.steps').find('.previous').hide();
+        $($welcomeStep).show();
+        // Showing the "welcome" previous step
+        TweenLite.fromTo($welcomeStep, duration,
+          {x: 38, width: '35.5px', background: '#ed764f'},
+          {x: -17, delay: .5, width: '18px', background: '#ef8661', ease:easing}
+        );
+      } else {
+        TweenLite.fromTo($prevStep, duration,
+          {x: -2, width: '35.5px', delay: .5, background: '#ed764f', left: 0},
+          {x: -17, delay: .5, width: '18px', background: '#ef8661', ease:easing}
+        );
+      }
       TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 643, background: '#ef8661'}, {x: 610, width: '35.5px', ease:easing, background: '#ed764f'});
       TweenLite.fromTo($(allSteps[currentStep]), duration, {x: 32, background: '#ed764f', delay: .5}, {x: -2, delay: .5, background: '#ed764f', ease:easing});
       TweenLite.fromTo($next0, duration, {x: 677}, {left: 0, x: 642, background: '#ed764f', width: '35.5px', ease:easing});
       TweenLite.fromTo($next1, duration, {x: 712}, {left: 0, x: 677, background: '#ef8661', width: '35.5px', ease:easing});
       TweenLite.fromTo($next2, duration, {x: 748, autoAlpha: 0}, {left: 0, x: 712, autoAlpha: 1, background: '#f19572', width: '35.5px', ease:easing});
     } else if (direction === 'prev') {
-      TweenLite.to($('.previous'), .2, {width: '38px', x: -10, ease:easing});
+      // Going left to right
+      TweenLite.to($('.previous'), .2, {width: '38px', x: -17, ease:easing});
       TweenLite.fromTo($(allSteps[currentStep]), duration,
         {x: -17, width: '30px', background: '#ef8661'},
-        {x: 6, width: '35.5px', background: '#ed764f', ease:easing}
+        {x:-2, width: '35.5px', background: '#ed764f', ease:easing}
       );
       TweenLite.fromTo($next0, duration, {x: -2}, {x: 32, ease:easing, left: 0});
       TweenLite.fromTo($next0, duration, {x: 612, delay: .5}, {x: 643, delay: .5, background: '#ed764f', width: '35.5px', ease:easing});
       TweenLite.fromTo($next1, duration, {x: 642, delay: .5}, {x: 677, delay: .5, background: '#ef8661', width: '35.5px', ease:easing});
       TweenLite.fromTo($next2, duration, {x: 677, delay: .5}, {x: 712, delay: .5, background: '#f19572', width: '35.5px', ease:easing});
       TweenLite.fromTo($moreNext, duration, {background: '#f19572', width: '35.5px', x: 712, delay: duration / 1.5}, {background: '#f19572', width: '35.5px', x: 748, ease:easing, delay: duration / 1.5});
+      $($moreNext).addClass('fade-out-delayed');
+      setTimeout(function() {
+        $($moreNext).removeClass('fade-out-delayed');
+      }, 1000);
       TweenLite.to($moreNext, duration, {autoAlpha: 0, delay: duration / 2.5});
       TweenLite.to($moreNextText, duration, {autoAlpha: 0, ease:easing, delay: duration});
     }
-    setTimeout(function() {
-      clearStepStyles();
-    }, duration * 1000);
+    // setTimeout(function() {
+    //   clearStepStyles();
+    // }, duration * 1000);
   }
 
   function clearStepStyles() {
@@ -444,7 +462,7 @@ $(function() {
     }
     // Add a class to body so that I can position the button etc based on how many prev items
     $('html').attr('data-prev', prevSteps);
-    $('.step.previous').hover(hoverPrev, hoverPrevOut);
+    //$('.step.previous').hover(hoverPrev, hoverPrevOut);
   }
 
   function addPreviousClass(index) {
