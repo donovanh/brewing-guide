@@ -325,7 +325,13 @@ $(function() {
     currentStep = index;
     if (currentStep > 0) {
       // Activate the actions bar
-      $('.brew-guide').removeClass('welcome');
+      if (!isMobile) {
+        $('.brew-guide').removeClass('welcome');
+      } else {
+        setTimeout(function() {
+          $('.brew-guide').removeClass('welcome');
+        }, 800);
+      }
     } else {
       $('.brew-guide').addClass('welcome');
     }
@@ -891,12 +897,6 @@ $(function() {
     var shown = false;
 
     $(window).scroll(function() {
-      if (currentStep > 0) {
-        // Activate the actions bar
-        $('.brew-guide').removeClass('welcome');
-      } else {
-        $('.brew-guide').addClass('welcome');
-      }
       if (!window.isScrolling) {
         var visible = [];
         elementsToShow.forEach(function (element) {
