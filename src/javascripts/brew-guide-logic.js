@@ -354,7 +354,8 @@ $(function() {
       $('.steps').find('.previous').find('.step-title').hide();
       setTimeout(function() {
         clearStepStyles();
-      }, 100);
+        animateSteps(direction);
+      }, 10);
     }
     // Save to URL
     updateURL();
