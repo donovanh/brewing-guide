@@ -913,7 +913,7 @@ $(function() {
         if (window.scrollY < 420) {
           $('.brew-guide').addClass('welcome');
         } else {
-          $('.brew-guide').removeClass('welcome');
+          //$('.brew-guide').removeClass('welcome');
         }
 
 
@@ -969,7 +969,7 @@ $(function() {
   function correctStepBackgroundOnScrollEnd() {
     scrollTime = 0;
     if (currentStep === 1) {
-      scrollTime = 800;
+      scrollTime = 1200;
     } else if (currentStep > 0) {
       scrollTime = 400;
     }
