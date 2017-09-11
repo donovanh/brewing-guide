@@ -54,9 +54,6 @@ $(function() {
       $(newStep).html(stepTitle);
       $(stepsContainer).append(newStep);
 
-      // Add each step to a global object for animating
-      //window.steps['step-' + index] = 
-
       // Build the actions
       var newAction = $('<li class="action"></li>');
       if (step.time > 0) {
@@ -216,10 +213,7 @@ $(function() {
   }
 
   function hoverNext(event) {
-    if ($(event.target).hasClass('welcome')) {
-      // Do welcome hover bit
-      console.log('welcome bit');
-    } else if ($(event.target).hasClass('next')) {
+    if ($(event.target).hasClass('next')) {
       if ($(event.target).hasClass('step')) {
         var target = $(event.target);
       } else {
@@ -304,12 +298,18 @@ $(function() {
   }
 
   function showStartMob() {
-    scrollTime = 1000;
-    window.isScrolling = true;
-    $('body').scrollTo($('.step-bg')[0], scrollTime);
-    setTimeout(function() {
-      window.isScrolling = false;
-    }, scrollTime + 100);
+    scrollToBg(0, 1000);
+    showStepbyIndex(1);
+  }
+
+  function scrollToBg(target, scrollTime) {
+    if (target > -1) {
+      window.isScrolling = true;
+      $('body').scrollTo($('.step-bg')[target], scrollTime);
+      setTimeout(function() {
+        window.isScrolling = false;
+      }, scrollTime + 100);
+    }
   }
 
   function showStepbyIndex(index, action) {
@@ -349,13 +349,18 @@ $(function() {
     updateAutoPlayVisibility(index);
     if (!isMobile && !action) {
       animateSteps(direction);
-    } else {
+    } else if (!isMobile) {
       // Skip, make the text animation quicker
       $('.steps').find('.previous').find('.step-title').hide();
       setTimeout(function() {
         clearStepStyles();
         animateSteps(direction);
       }, 10);
+    } else {
+      //is mobile
+      if (!window.isScrolling) {
+        scrollToBg(index - 1, 800);
+      }
     }
     // Save to URL
     updateURL();
@@ -888,83 +893,120 @@ $(function() {
   }
 
   function setUpMobileMode() {
-    updateStepOnScrolling();
-    correctStepBackgroundOnScrollEnd();
+    listenForScrollStepChanges();
+    listenForScrollEnd();
+    listenForTouchStart();
   }
 
-  function updateStepOnScrolling() {
+  function listenForScrollStepChanges() {
+    // Detect request animation frame
+    var scroll = window.requestAnimationFrame ||
+                 // IE Fallback
+                 function(callback){ window.setTimeout(callback, 1000/60)};
+    var elementsToShow = document.querySelectorAll('.show-on-scroll'); 
+
+    function loop() {
+
+        // if (!window.isScrolling) {
+        //   updateStepOnScrollingEnd();
+        // }
+        if (window.scrollY < 420) {
+          $('.brew-guide').addClass('welcome');
+        } else {
+          $('.brew-guide').removeClass('welcome');
+        }
+
+
+
+        if (window.isScrolling === false) {
+          updateStepOnScrollingEnd();
+          // correctStepBackgroundOnScrollEnd();
+        }
+
+        scroll(loop);
+    }
+
+    // Call the loop for the first time
+    loop();
+  }
+
+  function updateStepOnScrollingEnd() {
 
     var elementsToShow = document.querySelectorAll('.step-bg'); 
     var shown = false;
-
-    $(window).scroll(function() {
-      if (!window.isScrolling) {
-        var visible = [];
-        elementsToShow.forEach(function (element) {
-          if (isElementInViewport(element)) {
-            visible.push(element);
-          }
-        });
-        var closestElement = {};
-        visible.forEach(function(element, index) {
-          // Show whichever one is most visible
-          var offset = $(element).offset();
-          var height = $(element).height();
-          var centerY = offset.top + height / 2;
-          var screenCenterY = $(window).scrollTop() + ($(window).height() / 2);
-          var distance = centerY - screenCenterY;
-          if (distance < 0) distance = 1 - distance;
-          if (distance < closestElement.distance || !closestElement.distance) {
-            closestElement.element = element;
-            closestElement.distance = distance;
-          }
-        });
-        var targetStep = $(elementsToShow).index($(closestElement.element)) + 1;
-        if ((currentStep != targetStep && !shown) || (currentStep === 0 && !shown)) {
-          showStepbyIndex(targetStep);
-          currentStep = targetStep;
-          shown = true;
-        } else {
-          shown = false;
-        }
+    var visible = [];
+    elementsToShow.forEach(function (element) {
+      if (isElementInViewport(element)) {
+        visible.push(element);
       }
+    });
+    var closestElement = {};
+    visible.forEach(function(element, index) {
+      // Show whichever one is most visible
+      var offset = $(element).offset();
+      var height = $(element).height();
+      var centerY = offset.top + height / 2;
+      var screenCenterY = $(window).scrollTop() + ($(window).height() / 2);
+      var distance = centerY - screenCenterY;
+      if (distance < 0) distance = 1 - distance;
+      if (distance < closestElement.distance || !closestElement.distance) {
+        closestElement.element = element;
+        closestElement.distance = distance;
+      }
+    });
+    var targetStep = $(elementsToShow).index($(closestElement.element)) + 1;
+    if ((currentStep != targetStep && !shown) || (currentStep === 0 && !shown)) {
+      showStepbyIndex(targetStep);
+      currentStep = targetStep;
+      shown = true;
+    } else {
+      shown = false;
+    }
+  }
+
+  
+
+  function correctStepBackgroundOnScrollEnd() {
+    scrollTime = 0;
+    if (currentStep === 1) {
+      scrollTime = 800;
+    } else if (currentStep > 0) {
+      scrollTime = 400;
+    }
+    if (scrollTime) {
+      window.isScrolling = true;
+      $(window).scrollTo($('.step-bg')[currentStep - 1], scrollTime);
+      setTimeout(function() {
+        window.isScrolling = false;
+      }, scrollTime + 100);
+    }
+  }
+
+  function listenForScrollEnd() {
+    // Listen for scroll events
+    var scrollingTimeout;
+    $(window).scroll(function (event) {
+      window.isScrolling = true;
+      // Clear our timeout throughout the scroll
+      window.clearTimeout(scrollingTimeout);
+      
+      // Set a timeout to run after scrolling ends
+      scrollingTimeout = setTimeout(function() {
+        window.isScrolling = false;
+      }, 250);
+
     });
   }
 
-  function correctStepBackgroundOnScrollEnd() {
-
-    // Setup isScrolling variable
-    var isScrolling;
-
-    // Listen for scroll events
-    window.addEventListener('scroll', function ( event ) {
-      if (!window.isScrolling) {
-        // Clear our timeout throughout the scroll
-        window.clearTimeout( isScrolling );
-
-        // Set a timeout to run after scrolling ends
-        isScrolling = setTimeout(function() {
-
-          scrollTime = 0;
-          if (currentStep === 1) {
-            scrollTime = 1000;
-          } else if (currentStep > 0) {
-            scrollTime = 600;
-          }
-          if (scrollTime) {
-            window.isScrolling = true;
-            $('body').scrollTo($('.step-bg')[currentStep - 1], scrollTime);
-            setTimeout(function() {
-              window.isScrolling = false;
-            }, scrollTime + 100);
-          }
-
-        }, 266);
-      }
-
-    }, false);
-
+  function listenForTouchStart() {
+    // $(window).bind('touchstart', function(){
+    //   window.isScrolling = true;
+    // }).bind('touchend', function(){
+    //   window.isScrolling = false;
+    // });
   }
+
+
 
   // Helper function from: http://stackoverflow.com/a/7557433/274826
   function isElementInViewport(el) {
