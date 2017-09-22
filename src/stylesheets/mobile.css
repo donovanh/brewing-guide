@@ -10,6 +10,7 @@ and (max-width : 520px) {
 
   body {
     background: #fff;
+    border: none;
   }
 
   .brew-guide {
@@ -51,6 +52,7 @@ and (max-width : 520px) {
       max-width: 100vw;
       padding: 40px;
       width: 100vw;
+      background: #fff;
     }
     .description {
       animation-delay: .8s;
