@@ -617,6 +617,7 @@ html[data-next="0"] {
   z-index: 0;
   top: -10px;
   left: -10px;
+  bottom: -10px;
 
   .button-border {
     stroke-dasharray: 174.7667694091797;
@@ -722,6 +723,18 @@ html[data-next="0"] {
 .brew-guide-button-end,
 .brew-guide-button-next {
   display: none;
+}
+
+.brew-guide-button-play {
+  height: 15px;
+  margin: 0;
+  position: relative;
+  width: 15px;
+}
+
+.brew-guide-button-play img {
+  position: absolute;
+  left: 2px;
 }
 
 .brew-guide-button.start .brew-guide-button-start,

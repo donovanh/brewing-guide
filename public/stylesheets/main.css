@@ -760,6 +760,7 @@ html[data-next="0"] .brew-guide {
 /* Play button */
 
 .button-border-bg {
+  bottom: -10px;
   left: -10px;
   pointer-events: none;
   position: absolute;
@@ -872,6 +873,18 @@ html[data-next="0"] .brew-guide {
 
 .brew-guide-button-start, .brew-guide-button-play, .brew-guide-button-pause, .brew-guide-button-end, .brew-guide-button-next {
   display: none;
+}
+
+.brew-guide-button-play {
+  height: 15px;
+  margin: 0;
+  position: relative;
+  width: 15px;
+}
+
+.brew-guide-button-play img {
+  left: 2px;
+  position: absolute;
 }
 
 .brew-guide-button.start .brew-guide-button-start, .brew-guide-button.standalone .brew-guide-button-next, .brew-guide-button.playing .brew-guide-button-pause, .brew-guide-button.paused .brew-guide-button-play, .brew-guide-button.end .brew-guide-button-end {
