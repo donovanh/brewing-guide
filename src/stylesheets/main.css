@@ -97,6 +97,10 @@ html[data-next="0"] {
     -webkit-font-smoothing: antialiased;
   }
 
+  *:after {
+    box-sizing: content-box;
+  }
+
   /* Welcome step styles */
   .welcome-container {
     padding: 40px 80px;

@@ -1,0 +1,57 @@
+/* @override 
+	http://localhost:8888/109042-3fe-retail/assets/css/social-icons.css */
+
+@font-face {
+  font-family: 'social';
+  src:  url('../icons/social.eot');
+  src:  url('../icons/social.eot#iefix') format('embedded-opentype'),
+    url('../icons/social.ttf') format('truetype'),
+    url('../icons/social.woff') format('woff'),
+    url('../icons/social.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'social' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-google-plus:before {
+  content: "\ea8b";
+}
+
+.icon-facebook:before {
+  content: "\ea91";
+}
+
+.icon-instagram:before {
+  content: "\ea92";
+}
+
+.icon-whatsapp:before {
+  content: "\ea93";
+}
+
+.icon-twitter:before {
+  content: "\ea96";
+}
+
+.icon-youtube:before {
+  content: "\ea9d";
+}
+
+.icon-linkedin:before {
+  content: "\1f340";
+}
+

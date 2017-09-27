@@ -1,0 +1,29 @@
+
+	.show-on-phones { display: none !important; }	
+	.show-on-desktops { display: block !important; }	
+	.hide-on-phones { display: block !important; }	
+	.hide-on-desktops { display: none !important; }	
+	@media only screen and (max-width: 1280px) and (min-width: 768px) {
+		.touch .hide-on-phones { display: block !important; }
+		.touch .hide-on-desktops { display: block !important; }
+		
+		.touch .show-on-phones { display: none !important; }
+		.touch .show-on-desktops { display: none !important; }
+	}	
+	@media only screen and (max-width: 768px) {
+		.hide-on-phones { display: none !important; }
+		.hide-on-desktops { display: block !important; }
+		
+		.show-on-phones { display: block !important; }
+		.show-on-desktops { display: none !important; }
+	}	
+	table.show-on-desktops { display: table !important; }	
+	table.hide-on-phones { display: table !important; }	
+	@media only screen and (max-width: 1280px) and (min-width: 768px) {
+		.touch table.hide-on-phones { display: table !important; }
+		.touch table.hide-on-desktops { display: table !important; }
+	}	
+	@media only screen and (max-width: 768px) {
+		table.hide-on-desktops { display: table !important; }
+		table.show-on-phones { display: table !important; }
+}

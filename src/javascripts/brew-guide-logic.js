@@ -913,9 +913,8 @@ $(function() {
         if (window.scrollY < 420) {
           $('.brew-guide').addClass('welcome');
         } else {
-          //$('.brew-guide').removeClass('welcome');
+          $('.brew-guide').removeClass('welcome');
         }
-
 
 
         if (window.isScrolling === false) {

@@ -8,6 +8,10 @@ $exponential-ease: cubic-bezier(0,.7,.3,1);
 and (min-width : 320px)
 and (max-width : 520px) {
 
+  body, html{
+    overflow-x: visible;
+   }
+
   body {
     background: #fff;
     border: none;
@@ -16,7 +20,7 @@ and (max-width : 520px) {
   .brew-guide {
     animation: none !important;
     background: #fff;
-    height: 100%;
+    height: 100vh;
     width: 100vw !important;
     opacity: 1 !important;
     box-shadow: none;

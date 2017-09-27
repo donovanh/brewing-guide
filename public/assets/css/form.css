@@ -1,0 +1,385 @@
+/* @override https://3feretail.workgroupstaging.com/assets/css/form.css */
+
+/* @override https://3feretail.workgroupstaging.com/assets/css/form.css */
+
+/* @override https://3feretail.workgroupstaging.com/assets/css/form.css */
+
+/* @override https://3feretail.workgroupstaging.com/assets/css/form.css */
+
+/* @override https://3feretail.workgroupstaging.com/assets/css/form.css */
+
+/* @override http://hrarch.webfactional.com/assets/css/form.css
+	http://localhost:8888/109042-3fe-retail/assets/css/form.css */
+
+/* -------------------------------------------------- 
+    Form Styles
+---------------------------------------------------*/
+
+form input[type="text"], form input[type="email"], form input[type="search"], form input[type="password"], .form_input {
+  width: 100%;
+  margin: 0 0 39px;
+  padding: 0 10px 8px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: none;
+  background: transparent;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px solid black;
+  color: black;
+  text-align: left;
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  font-size: 14px;
+}
+
+.form_input.red{
+color:#ff412b
+}
+
+form textarea, .form_textarea {
+width: 100%;
+  margin: 0 0 39px;
+padding: 0 10px 8px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: none;
+  background: transparent;
+  border: none;
+  color: black;
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+	border-bottom: 1px solid black;
+	font-size: 14px;
+}
+
+form textarea:focus {
+  background: transparent;
+}
+
+button.disabled, .button.disabled, a.button.disabled, input.button.disabled{
+	cursor: not-allowed;
+	background: silver;
+	color: gray;
+}
+
+form button, a.button, .button {
+ padding: 5px 10px!important;
+  border-bottom: none!important;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
+  width: 100%;
+  float: left;
+  text-align: center;
+  line-height: 24px;
+}
+
+form button{
+	border: none!important;
+	line-height: 24px;
+}
+
+input.button{
+	border: none!important;
+}
+
+.button:hover{
+	color: black;
+}
+
+form ::-webkit-input-placeholder {
+   color: #ababab;
+}
+
+form :-moz-placeholder { /* Firefox 18- */
+   color: #ababab;
+}
+
+form ::-moz-placeholder {  /* Firefox 19+ */
+   color: #ababab;
+}
+
+form :-ms-input-placeholder {  
+   color: #ababab;
+}
+
+input ::-webkit-input-placeholder {
+   color: #ababab;
+}
+
+input :-moz-placeholder { /* Firefox 18- */
+   color: #ababab;
+}
+
+input ::-moz-placeholder {  /* Firefox 19+ */
+   color: #ababab;
+}
+
+input :-ms-input-placeholder {  
+   color: #ababab;
+}
+
+form .form_standard ::-webkit-input.form_standard-placeholder {
+   color: #ababab;
+}
+
+form .form_standard :-moz-placeholder { /* Firefox 18- */
+   color: #ababab;
+}
+
+form .form_standard ::-moz-placeholder {  /* Firefox 19+ */
+   color: #ababab;
+}
+
+form .form_standard :-ms-input.form_standard-placeholder {  
+   color: #ababab;
+}
+
+input.form_standard ::-webkit-input.form_standard-placeholder {
+   color: #ababab;
+}
+
+input.form_standard :-moz-placeholder { /* Firefox 18- */
+   color: #ababab;
+}
+
+input.form_standard ::-moz-placeholder {  /* Firefox 19+ */
+   color: #ababab;
+}
+
+input.form_standard :-ms-input.form_standard-placeholder {  
+   color: #ababab;
+}
+
+/*-bg-black-*/
+
+.bg-black form input[type="text"], .bg-black form input[type="email"], .bg-black form input[type="search"]{
+  border-bottom: 1px solid white;
+  color: #ffffff;
+}
+
+.bg-black form textarea, .bg-black .form_textarea {
+  color: #ffffff;
+border-bottom: 1px solid white;
+	
+}
+
+.bg-black button.button.bg-black{
+	background: black;
+}
+
+.bg-black form ::-webkit-input-placeholder {
+   color: #fff;
+}
+
+.bg-black form :-moz-placeholder { /* Firefox 18- */
+   color: #fff;
+}
+
+.bg-black form ::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;
+}
+
+.bg-black form :-ms-input-placeholder {  
+   color: #fff;
+}
+
+.bg-black input ::-webkit-input-placeholder {
+   color: #fff;
+}
+
+.bg-black input :-moz-placeholder { /* Firefox 18- */
+   color: #fff;
+}
+
+.bg-black input ::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;
+}
+
+.bg-black input :-ms-input-placeholder {  
+   color: #fff;
+}
+
+/*-bg-black- end - */
+
+form .note {
+ display: inline;
+ margin-left: 20px;
+}
+
+.screen-reader-response{display: none}
+
+span[role=alert], .wpcf7-response-output{
+	color: #fff;
+	font: 16px/24px ;
+}
+
+.wpcf7-response-output{
+
+	color: #fff;
+}
+
+/* -------------------------------------------------- 
+    Select
+    Custom styling with default having been strippped out elsewhere. 
+---------------------------------------------------*/
+
+.red.custom-select select {
+	color: #ea5230;
+}
+
+.form_select{
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	width: 100%;
+	position: relative;
+	margin-top: -1px;
+	min-height: 4vh;
+	background-image: url('../../assets/images/select-arrow.png');
+	background-size: 20px;
+	background-repeat: no-repeat;
+	background-position: right;
+	
+}
+
+.form_select label{
+	position: absolute;
+	top: 6.5px;
+		pointer-events: none;
+	
+}
+
+.form_select select {
+	direction: rtl;
+}
+
+/* -------------------------------------------------- 
+    Input
+    Custom styling with default having been strippped out elsewhere. 
+---------------------------------------------------*/
+
+.form_input{
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	width: 100%;
+	position: relative;
+	margin-top: -1px;
+	margin-bottom: 0;
+	min-height: 4vh;
+	padding: 0;
+}
+
+.form_input.red input{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	-moz-appearance: none;
+	     appearance: none;
+	-webkit-box-shadow: none;
+	        box-shadow: none;
+	border-radius: none;
+	background: transparent;
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0!important;
+	outline: none;
+	border-radius: 0;
+	-webkit-appearance: none;
+	text-align: right;
+	font-size: 14px;
+	padding: 10px 33px 10px 10px;
+	color: inherit;
+}
+
+.form_input label{
+	position: absolute;
+	top: 6.5px;
+	left: 0;
+	pointer-events: none;
+	
+}
+
+@media (max-width: 768px) {
+
+
+form input[type="text"], form input[type="email"], form input[type="search"], .form_input, .form_input.red, .form_input.red input, form textarea, .form_textarea {
+	font-size: 16px;
+}
+
+}
+
+/* -------------------------------------------------- 
+    Standard forms
+    for checkout etc
+    ---------------------------------------------------*/
+
+form input[type="text"].form_standard, form input[type="email"].form_standard, form input[type="search"].form_standard, form input[type="password"].form_standard, input[type="password"].form_standard, input.form_standard{
+background: white;
+border-bottom: 1px solid #efefef!important;
+border-radius: 2px!important;
+padding: 4px 1px 4px 9px !important;
+margin-bottom: 10px !important;
+
+}
+
+form input[type="text"].form_standard.error, form input[type="email"].form_standard.error, form input[type="search"].form_standard.error, form input[type="password"].form_standard.error, input[type="password"].form_standard.error, input.form_standard.error{
+background-color: #fcebe7
+}
+
+/* -------------------------------------------------- 
+    Standard forms
+    for checkout etc
+    select menus
+    ---------------------------------------------------*/
+
+.form-select{
+   	width: 100%;
+   	float: left;
+   	padding: 1vh 0;
+   	display: block;
+   	min-height: 40px;
+ }
+
+.form-select label{
+  	width: 40%;
+  	float: left;
+  }
+
+.form-select select{
+	width: 60%;
+	float: left;
+}
+
+.form-select-wide{
+   	width: 100%;
+   	float: left;
+   	padding: 1vh 0;
+   	display: block;
+   	min-height: 40px;
+ }
+
+.form-select-wide label{
+  	width: 100%;
+  	float: left;
+  	   	padding: 0 0 .7vh;
+  	
+  }
+
+.form-select-wide select{
+	width: 100%;
+	float: left;
+	   	padding: 1vh 0;
+	
+}

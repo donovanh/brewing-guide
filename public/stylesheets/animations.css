@@ -97,6 +97,7 @@
 }
 
 /* Animations for the step bars */
+
 /*
 @keyframes from-previous-to-current {
   0% {
@@ -145,11 +146,6 @@
 }
 */
 
-
-
-
-
-
 @-webkit-keyframes show-current {
   0% {
     -webkit-transform: translateX(645px);
@@ -168,11 +164,6 @@
             transform: translateX(-2px);
   }
 }
-
-
-
-
-
 
 @keyframes show-current {
   0% {
@@ -200,9 +191,9 @@
     width: 50px;
   }
   100% {
-    opacity: 1;
     -webkit-transform: translateX(-17px);
             transform: translateX(-17px);
+    opacity: 1;
   }
 }
 
@@ -213,9 +204,9 @@
     width: 50px;
   }
   100% {
-    opacity: 1;
     -webkit-transform: translateX(-17px);
             transform: translateX(-17px);
+    opacity: 1;
   }
 }
 
@@ -367,27 +358,27 @@
 
 @-webkit-keyframes show-start-button {
   0% {
-    opacity: 0;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
+    opacity: 0;
   }
   100% {
-    opacity: 1;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
+    opacity: 1;
   }
 }
 
 @keyframes show-start-button {
   0% {
-    opacity: 0;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
+    opacity: 0;
   }
   100% {
-    opacity: 1;
     -webkit-transform: translateX(594px);
             transform: translateX(594px);
+    opacity: 1;
   }
 }
 
@@ -564,14 +555,12 @@
   }
   84% { 
     -webkit-transform: scale(1) rotateZ(90deg); 
-            transform: scale(1) rotateZ(90deg);
- 
+            transform: scale(1) rotateZ(90deg); 
     stroke-dashoffset: 0;
   }
   100% {
     -webkit-transform: scale(.5) rotateZ(90deg);
             transform: scale(.5) rotateZ(90deg);
-
     stroke-dashoffset: 0;
   }
 }
@@ -587,14 +576,12 @@
   }
   84% { 
     -webkit-transform: scale(1) rotateZ(90deg); 
-            transform: scale(1) rotateZ(90deg);
- 
+            transform: scale(1) rotateZ(90deg); 
     stroke-dashoffset: 0;
   }
   100% {
     -webkit-transform: scale(.5) rotateZ(90deg);
             transform: scale(.5) rotateZ(90deg);
-
     stroke-dashoffset: 0;
   }
 }
