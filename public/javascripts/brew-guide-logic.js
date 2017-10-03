@@ -7,7 +7,7 @@ $(function() {
   var allActions;
   var timer = 0;
   var timerTimeout;
-  var timePerTick = 1000;
+  var timePerTick = 100;
 
   if (currentStep > lastStep) {
     currentStep = 0;
@@ -868,10 +868,10 @@ $(function() {
     if (currentStep > 0 && !isMobile) {
       var url = new URL(window.location.href);
       url.searchParams.set('step', currentStep);
-      window.history.pushState('', 'Brew Guide - Step ' + currentStep, url);
+      window.history.replaceState('', 'Brew Guide - Step ' + currentStep, url);
     } else {
       var url = new URL(window.location.href.split("?")[0]);
-      window.history.pushState('', 'Brew Guide' + currentStep, url);
+      window.history.replaceState('', 'Brew Guide' + currentStep, url);
     }
   }
 
@@ -879,17 +879,31 @@ $(function() {
 
   function setDotWidths() {
     // Get the width of each timed area
-    $('.timed-area').each(function(index, timedArea) {
-      var timedAreaWidth = $(timedArea).width();
-      var totalTime = $(timedArea).attr('data-totalTime');
-      $(timedArea).find('.action.timed').each(function(index, action) {
-        var actionTime = $(action).attr('data-time');
-        if (actionTime > 0) {
-          var actionWidth = (actionTime / totalTime) * timedAreaWidth;
-          $(action).css('width', actionWidth);
-        }
+    if ($('.timed-area').length) {
+      $('.timed-area').each(function(index, timedArea) {
+        var timedAreaWidth = $(timedArea).width();
+        var totalTime = $(timedArea).attr('data-totalTime');
+        $(timedArea).find('.action.timed').each(function(index, action) {
+          var actionTime = $(action).attr('data-time');
+          if (actionTime > 0) {
+            var actionWidth = ((actionTime / totalTime) * timedAreaWidth);
+            if (actionTime > 200) {
+              actionWidth -= 9;
+            }
+            $(action).css('width', actionWidth);
+          }
+        });
       });
-    });
+    } else {
+      var actionLength = $('.action').length;
+      console.log('here', actionLength);
+      var width = $('.actions').width();
+      $('.action').each(function(index, action) {
+        var actionWidth = width / actionLength;
+        $(action).css('width', actionWidth);
+      });
+    }
+    
   }
 
   function setUpMobileMode() {

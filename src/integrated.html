@@ -143,92 +143,70 @@
     <script>
       // Define the structure for the brew guide, steps and actions
       var brewGuide = {
-        title: "Aeropress<br>Brew Guide",
-        description: "The aeropress is an easy to use, lightweight and portable device that helps you get the most from your home brewing. It’s also the perfect travel companion!",
-        items: [ "Aeropress", "2 Aeropress filters", "Kettle", "Digital Scales", "Grinder" ],
+        title: "Chemex<br>Brew Guide",
+        description: "The chemex is a beautifully crafted brewer, and can serve up to six people per brew. The denser filter papers provide a delicate bodied cup, while still allowing the flavours to shine through.",
+        items: [ "Chemex", "Chemex Filter", "Gooseneck Kettle", "Digital Scales", "Grinder" ],
         overview: {
-          amount: 15,
+          amount: 30,
           grindText: "Medium / fine",
-          grindValue: 2, // Number between 1 and 14 
+          grindValue: 10, // Number between 1 and 14 
           temp: 93,
-          water: 230,
-          brewTime: "2m",
+          water: 500,
+          brewTime: "5m",
           totalTime: "4m",
-          cups: 1
+          cups: 6
         },
         steps: [
-          {
+                    {
             stepNumber: 1,
-            title: "1. Invert & Heat",
-            instruction: "Invert Aeropress. Pre-heat chambers with hot water, and discard.",
-            illustration: "aeropress/png/aeropress-1.png",
-            mobile_illustration: "aeropress/mobile/1@2x.png",
+            title: "1. Fold Filter",
+            instruction: "Fold filter into a half, then a quarter. Proceed by pulling out sides to make a funnel shape.",
+            illustration: "../../uploads/chemex-1@2x.png",
+            mobile_illustration: "../../uploads/chemex-1-mobile@2x.png",
             time: 0
-          },
-          {
+          },                    {
             stepNumber: 2,
-            title: "2. Prepare Filter",
-            instruction: "Insert 2 filter papers into cap and rinse with hot water. By using two filters, less sediment and oils will enter the final cup, giving a higher clarity of flavour and a more balanced cup.",
-            illustration: "aeropress/png/aeropress-2.png",
-            mobile_illustration: "aeropress/mobile/2@2x.png",
+            title: "2. Assemble, Rinse",
+            instruction: "Place filter in the Chemex and rinse well with hot water. Ensure filter papers are completely wet and stuck to brewer, with no folds or creases.",
+            illustration: "../../uploads/chemex-2@2x.png",
+            mobile_illustration: "../../uploads/chemex-1-mobile-copy@2x.png",
             time: 0
-          },
-          {
+          },                    {
             stepNumber: 3,
-            title: "3. Coffee & Water",
-            instruction: "Add coffee to aeropress and place on scales. Start timer and pour in all of the water, ensuring all grounds are wet.",
-            illustration: "aeropress/png/aeropress-3.png",
-            mobile_illustration: "aeropress/mobile/3@2x.png",
-            time: 10
-          },
-          {
-            stepNumber: 4,
-            title: "4. Stir",
-            instruction: "Stir gently until all grounds are wet and not sticking to rubber bottom.",
-            illustration: "aeropress/png/aeropress-4.png",
-            mobile_illustration: "aeropress/mobile/4@2x.png",
-            time: 10
-          },
-          {
-            stepNumber: 5,
-            title: "5. Attach Cap",
-            instruction: "Attach cap tightly by screwing it in a clockwise direction.",
-            illustration: "aeropress/png/aeropress-5.png",
-            mobile_illustration: "aeropress/mobile/5@2x.png",
-            time: 20
-          },
-          {
-            stepNumber: 6,
-            title: "6. Push Air Out",
-            instruction: "At 40 seconds remove Aeropress from scales and push out air by holding onto sides. Keep pushing until there are no more bubbles on the cap surface.",
-            illustration: "aeropress/png/aeropress-6.png",
-            mobile_illustration: "aeropress/mobile/6@2x.png",
-            time: 20
-          },
-          {
-            stepNumber: 7,
-            title: "7. Flip",
-            instruction: "Flip aeropress onto mug.",
-            illustration: "aeropress/png/aeropress-7.png",
-            mobile_illustration: "aeropress/mobile/7@2x.png",
-            time: 30
-          },
-          {
-            stepNumber: 8,
-            title: "8. Plunge!",
-            instruction: "Plunge until all water has passed through filter. This should take about 30 seconds.",
-            illustration: "aeropress/png/aeropress-8.png",
-            mobile_illustration: "aeropress/mobile/8@2x.png",
-            time: 30
-          },
-          {
-            stepNumber: 9,
-            title: "9. Remove Grounds",
-            instruction: "Remove cap over bin and push used grounds into bin.",
-            illustration: "aeropress/png/aeropress-9.png",
-            mobile_illustration: "aeropress/mobile/9@2x.png",
+            title: "3. Add Grounds",
+            instruction: "Empty rinsing water, add grounds and place Chemex on scales. Level the grounds slightly so they are flat.",
+            illustration: "../../uploads/chemex-3@2x.png",
+            mobile_illustration: "../../uploads/chemex-1-mobile-copy-2@2x.png",
             time: 0
-          }
+          },                    {
+            stepNumber: 4,
+            title: "4. Wet Grounds",
+            instruction: "Start timer as you begin to pour 80g of water evenly over the bed of coffee, ensuring all grounds are wet. Allow 10 seconds for the pour and another 30 for the bloom.",
+            illustration: "../../uploads/chemex-4@2x.png",
+            mobile_illustration: "../../uploads/chemex-1-mobile-copy-2@2x.png",
+            time: 45
+          },                    {
+            stepNumber: 5,
+            title: "5. Pour Water",
+            instruction: "At 45 seconds, Slow pour 50–75g of water in a slow, circular movement, starting from the inside outwards, covering all grounds.",
+            illustration: "../../uploads/chemex-5-and-6@2x.png",
+            mobile_illustration: "../../uploads/chemex-1-mobile-copy-3@2x.png",
+            time: 15
+          },                    {
+            stepNumber: 6,
+            title: "6. More Water",
+            instruction: "Pour 50g–75g increments at 30 second intervals until all of the water is added. This should take between 3–4 minutes.",
+            illustration: "../../uploads/chemex-5-and-6@2x.png",
+            mobile_illustration: "../../uploads/chemex-1-mobile-copy-4@2x.png",
+            time: 240
+          },                    {
+            stepNumber: 7,
+            title: "7. Drip &amp; Serve",
+            instruction: "Allow water to pass through entire bed of coffee, when dripping stops, remove and discard used filter and serve.",
+            illustration: "../../uploads/chemex-7@2x.png",
+            mobile_illustration: "../../uploads/chemex-1-mobile-copy-5@2x.png",
+            time: 0
+          }                  
         ]
       }
     </script>
