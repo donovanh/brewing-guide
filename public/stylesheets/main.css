@@ -377,10 +377,9 @@
   border-top: 2px solid transparent;
   height: 10px;
   list-style: none;
-  margin: 0;
-  padding: 10px;
+  margin: 0;/* padding: 10px;*/
   position: relative;
-  min-width: 40px;
+  min-width: 26px;
   top: -1px;
   z-index: 10;
 }.actions .action:after {
@@ -400,15 +399,14 @@
 }.actions .action.zero {
   display: none;
 }.actions .action.timed {
-  border-top: 2px solid #000;
-  margin-left: -2px;
+  border-top: 2px solid #000;/*    margin-left: -2px;*/
 }.actions .timed-area {
-  min-width: 83%;
+  min-width: 74.5%;
 }.actions .action.standalone {
   min-width: 20px;
-}.actions .action:last-child {
-  width: 210px;
-  margin-left: -14px;
+}.actions .action.standalone:last-child {/*width: 210px;
+    margin-left: -20px;*/
+  left: -5px;
 }.actions .timed-area {
   position: relative;
   margin-left: 20px;

@@ -886,10 +886,7 @@ $(function() {
         $(timedArea).find('.action.timed').each(function(index, action) {
           var actionTime = $(action).attr('data-time');
           if (actionTime > 0) {
-            var actionWidth = ((actionTime / totalTime) * timedAreaWidth);
-            if (actionTime > 200) {
-              actionWidth -= 9;
-            }
+            var actionWidth = Math.floor((actionTime / totalTime) * timedAreaWidth);
             $(action).css('width', actionWidth);
           }
         });
