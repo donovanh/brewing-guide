@@ -893,7 +893,6 @@ $(function() {
       });
     } else {
       var actionLength = $('.action').length;
-      console.log('here', actionLength);
       var width = $('.actions').width();
       $('.action').each(function(index, action) {
         var actionWidth = width / actionLength;
