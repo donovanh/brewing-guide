@@ -33,264 +33,364 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-  <body>
-    <article class="brew-guide welcome" id="brew-guide">
-      <ul class="steps">
-        <li class="step current welcome" data-step="welcome">
-          <h1 class="step-title"></h1>
-        </li>
-      </ul>
-      <section class="main-content">
-        <section class="welcome-container">
-          <div class="title"><h1 class="fade-in-left"></h1></div>
-          <div class="description fade-in-left"><p></p></div>
-          <div class="youll-need fade-in-left">
-            <div class="col">
-              <div class="row">
-                <div class="icon amount fade-in">
-                  <span class="label" id="amount-label"></span>
-                </div>
-                <div class="coarseness fade-in">
-                  <span class="label" id="grind-label">Coarseness</span>
-                  <svg width="129px" height="9px" viewBox="0 0 129 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g fill-rule="nonzero" fill="#000000">
-                      <ellipse id="Oval" cx="4.08" cy="4.3" rx="4.03" ry="4.08"></ellipse>
-                      <ellipse id="Oval" cx="15.32" cy="4.18" rx="3.6" ry="3.64"></ellipse>
-                      <ellipse id="Oval" cx="25.99" cy="4.13" rx="3.38" ry="3.42"></ellipse>
-                      <ellipse id="Oval" cx="36.19" cy="4.07" rx="3.17" ry="3.2"></ellipse>
-                      <ellipse id="Oval" cx="45.85" cy="4.01" rx="2.95" ry="2.99"></ellipse>
-                      <ellipse id="Oval" cx="55.47" cy="3.95" rx="2.74" ry="2.77"></ellipse>
-                      <ellipse id="Oval" cx="64.78" cy="3.9" rx="2.52" ry="2.55"></ellipse>
-                      <ellipse id="Oval" cx="74.62" cy="3.84" rx="2.31" ry="2.33"></ellipse>
-                      <ellipse id="Oval" cx="83.44" cy="3.78" rx="2.09" ry="2.11"></ellipse>
-                      <ellipse id="Oval" cx="92.26" cy="3.73" rx="1.88" ry="1.9"></ellipse>
-                      <ellipse id="Oval" cx="101.08" cy="3.67" rx="1.66" ry="1.68"></ellipse>
-                      <ellipse id="Oval" cx="109.89" cy="3.61" rx="1.44" ry="1.46"></ellipse>
-                      <ellipse id="Oval" cx="118.71" cy="3.55" rx="1.23" ry="1.24"></ellipse>
-                      <ellipse id="Oval" cx="127.53" cy="3.5" rx="1.01" ry="1.02"></ellipse>
-                    </g>
-                  </svg>
-                  <svg class="arrow fade-in-left" width="15px" height="14px" viewBox="0 0 15 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path d="M1.9,13.29 L8.2,2.36 L7.38,1.63 L13.68,12.56 L13.46,11.49 L0.86,11.49 C0.54,11.49 1.28,13.37 1.78,13.37 L14.38,13.37 C14.75,13.37 14.21,12.37 14.16,12.3 L7.86,1.37 C7.8,1.27 7.23,0.32 7.04,0.64 L0.74,11.57 C0.49,12 1.74,13.57 1.9,13.29 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
-                  </svg>
-                </div>
-              </div>
-              <div class="row">
-                <div class="icon temp fade-in">
-                  <span class="label" id="temp-label"></span>
-                </div>
-                <div class="icon water fade-in">
-                  <span class="label" id="water-label"></span>
-                </div>
-                <div class="icon time fade-in">
-                  <span class="label" id="brewTime-label"></span>
-                </div>
-                <div class="icon cups fade-in">
-                  <span class="label" id="cups-label"></span>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <ul class="items" id="items-list">
-              </ul>
-            </div>
+  
+
+    <body class="bg-default">
+
+
+<div class="banner bg-red show-on-desktops">
+<p class="sc white"><a href="#" id="bannerLink"><span class="start"></span></a></p></div>
+</div>
+
+<!--Nav-->
+    <div id="top"></div>
+    
+        <header>
+          <div class="nav-logo">
+            <a href="https://3feretail.workgroupstaging.com/" class="no_ul red">
+            <svg xmlns="https://www.w3.org/2000/svg" class="logo"  viewBox="0 0 42.8 54.4"><path d="M36.2 11c-5.1 0-7.7 4-7.7 8.9 0 4.9 1.6 6.8 2.5 7.3 -0.9 0.5-2.7 2.4-2.7 7.3 0 4.4 1.9 6.5 2.1 6.8 0 0-1.9-0.4-4-0.4 -1.5 0-2.3 0.2-3.1 0.4l0-13.4c0 0 3.7 0 4 0 0.3 0 0.6-0.3 0.6-0.7 0-0.4-0.3-0.7-0.6-0.7 -0.3 0-4 0.1-4 0.1l0-14.4c4.7-2.2 7.9-6.8 7.9-9.7 0-1.5-1-2.5-3.4-2.5 -5.8 0-8.3 4.3-8.3 8.2l0 3.8c-0.5 0.2-1.8 0.6-3.2 0.6 -2.1 0-5.1-0.5-5.8-0.7 -0.7-0.2-2.3-0.7-4.2-0.7 -2.4 0-3.6 0.6-4.7 1.7 -0.2 0.2-0.3 0.5-0.3 0.7 0 0.4 0.3 0.8 0.8 0.8 0.3 0 0.6-0.1 0.9-0.5C3.7 12.9 4.7 12 6.4 12c2.8 0 4.4 2.9 4.4 7.8 0 3.7-0.6 6.3-1.6 6.8l-2.9 0c-0.3 0-0.6 0.3-0.6 0.7 0 0.4 0.3 0.7 0.6 0.7l3 0c0.9 0.4 1.3 2.4 1.3 6.6 0 4.8-1.7 7.9-4.4 7.9 -2.4 0-4.3-2-4.3-4.6 0-0.8-0.3-1.4-0.9-1.4 -0.5 0-1 0.4-1 1.3 0 3.4 2.6 5.7 6.5 5.6 5.1 0 7.7-4 7.7-8.9 0-4.9-1.6-6.8-2.5-7.3 0.9-0.5 2.7-2.4 2.7-7.3 0-4.4-1.9-6.5-2.1-6.8 0 0 1.9 0.4 4 0.4 1.5 0 2.3-0.2 3.1-0.4l0 13.4c0 0-3.7 0-4 0 -0.3 0-0.6 0.3-0.6 0.7 0 0.4 0.3 0.7 0.6 0.7 0.3 0 4-0.1 4-0.1l0 14.4c-4.7 2.2-7.9 6.8-7.9 9.7 0 1.5 1 2.5 3.4 2.5 5.8 0 8.3-4.3 8.3-8.2l0-3.8c0.5-0.2 1.8-0.6 3.2-0.6 2.1 0 5.1 0.5 5.8 0.7 0.7 0.2 2.3 0.7 4.2 0.7 2.4 0 3.6-0.6 4.7-1.7 0.2-0.2 0.3-0.5 0.3-0.7 0-0.4-0.3-0.8-0.8-0.8 -0.3 0-0.6 0.1-0.9 0.5 -0.8 0.8-1.9 1.7-3.5 1.7 -2.8 0-4.4-2.9-4.4-7.8 0-3.7 0.6-6.3 1.6-6.8l2.9 0c0.3 0 0.6-0.3 0.6-0.7 0-0.4-0.3-0.7-0.6-0.7l-3 0c-0.9-0.4-1.3-2.4-1.3-6.6 0-4.8 1.7-7.9 4.4-7.9 2.4 0 4.3 2 4.3 4.6 0 0.8 0.3 1.4 0.9 1.4 0.5 0 1-0.4 1-1.3C42.8 13.3 40.1 11 36.2 11zM19.5 46.3c0 3-2.3 6.6-5.4 6.6 -1.1 0-1.3-0.6-1.3-1.1 0-2.6 3.1-6.4 6.7-8.1L19.5 46.3zM23.2 8.1c0-3 2.3-6.6 5.4-6.6 1.1 0 1.3 0.6 1.3 1.1 0 2.6-3.1 6.4-6.7 8.1L23.2 8.1z"/></svg>
+            </a>
           </div>
-          <section class="mob-start-button" id="mob-start-button">
-            <span class="start-text">
-              Start<br>
-              <img class="start-arrow" src="./images/btn/start-arrow.svg">
-            </span>
-          </section>
-        </section>
-        <section class="red-bg-container">
-          <section class="red-bg"></section>
-        </section>
-        <section class="step-bg-container"></section>
-        <section class="actions-container-container">
-          <section class="actions-container" id="actions-container">
-            <ul class="actions">
-              <li class="action zero"></li>
-            </ul>
-            <div class="autoplay-container">
-              <span class="autoplay-text">Autoplay</span>
-              <span class="autoplay-toggle">
-                <input class="tgl tgl-flat" id="autoplay" type="checkbox">
-                <label class="tgl-btn" for="autoplay"></label>
-              </span>
+          <div class="nav-list">
+            <div class="nav-show">
+              <a href="#" class="sc red no_ul">Menu</a>
             </div>
-            <div class="actions-text-container"></div>
-          </section>
-        </section>
-      </section>
-      <section class="brew-guide-button start" id="brew-guide-button">
-        <span class="button-border-bg">
-          <svg width="76px" height="76px" viewBox="0 0 76 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <circle class="button-border" stroke="#BADDD4" stroke-width="20" cx="38.1" cy="38.12" r="27.86"></circle>              
-          </svg>
-        </span>
-        <span class="brew-guide-button-start">
-          <span class="start-text">
-            Start
-            <img class="start-arrow" src="./images/btn/start-arrow.svg">
-          </span>
-        </span>
-        <span class="brew-guide-button-next"><img src="./images/btn/next.svg"></span>
-        <span class="brew-guide-button-play"><img src="./images/btn/play.svg"></span>
-        <span class="brew-guide-button-pause"><img src="./images/btn/pause.svg"></span>
-        <span class="brew-guide-button-end"><img src="./images/btn/back.svg"></span>
-      </section>
-    </article>
-    <script>
-      // Define the structure for the brew guide, steps and actions
-      var brewGuide = {
-        title: "Chemex<br>Brew Guide",
-        description: "The chemex is a beautifully crafted brewer, and can serve up to six people per brew. The denser filter papers provide a delicate bodied cup, while still allowing the flavours to shine through.",
-        items: [ "Chemex", "Chemex Filter", "Gooseneck Kettle", "Digital Scales", "Grinder" ],
-        overview: {
-          amount: 30,
-          grindText: "Medium / fine",
-          grindValue: 10, // Number between 1 and 14 
-          temp: 93,
-          water: 500,
-          brewTime: "5m",
-          totalTime: "4m",
-          cups: 6
-        },
-        steps: [
-                    {
-            stepNumber: 1,
-            title: "1. Fold Filter",
-            instruction: "Fold filter into a half, then a quarter. Proceed by pulling out sides to make a funnel shape.",
-            illustration: "../../uploads/chemex-1@2x.png",
-            mobile_illustration: "../../uploads/chemex-1-mobile@2x.png",
-            time: 0
-          },                    {
-            stepNumber: 2,
-            title: "2. Assemble, Rinse",
-            instruction: "Place filter in the Chemex and rinse well with hot water. Ensure filter papers are completely wet and stuck to brewer, with no folds or creases.",
-            illustration: "../../uploads/chemex-2@2x.png",
-            mobile_illustration: "../../uploads/chemex-1-mobile-copy@2x.png",
-            time: 0
-          },                    {
-            stepNumber: 3,
-            title: "3. Add Grounds",
-            instruction: "Empty rinsing water, add grounds and place Chemex on scales. Level the grounds slightly so they are flat.",
-            illustration: "../../uploads/chemex-3@2x.png",
-            mobile_illustration: "../../uploads/chemex-1-mobile-copy-2@2x.png",
-            time: 0
-          },                    {
-            stepNumber: 4,
-            title: "4. Wet Grounds",
-            instruction: "Start timer as you begin to pour 80g of water evenly over the bed of coffee, ensuring all grounds are wet. Allow 10 seconds for the pour and another 30 for the bloom.",
-            illustration: "../../uploads/chemex-4@2x.png",
-            mobile_illustration: "../../uploads/chemex-1-mobile-copy-2@2x.png",
-            time: 45
-          },                    {
-            stepNumber: 5,
-            title: "5. Pour Water",
-            instruction: "At 45 seconds, Slow pour 50–75g of water in a slow, circular movement, starting from the inside outwards, covering all grounds.",
-            illustration: "../../uploads/chemex-5-and-6@2x.png",
-            mobile_illustration: "../../uploads/chemex-1-mobile-copy-3@2x.png",
-            time: 15
-          },                    {
-            stepNumber: 6,
-            title: "6. More Water",
-            instruction: "Pour 50g–75g increments at 30 second intervals until all of the water is added. This should take between 3–4 minutes.",
-            illustration: "../../uploads/chemex-5-and-6@2x.png",
-            mobile_illustration: "../../uploads/chemex-1-mobile-copy-4@2x.png",
-            time: 240
-          },                    {
-            stepNumber: 7,
-            title: "7. Drip &amp; Serve",
-            instruction: "Allow water to pass through entire bed of coffee, when dripping stops, remove and discard used filter and serve.",
-            illustration: "../../uploads/chemex-7@2x.png",
-            mobile_illustration: "../../uploads/chemex-1-mobile-copy-5@2x.png",
-            time: 0
-          }                  
-        ]
-      }
-    </script>
+              <div class="nav-l">
+            <ul class="nav">
+              <li><a href="https://workgroup.lemonstand.com/category/coffee">Coffee</a></li>
+              <li><a href="https://3feretail.workgroupstaging.com/subscriptions">Subscriptions</a></li>
+              <li><a href="https://workgroup.lemonstand.com/category/equipment">Equipment</a></li>
+              <li><a href="https://workgroup.lemonstand.com/category/merchandise">Merchandise</a></li>
+              <li class="green"><a href="https://3feretail.workgroupstaging.com/brew-guides">Brew Guides</a></li>
+              <li class="green"><a href="https://3feretail.workgroupstaging.com/classes">Classes</a></li>
+            </ul>
+          </div>
+                  </div>
     
-    
-    
-    
-    
-    
-    
-    <script src="./javascripts/vendor/jquery-3.1.1.min.js"></script>
-    <script src="./javascripts/visibility.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/CSSPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/easing/EasePack.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenLite.min.js"></script>
-    <script src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
-    <script src="./javascripts/brew-guide-logic.js"></script>
-    
-    <!-- MailChimp -->
-    <script src="./assets/js/jquery.ajaxchimp.js"></script>
-    <script src="./assets/js/velocity.min.js"></script>
-    <script src="./assets/js/velocity.ui.min.js"></script>
-    
-    
-    <script type="text/javascript">
-    
-    $('#mc-form').ajaxChimp({
-        url: 'https://3fe-reuter.us15.list-manage.com/subscribe/post?u=f49b8b489b35d9f88308c085c&amp;id=7cf7efb41b',
-        callback: callbackFunction
-    });
-    
-    function callbackFunction (resp) {
-      var form = $("#mc-form");
-        if (resp.result === 'success') {
-            console.log("success");
-            var message = "<p>Thank you &ndash; <br />check your inbox for a confirmation email.</p>";
-            form.html(message);
-            form.velocity("transition.slideUpIn");
-        } else {
-            console.log("failed");
-            form.velocity("callout.shake");
-        }
-    }
-    
-    
-         $(".menu_icon, .m-menu-bg-dark").click(function(){
-          event.preventDefault();
-          $("body").toggleClass("mopen");
-         });
-     </script>
-     <script>
-     $('.m-menu-out a').click(function (e) {
-         e.preventDefault();                   // prevent default anchor behavior
-         var goTo = this.getAttribute("href"); // store anchor href
-     
-             $("body").toggleClass("mopen");
-     
-         setTimeout(function(){
-              window.location = goTo;
-         },300);       
-     }); 
-    
-     </script>
-    <!--Google-->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    
-      // ga('create', 'UA-57411408-1', 'auto');
-      // ga('send', 'pageview');
-    
-    </script>
-    
-    <!--intercom-->
-    <script>
-      // window.intercomSettings = {
-      //   app_id: "ttwfxjr1"
-      // };
-    </script>
-    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/ttwfxjr1';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+        
+        <div class="nav-account show-on-desktops">
+          <ul class="nav">
+          <li class="green"><a href="https://workgroup.lemonstand.com/login">Account</a></li>
+          </ul>
+        </div>
+        
+    <div class="nav-cart" id="mini-cart"><a href="https://workgroup.lemonstand.com/cart">
+    <span class="sc red cart_icon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="19" viewBox="0 0 16.7 18.5"><path class="st0" d="M11.7 13.6c-1.3 0.1-2.3 1.3-2.2 2.7 0.1 0.7 0.4 1.2 0.9 1.7 0.4 0.4 1 0.6 1.6 0.6 0.1 0 0.2 0 0.2 0 0.7-0.1 1.2-0.4 1.7-0.9 0.4-0.5 0.6-1.1 0.6-1.8 -0.1-0.7-0.4-1.2-0.9-1.7S12.4 13.6 11.7 13.6zM13 16.9c-0.2 0.3-0.6 0.5-0.9 0.5 -0.4 0-0.7-0.1-1-0.3 -0.3-0.2-0.5-0.6-0.5-0.9 -0.1-0.8 0.5-1.4 1.2-1.5h0c0 0 0.1 0 0.1 0 0.3 0 0.6 0.1 0.9 0.3 0.3 0.2 0.5 0.6 0.5 0.9C13.4 16.3 13.2 16.7 13 16.9z"/><path class="st0" d="M3.5 13.6c-1.3 0.1-2.3 1.3-2.2 2.7 0.1 0.7 0.4 1.2 0.9 1.7 0.4 0.4 1 0.6 1.6 0.6 0.1 0 0.2 0 0.2 0 0.7-0.1 1.2-0.4 1.7-0.9 0.4-0.5 0.6-1.1 0.6-1.8 -0.1-0.7-0.4-1.2-0.9-1.7S4.2 13.6 3.5 13.6zM4.8 16.9c-0.2 0.3-0.6 0.5-0.9 0.5 -0.4 0-0.7-0.1-1-0.3 -0.3-0.2-0.5-0.6-0.5-0.9 -0.1-0.8 0.5-1.4 1.2-1.5h0c0 0 0.1 0 0.1 0 0.3 0 0.6 0.1 0.9 0.3 0.3 0.2 0.5 0.6 0.5 0.9C5.1 16.3 5 16.7 4.8 16.9z"/><path class="st0" d="M14.3 12.1V3.5l2.4-2.8L15.9 0l-2.4 2.8H5.7 0v1.9 3.8l3.6 3.5H14.3zM1.1 4.7V3.9h4.6 7.6V11H4.1l-3-2.9V4.7z"/></svg>
+     </span>
+    <span class="navbar-totals"><iframe class="navbar-iframe"src="https://workgroup.lemonstand.com/tinycart"></iframe></span></a>
+    </div>
     
 
+  
+
+        
+        <div class="nav-menu">
+            <a href="#" class="menu_icon no_ul">
+              <svg xmlns="https://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13.1"><rect class="st0" width="16" height="1.1"/><rect y="6" class="st0" width="16" height="1.1"/><rect y="12.1" class="st0" width="16" height="1.1"/></svg>
+            </a>
+          </div>
+      </header>
+      
+      <div class="headerspacer"></div>
+      
+      <div class="m-menu">
+        <h4 class="sc red">Shop</h4>
+        <ul class="m-css-two-columns m-menu-list m-menu-out">
+        <li><a href="https://workgroup.lemonstand.com/category/coffee" class="no_ul black">Coffee</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/subscriptions" class="no_ul black">Subscriptions</a></li>
+        <li><a href="https://workgroup.lemonstand.com/category/equipment" class="no_ul black">Equipment</a></li>
+        <li><a href="https://workgroup.lemonstand.com/category/merchandise" class="no_ul black">Merchandise</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/brew-guides" class="no_ul green">Brew Guides</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/classes" class="no_ul green">Classes</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/locations" class="no_ul green">Locations</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/wholesale" class="no_ul green">Wholesale</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/roastery" class="no_ul green">Roastery</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/our-story" class="no_ul green">Our Story</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/careers" class="no_ul green">Careers</a></li>
+        <li><a href="https://3feretail.workgroupstaging.com/blog" class="no_ul black">Blog</a></li>
+        </ul>
+        <div class="m-vh-5"></div>
+        <ul class="m-menu-out">
+        <li class="green"><a href="https://workgroup.lemonstand.com/login" class="no_ul green"><strong>Account &rarr;</strong></a></li>
+        </ul>
+        <div class="m-vh-5"></div>
+        <ul class="m-menu-out">
+        <li><a href="" class="no_ul red">FAQ</a></li>
+        <li><a href="" class="no_ul red">Shipping</a></li>
+        <li><a href="" class="no_ul red">Terms</a></li>
+        <li><a href="" class="no_ul red">Press</a></li>
+        </ul>
+      </div>
+      <div class="m-menu-bg"></div>
+      <div class="m-menu-bg-dark"></div>
+<!--END Nav-->
+
+
+<!--wrapper-->
+<div class="wrapper">
+  <div class="m-block">
+
+  <div class="row pad-top-5 m-pad-top-10 pad-bottom-10 m-pad-bottom-5">
+    <div class="six columns"><h2 class="text-large red">Brew Guides</h2>
+    </div>
+    <div class="five columns text-medium end"><p>
+        <a href="https://3feretail.workgroupstaging.com/brew-guides/aeropress">Aeropress</a><br />
+        <a href="https://3feretail.workgroupstaging.com/brew-guides/chemex">Chemex</a><br />
+        <a href="https://3feretail.workgroupstaging.com/brew-guides/french-press">French Press</a><br />
+        <a href="https://3feretail.workgroupstaging.com/brew-guides/espresso">Espresso</a><br />
+        <a href="https://3feretail.workgroupstaging.com/brew-guides/v60-02-model">V60 (02 Model)</a><br />
+        <a href="https://3feretail.workgroupstaging.com/brew-guides/cupping">Cupping</a><br />
+        </p>
+    </div>
+  </div>
+  
+  </div>
+</div>
+<!--END wrapper-->
+<footer>
+  <div class="m-block">
+  <div class="vh-25 m-vh-25"></div>
+
+  <div class="row">
+    <div class="three columns text-medium">
+    <h4 class="sc pad-bottom-2 m-pad-bottom-2 red">Say hi!</h4>   
+    <a class="no_ul" href=""><span class="icon-twitter"></span></a>&nbsp;&nbsp;<a class="no_ul" href=""><span class="icon-facebook"></span></a>&nbsp;&nbsp;<a class="no_ul" href=""><span class="icon-instagram"></span></a></div>
+    <div class="nine columns">
+      <h4 class="sc m-pad-top-5 pad-bottom-2 m-pad-bottom-2 red">Newsletter</h4>    
+      <div class="row">
+        <form id="mc-form">
+        <div class="three columns">
+          <input type="text" placeholder="First Name" value="" name="FNAME" class="text-input" id="mce-FNAME">
+        </div>
+        <div class="three columns">
+          <input type="text" placeholder="Surname" value="" name="LNAME" class="text-input" id="mce-LNAME">
+        </div>
+        <div class="three columns">
+        <input id="mce-EMAIL" type="email" name="EMAIL" placeholder="Email Address" class="text-input">
+        </div>
+        <div class="three columns">
+        <button type="submit" class="button bg-black white sc text-center">Sign Up</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="vh-5 m-vh-10"></div>
+  </div>
+  
+  <div class="m-block bg-white black hide-on-phones">
+    <div class="vh-5 m-vh-10"></div>
     
-  </body>
+    <div class="row">
+      <div class="five columns">
+        <div class="row">
+            <div class="three columns">
+            <h4 class="sc pad-bottom-2 m-pad-bottom-2 red">Company</h4> 
+            </div>
+        </div>
+        <div class="row">
+          <ul class="nav nav-l">
+            <li><a href="https://3feretail.workgroupstaging.com/blog" class="no_ul">Blog</a></li>
+            <li><a href="https://3feretail.workgroupstaging.com/wholesale" class="no_ul">Wholesale</a></li>
+            <li><a href="https://3feretail.workgroupstaging.com/roastery" class="no_ul">Roastery</a></li>
+            <li><a href="https://3feretail.workgroupstaging.com/our-story" class="no_ul">Our Story</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="four columns">
+        <div class="row">
+            <div class="three columns">
+            <h4 class="sc pad-bottom-2 m-pad-bottom-2 red">Locations</h4> 
+            </div>
+        </div>
+        <div class="row">
+          <ul class="nav nav-l">
+            <li><a href="https://3feretail.workgroupstaging.com/wholesale" class="no_ul">Grand Canal Street</a></li>
+            <li><a href="https://3feretail.workgroupstaging.com/roastery" class="no_ul">Sussex Terrace</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="three columns">
+        <div class="row">
+            <div class="three columns">
+            <h4 class="sc pad-bottom-2 m-pad-bottom-2 red">&nbsp;</h4>  
+            </div>
+        </div>
+        <div class="row">
+          <ul class="nav nav-l text-light green">
+            <li><a href="https://3feretail.workgroupstaging.com/info/faq" class="">FAQ</a></li>
+            <li><a href="https://3feretail.workgroupstaging.com/info/shipping" class="">Shipping</a></li>
+            <li><a href="https://3feretail.workgroupstaging.com/info/press" class="">Press</a></li>
+            <li><a href="https://3feretail.workgroupstaging.com/info/press" class="no_ul">Careers</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="vh-10 m-vh-10"></div>
+        
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+<!-- Jquery -->
+<script src="https://3feretail.workgroupstaging.com/assets/js/jquery.min.js"></script>
+
+<!-- Flickity -->
+
+<script src="https://3feretail.workgroupstaging.com/assets/js/flickity.pkgd.js"></script>
+
+<!-- MailChimp -->
+<script src="https://3feretail.workgroupstaging.com/assets/js/jquery.ajaxchimp.js"></script>
+<script src="https://3feretail.workgroupstaging.com/assets/js/velocity.min.js"></script>
+<script src="https://3feretail.workgroupstaging.com/assets/js/velocity.ui.min.js"></script>
+
+<!-- Cycle -->
+<script src="https://3feretail.workgroupstaging.com/assets/js/jquery.cycle2.min.js"></script>
+<script src="https://3feretail.workgroupstaging.com/assets/js/jquery.cycle2.swipe.min.js"></script>
+
+<!-- Plyr core script -->
+<script src="https://3feretail.workgroupstaging.com/assets/js/plyr.js"></script>
+<script src="https://3feretail.workgroupstaging.com/assets/js/rangetouch.js" async></script>
+
+
+<script type="text/javascript">
+$(window).load(function () {
+$('.product-flickity').flickity({
+// options
+prevNextButtons: false,
+pageDots: true,
+cellSelector: 'img'
+});
+});
+
+$(window).load(function () {
+$('.images-flickity').flickity({
+// options
+cellAlign: 'left',
+prevNextButtons: false,
+pageDots: false,
+cellSelector: 'img'
+});
+});
+
+$(window).load(function () {
+$('.home-flickity').flickity({
+// options
+prevNextButtons: false,
+pageDots: true,
+cellSelector: '.flick'
+});
+});
+
+
+$('#mc-form').ajaxChimp({
+    url: 'https://3fe-reuter.us15.list-manage.com/subscribe/post?u=f49b8b489b35d9f88308c085c&amp;id=7cf7efb41b',
+    callback: callbackFunction
+});
+
+function callbackFunction (resp) {
+  var form = $("#mc-form");
+    if (resp.result === 'success') {
+        console.log("success");
+        var message = "<p>Thank you &ndash; <br />check your inbox for a confirmation email.</p>";
+        form.html(message);
+        form.velocity("transition.slideUpIn");
+    } else {
+        console.log("failed");
+        form.velocity("callout.shake");
+    }
+}
+
+
+$(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 50
+        }, 650);
+        return false;
+      }
+    }
+  });
+});
+
+
+     $(".menu_icon, .m-menu-bg-dark").click(function(){
+      event.preventDefault();
+      $("body").toggleClass("mopen");
+     });
+ </script>
+ <script>
+ $('.m-menu-out a').click(function (e) {
+     e.preventDefault();                   // prevent default anchor behavior
+     var goTo = this.getAttribute("href"); // store anchor href
+ 
+         $("body").toggleClass("mopen");
+ 
+     setTimeout(function(){
+          window.location = goTo;
+     },300);       
+ }); 
+
+
+     $(".nav-show a").click(function(){
+      event.preventDefault();
+      $("body").toggleClass("no-menu");
+     });
+ </script>
+<!-- Cycle Js -->
+
+
+<script>
+  plyr.setup({
+  // Output to console
+  controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+  //iconUrl: 'https://3feretail.workgroupstaging.com/assets/images/plyr.svg'
+  });
+</script>
+
+<!-- Rangetouch to fix <input type="range"> on touch devices (see https://rangetouch.com) -->
+
+
+
+
+<!-- Banner  JS-->
+<script src="https://3feretail.workgroupstaging.com/resources/banner.js"></script>
+
+
+<!--Google-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-57411408-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!--intercom-->
+<script>
+  window.intercomSettings = {
+    app_id: "ttwfxjr1"
+  };
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/ttwfxjr1';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+
+
+    </body>
 </html
