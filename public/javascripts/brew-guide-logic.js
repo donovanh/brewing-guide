@@ -7,7 +7,7 @@ $(function() {
   var allActions;
   var timer = 0;
   var timerTimeout;
-  var timePerTick = 100;
+  var timePerTick = 1000;
 
   if (currentStep > lastStep) {
     currentStep = 0;
