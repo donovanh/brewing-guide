@@ -466,7 +466,7 @@ html[data-next="0"] {
   width: 100%;
 }
 
-.actions {
+ul.actions {
   display: flex;
   height: 16px;
   margin-left: 20%;

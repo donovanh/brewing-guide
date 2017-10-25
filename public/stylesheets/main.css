@@ -351,7 +351,7 @@
   opacity: 0;
   position: absolute;
   width: 100%;
-}.actions {
+}ul.actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -359,7 +359,7 @@
   margin-left: 20%;
   position: relative;
   width: 483px;
-}.actions .action {
+}ul.actions .action {
   cursor: pointer;
   display: inline-block;
   border-top: 2px solid transparent;
@@ -370,7 +370,7 @@
   min-width: 26px;
   top: -1px;
   z-index: 10;
-}.actions .action:after {
+}ul.actions .action:after {
   content: "";
   background: #000;
   border: 2px solid #000;
@@ -380,41 +380,41 @@
   left: 0px;
   width: 6px;
   height: 6px;
-}.actions .action.current:after {
+}ul.actions .action.current:after {
   -webkit-animation: highlight-current-action 1s cubic-bezier(.54,-0.41,.29,1.42) forwards;
   animation: highlight-current-action 1s cubic-bezier(.54,-0.41,.29,1.42) forwards;
   background: #fff;
-}.actions .action.zero {
+}ul.actions .action.zero {
   display: none;
-}.actions .action.timed {
+}ul.actions .action.timed {
   border-top: 2px solid #000;/*    margin-left: -2px;*/
-}.actions .timed-area {
+}ul.actions .timed-area {
   min-width: 74.5%;
-}.actions .action.standalone {
+}ul.actions .action.standalone {
   min-width: 20px;
-}.actions .action.standalone:last-child {/*width: 210px;
+}ul.actions .action.standalone:last-child {/*width: 210px;
     margin-left: -20px;*/
   left: -5px;
-}.actions .timed-area {
+}ul.actions .timed-area {
   position: relative;
   margin-left: 20px;
-}.actions .timer {
+}ul.actions .timer {
   font-size: 14px;
   font-weight: 600;
   position: absolute;
   top: -24px;
-}.actions .start-time {
+}ul.actions .start-time {
   left: -2px;
   -webkit-transition: all 1s linear;
   transition: all 1s linear;
-}.actions .end-time {
+}ul.actions .end-time {
   right: -3px;
   -webkit-transition: all .5s ease-out;
   transition: all .5s ease-out;
-}.actions .new-end-time {
+}ul.actions .new-end-time {
   left: auto !important;
   right: -3px;
-}.actions .timer-bar {
+}ul.actions .timer-bar {
   height: 12px;
   background: #baddd4;
   position: absolute;
